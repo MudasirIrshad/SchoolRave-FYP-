@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { ToastProvider } from "@/components/providers/toaster-provider";
 
 import { ClerkProvider } from "@clerk/nextjs";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
@@ -42,8 +43,10 @@ export default async function RootLayout({
           <SidebarProvider>
             {userId && <AppSidebar />}
             <SidebarInset>
+
               <Header />
               <main>{children}</main>
+            <ToastProvider />
             </SidebarInset>
           </SidebarProvider>
         </body>
