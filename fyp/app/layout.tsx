@@ -3,12 +3,6 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ToastProvider } from "@/components/providers/toaster-provider";
 
-import { ClerkProvider } from "@clerk/nextjs";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/app-sidebar";
-import Header from "@/components/header";
-import { auth } from "@clerk/nextjs/server";
-
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -30,27 +24,14 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { userId } = await auth();
-  
-
-
   return (
-    <ClerkProvider>
-      <html lang="en">
-        <body
-          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-        >
-          <SidebarProvider>
-            {userId && <AppSidebar />}
-            <SidebarInset>
-
-              <Header />
-              <main>{children}</main>
-            <ToastProvider />
-            </SidebarInset>
-          </SidebarProvider>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        <ToastProvider />
+        {children}
+      </body>
+    </html>
   );
 }

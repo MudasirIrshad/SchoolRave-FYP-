@@ -72,6 +72,8 @@ model School {
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
 
+  school_clerk_id String @unique
+
   school_type     SchoolType
   curriculum_type CurriculumType
 

@@ -157,8 +157,8 @@ exports.Prisma.Class_base_feeScalarFieldEnum = {
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
-  clerk_user_id: 'clerk_user_id',
   email: 'email',
+  password: 'password',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   role: 'role'
