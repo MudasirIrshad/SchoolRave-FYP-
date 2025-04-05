@@ -5,6 +5,7 @@ import Image from "next/image";
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
   const user = session?.user;
+  console.log(user);
 
   return (
     <div className="min-h-screen p-8">
@@ -27,6 +28,7 @@ export default async function Dashboard() {
                   {user.name}
                 </h1>
                 <p className="text-gray-600">{user.email}</p>
+                <p className="text-gray-600">{user.role}</p>
               </div>
             </div>
 

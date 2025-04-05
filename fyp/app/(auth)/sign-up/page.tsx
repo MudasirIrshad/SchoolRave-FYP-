@@ -51,10 +51,13 @@ export default function SignUp() {
     setError(null);
 
     try {
+      const storedValue = sessionStorage.getItem("role");
+
       await signUpUser({
         name: data.name,
         email: data.email,
         password: data.password,
+        role: storedValue,
       });
 
       router.push("/sign-in");

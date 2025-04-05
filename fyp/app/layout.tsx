@@ -4,7 +4,7 @@ import "./globals.css";
 import { ToastProvider } from "@/components/providers/toaster-provider";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/sidebar/app-sidebar";
-import Header from "@/components/header";
+import Header from "@/components/navbar/header";
 import { AuthProvider } from "@/components/providers/session-provider";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";

@@ -8,6 +8,7 @@ const signUpSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
   password: z.string().min(8),
+  role: z.enum(["GENERAL", "SCHOOL"]),
 });
 
 export async function signUpUser(data: z.infer<typeof signUpSchema>) {
@@ -16,7 +17,7 @@ export async function signUpUser(data: z.infer<typeof signUpSchema>) {
     throw new Error("Invalid input");
   }
 
-  const { name, email, password } = validated.data;
+  const { name, email, password, role } = validated.data;
 
   // Check if user already exists
   const existingUser = await prisma.user.findUnique({ where: { email } });
@@ -28,14 +29,13 @@ export async function signUpUser(data: z.infer<typeof signUpSchema>) {
   // Hash password
   const hashedPassword = await bcrypt.hash(password, 10);
 
-
   // Create user
   await prisma.user.create({
     data: {
       name,
       email,
       password: hashedPassword,
-      role: "GENERAL",
+      role,
     },
   });
 
