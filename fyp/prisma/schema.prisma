@@ -1,7 +1,6 @@
-
 generator client {
   provider = "prisma-client-js"
-  output = "../generated/prisma"
+  output   = "../generated/prisma"
 }
 
 datasource db {
@@ -21,7 +20,7 @@ enum CurriculumType {
 }
 
 enum AdmissionStatus {
-  OPEN 
+  OPEN
   CLOSED
 }
 
@@ -34,6 +33,7 @@ enum GenderPolicy {
 enum UserRole {
   SCHOOL
   GENERAL
+  ADMIN
 }
 
 enum SubscriptionPlan {
@@ -62,23 +62,23 @@ enum AdmissionApproval {
 // DATABASE MODELS
 
 model School {
-  id String @id @default(uuid())
-  name String
-  email String @unique
-  phone String @unique
-  address String
-  affiliation String
+  id                    String   @id @default(uuid())
+  name                  String
+  email                 String   @unique
+  phone                 String   @unique
+  address               String
+  affiliation           String
   medium_of_instruction String
-  description String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  description           String
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
 
-  school_type SchoolType
+  school_type     SchoolType
   curriculum_type CurriculumType
-  
-  schoolBranch SchoolBranch[]
+
+  schoolBranch   SchoolBranch[]
   class_base_fee Class_base_fee[]
-  reviews Review[]
+  reviews        Review[]
 
   subscription Subscription[]
 
@@ -88,54 +88,54 @@ model School {
 }
 
 model SchoolBranch {
-  id String @id @default(uuid())
-  name String
-  address String
-  city String
-  email String @unique
-  phone String @unique
-  description String
+  id               String          @id @default(uuid())
+  name             String
+  address          String
+  city             String
+  email            String          @unique
+  phone            String          @unique
+  description      String
   admission_status AdmissionStatus
 
   gender_policy GenderPolicy
 
   facilities String
-  
+
   schoolId String
-  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   class_base_fee Class_base_fee[]
-  reviews Review[]
+  reviews        Review[]
 }
 
 model Class_base_fee {
-  id String @id @default(uuid())
-  name String
+  id            String @id @default(uuid())
+  name          String
   admission_fee Int
-  monthly_fee Int
-  
+  monthly_fee   Int
+
   schoolBranchId String?
-  schoolBranch SchoolBranch? @relation(fields: [schoolBranchId],references: [id], onDelete: Cascade)
+  schoolBranch   SchoolBranch? @relation(fields: [schoolBranchId], references: [id], onDelete: Cascade)
 
   schoolId String?
-  school School? @relation(fields: [schoolId], references: [id], onDelete: Cascade)  
+  school   School? @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   @@unique([name, schoolId])
 }
 
 model User {
-  id String @id @default(uuid())  // primary key
-           
+  id String @id @default(uuid()) // primary key
+
+  name  String
   email String @unique
 
   password String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  
-  role UserRole
-  reviews Review[]
 
+  role    UserRole
+  reviews Review[]
 
   payment Payment[]
 
@@ -143,38 +143,36 @@ model User {
 }
 
 model Review {
-  id String @id @default(uuid())
-  rating Int
-  comment String?
+  id        String   @id @default(uuid())
+  rating    Int
+  comment   String?
   createdAt DateTime @default(now())
 
-
   schoolId String?
-  school School? @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  school   School? @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   schoolBranchId String?
-  schoolBranch SchoolBranch? @relation(fields: [schoolBranchId], references: [id], onDelete: Cascade)
+  schoolBranch   SchoolBranch? @relation(fields: [schoolBranchId], references: [id], onDelete: Cascade)
 
   reviewerId String?
-  reviewer User? @relation(fields: [reviewerId], references: [id])
+  reviewer   User?   @relation(fields: [reviewerId], references: [id])
 
   @@unique([reviewerId, schoolId])
 }
 
 model Subscription {
-  id String @id @default(uuid())
-  plan SubscriptionPlan         // 3 month, 6 month, 1 year
-  status SubscriptionStatus     // active, expired, cancelled
-  type SubscriptionType         // free, paid
-
+  id     String             @id @default(uuid())
+  plan   SubscriptionPlan // 3 month, 6 month, 1 year
+  status SubscriptionStatus // active, expired, cancelled
+  type   SubscriptionType // free, paid
 
   createdAt DateTime @default(now())
 
   startDate DateTime @default(now())
-  endDate DateTime
+  endDate   DateTime
 
   schoolId String
-  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   payment Payment[]
 
@@ -182,41 +180,40 @@ model Subscription {
 }
 
 model Payment {
-  id String @id @default(uuid())
+  id     String @id @default(uuid())
   amount Int
-  
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   subscriptionId String
-  subscription Subscription? @relation(fields: [subscriptionId], references: [id])
+  subscription   Subscription? @relation(fields: [subscriptionId], references: [id])
 
   schoolId String
-  school School @relation(fields: [schoolId], references: [id])
+  school   School @relation(fields: [schoolId], references: [id])
 
   userId String
-  user User @relation(fields: [userId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 
   @@unique([subscriptionId, schoolId, userId])
-
 }
 
 model Admission {
-  id String @id @default(uuid())
-  student_name String
-  student_age Int
+  id            String            @id @default(uuid())
+  student_name  String
+  student_age   Int
   date_of_birth DateTime
-  image_url String
-  approval AdmissionApproval
+  image_url     String
+  approval      AdmissionApproval
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   schoolId String
-  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
 
   submitterId String
-  submitter User @relation(fields: [submitterId], references: [id], onDelete: Cascade)
+  submitter   User   @relation(fields: [submitterId], references: [id], onDelete: Cascade)
 
   documents Document[]
 
@@ -224,11 +221,11 @@ model Admission {
 }
 
 model Document {
-  id String @id @default(uuid())
-  url String @unique
+  id        String   @id @default(uuid())
+  url       String   @unique
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   admissionId String
-  admission Admission @relation(fields: [admissionId], references: [id], onDelete: Cascade)
+  admission   Admission @relation(fields: [admissionId], references: [id], onDelete: Cascade)
 }

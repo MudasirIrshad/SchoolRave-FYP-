@@ -1,52 +1,62 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar"
+import { authOptions } from "@/lib/auth";
+import { getServerSession } from "next-auth";
+import Image from "next/image";
 
-export default function Page() {
+export default async function Dashboard() {
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 border-b">
-          <div className="flex items-center gap-2 px-3">
-            <SidebarTrigger />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
+    <div className="min-h-screen p-8">
+      {user ? (
+        <div className="max-w-4xl mx-auto">
+          {/* User Profile Section */}
+          <div className="mb-8 p-6 bg-white rounded-xl shadow-md">
+            <div className="flex items-center gap-6">
+              {user.image && (
+                <Image
+                  src={user.image}
+                  alt={`${user.name}'s profile`}
+                  className="rounded-full object-cover border-2 border-gray-200"
+                  width={96}
+                  height={96}
+                />
+              )}
+              <div>
+                <h1 className="text-2xl font-bold text-gray-800">
+                  {user.name}
+                </h1>
+                <p className="text-gray-600">{user.email}</p>
+              </div>
+            </div>
+
+            {/* Hero Section */}
+            <div className="mb-8 p-8 bg-gradient-to-br from-blue-500 to-purple-500 text-white rounded-xl shadow-lg">
+              <h2 className="text-3xl font-extrabold mb-4">
+                Discover the Best Alternatives and Honest Reviews
+              </h2>
+              <p className="text-lg mb-6">
+                Find reliable reviews and explore top alternatives for software
+                and services. Make informed decisions with our community-driven
+                platform.
+              </p>
+              <div className="flex gap-4">
+                <button className="bg-white text-blue-600 font-bold py-3 px-6 rounded-full hover:bg-blue-100 transition-colors">
+                  Explore Reviews
+                </button>
+                <button className="bg-purple-600 text-white font-bold py-3 px-6 rounded-full hover:bg-purple-700 transition-colors">
+                  Add Your Review
+                </button>
+              </div>
+            </div>
           </div>
-        </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-            <div className="aspect-video rounded-xl bg-muted/50" />
-          </div>
-          <div className="min-h-[100vh] flex-1 rounded-xl bg-muted/50 md:min-h-min" />
         </div>
-      </SidebarInset>
-    </SidebarProvider>
-  )
+      ) : (
+        <div className="text-center p-8 bg-red-50 rounded-xl">
+          <h2 className="text-xl font-semibold text-red-600">Access Denied</h2>
+          <p className="text-gray-600">Please sign in to view this content</p>
+        </div>
+      )}
+    </div>
+  );
 }

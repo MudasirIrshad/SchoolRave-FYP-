@@ -157,6 +157,7 @@ exports.Prisma.Class_base_feeScalarFieldEnum = {
 
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   email: 'email',
   password: 'password',
   createdAt: 'createdAt',
@@ -254,7 +255,8 @@ exports.GenderPolicy = exports.$Enums.GenderPolicy = {
 
 exports.UserRole = exports.$Enums.UserRole = {
   SCHOOL: 'SCHOOL',
-  GENERAL: 'GENERAL'
+  GENERAL: 'GENERAL',
+  ADMIN: 'ADMIN'
 };
 
 exports.SubscriptionPlan = exports.$Enums.SubscriptionPlan = {

@@ -33,6 +33,7 @@ enum GenderPolicy {
 enum UserRole {
   SCHOOL
   GENERAL
+  ADMIN
 }
 
 enum SubscriptionPlan {
@@ -71,8 +72,6 @@ model School {
   description           String
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
-
-  school_clerk_id String @unique
 
   school_type     SchoolType
   curriculum_type CurriculumType
@@ -125,9 +124,12 @@ model Class_base_fee {
 }
 
 model User {
-  id            String @id @default(uuid()) // primary key
-  clerk_user_id String @unique // clerk id for user
-  email         String @unique
+  id String @id @default(uuid()) // primary key
+
+  name  String
+  email String @unique
+
+  password String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
