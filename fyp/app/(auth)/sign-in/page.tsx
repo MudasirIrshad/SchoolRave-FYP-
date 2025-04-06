@@ -13,6 +13,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import InputField from "@/components/form/input-field";
+import prisma from "@/lib/prisma";
 
 const signInSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -45,12 +46,25 @@ export default function SignIn() {
         password: data.password,
       });
 
+      const findRole = await prisma.user.findUnique({
+        where: {
+          email: data.email,
+        },
+        select: {
+          role: true,
+        },
+      });
+      if (findRole?.role === "SCHOOL") {
+        await router.push("/school");
+      } else if (findRole?.role === "GENERAL") {
+        router.push("/generalUser");
+      }
+
       if (result?.error) {
         setError("Invalid email or password");
         return;
       }
 
-      router.push("/dashboard");
       router.refresh();
     } catch (error) {
       setError("Something went wrong. Please try again.");

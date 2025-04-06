@@ -277,7 +277,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Zahaab\\Desktop\\SchoolRave-FYP-\\fyp\\generated\\prisma",
+      "value": "E:\\Github Repos\\SchoolRave-FYP-\\fyp\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -291,7 +291,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Zahaab\\Desktop\\SchoolRave-FYP-\\fyp\\prisma\\schema.prisma",
+    "sourceFilePath": "E:\\Github Repos\\SchoolRave-FYP-\\fyp\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
