@@ -61,8 +61,6 @@ function CreateSchool({ schoolId }: CreateSchoolProps) {
   });
 
   const onSubmit = async (data: SchoolCreationFormValues) => {
-    console.log("BUTTON CLICKED");
-
     const {
       name,
       email,
@@ -88,6 +86,7 @@ function CreateSchool({ schoolId }: CreateSchoolProps) {
         curriculum_type,
       });
       toast.success("School Created Successfully");
+      router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
     } finally {
