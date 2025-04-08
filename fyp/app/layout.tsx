@@ -32,7 +32,7 @@ export default async function RootLayout({
 }>) {
   const session = await getServerSession(authOptions);
 
-  // console.log(session);
+  // console.log("THis is the session",session);
   return (
     <html lang="en">
       <body

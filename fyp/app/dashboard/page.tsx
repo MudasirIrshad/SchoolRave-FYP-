@@ -1,13 +1,13 @@
 import { authOptions } from "@/lib/auth";
 import { getServerSession } from "next-auth";
 import Image from "next/image";
-import SchoolDashboard from "./school/page";
+import SchoolDashboard from "./school/[schoolId]/page";
 import UserDashboard from "./user/page";
 
 export default async function Dashboard() {
   const session = await getServerSession(authOptions);
   const user = session?.user;
-  console.log(user);
+  console.log("From", user?.id);
 
   return (
     <div className="min-h-screen p-8">
@@ -15,7 +15,7 @@ export default async function Dashboard() {
         <div className="max-w-4xl mx-auto">
           {/* User Profile Section */}
           <div className="mb-8 p-6 bg-white rounded-xl shadow-md">
-            <div className="flex items-center gap-6">
+            <div className="flex items-center gap-6 justify-center">
               {user.image && (
                 <Image
                   src={user.image}
@@ -27,7 +27,7 @@ export default async function Dashboard() {
               )}
               {user.role === "SCHOOL" && (
                 <>
-                  <SchoolDashboard />
+                  <SchoolDashboard schoolId={user?.id || ""} />
                 </>
               )}
               {user.role === "GENERAL" && (

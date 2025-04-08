@@ -1,4 +1,3 @@
-import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
 import type { NextAuthOptions } from "next-auth";
 import prisma from "./prisma";
@@ -11,36 +10,24 @@ declare module "next-auth" {
   interface Session {
     user: {
       role?: string; // Add the role to the user object
+      id?: string;
     } & DefaultSession["user"];
   }
 
   interface User extends DefaultUser {
     role?: string; // Add the role to the user object
+    id?: string;
   }
 }
 
 declare module "next-auth/jwt" {
   interface JWT {
+    id?: string;
     role?: string; // Add the role to the JWT object
   }
 }
 export const authOptions: NextAuthOptions = {
   providers: [
-    GoogleProvider({
-      profile(profile) {
-        console.log("Profile Google: ", profile);
-
-        const userRole = "Google User";
-        return {
-          ...profile,
-          id: profile.sub,
-          role: userRole,
-          image: profile.picture,
-        };
-      },
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-    }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -55,6 +42,7 @@ export const authOptions: NextAuthOptions = {
         const user = await prisma.user.findUnique({
           where: { email: credentials.email },
         });
+        // console.log("From auth ts", user);
 
         if (!user || !user.password) {
           throw new Error("User not found");
@@ -85,11 +73,17 @@ export const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      if (user) token.role = user.role;
+      if (user) {
+        token.role = user.role;
+        token.id = user.id;
+      }
       return token;
     },
     async session({ session, token }) {
-      if (session?.user) session.user.role = token.role;
+      if (session?.user) {
+        session.user.role = token.role;
+        session.user.id = token.id;
+      }
       return session;
     },
   },

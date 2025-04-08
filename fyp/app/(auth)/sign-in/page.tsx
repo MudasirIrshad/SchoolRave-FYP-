@@ -54,12 +54,7 @@ export default function SignIn() {
           role: true,
         },
       });
-      if (findRole?.role === "SCHOOL") {
-        await router.push("/school");
-      } else if (findRole?.role === "GENERAL") {
-        router.push("/generalUser");
-      }
-
+      router.push("/dashboard");
       if (result?.error) {
         setError("Invalid email or password");
         return;
@@ -73,17 +68,6 @@ export default function SignIn() {
       setIsLoading(false);
     }
   }
-
-  const handleGoogleSignIn = async () => {
-    setIsLoading(true);
-    try {
-      await signIn("google", { callbackUrl: "/dashboard" });
-    } catch (error) {
-      setError("Failed to sign in with Google");
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
 
   return (
     <div className="w-full max-w-md space-y-6">
@@ -122,32 +106,6 @@ export default function SignIn() {
           </Button>
         </form>
       </Form>
-
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <Separator className="w-full" />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-            Or continue with
-          </span>
-        </div>
-      </div>
-
-      <Button
-        variant="outline"
-        onClick={handleGoogleSignIn}
-        disabled={isLoading}
-        className="w-full"
-      >
-        <Image
-          src="/google-icon.svg"
-          alt="Google Icon"
-          width={24}
-          height={24}
-        />
-        Sign in with Google
-      </Button>
 
       <div className="text-center text-sm">
         Don&apos;t have an account?

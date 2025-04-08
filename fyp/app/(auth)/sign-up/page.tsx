@@ -73,17 +73,6 @@ export default function SignUp() {
     }
   }
 
-  const handleGoogleSignUp = async () => {
-    setIsLoading(true);
-    try {
-      await signIn("google", { callbackUrl: "/dashboard" });
-    } catch (error) {
-      setError("Failed to sign up with Google");
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
-
   return (
     <div className="w-full max-w-md space-y-6">
       <div className="space-y-2 text-center">
@@ -135,32 +124,6 @@ export default function SignUp() {
           </Button>
         </form>
       </Form>
-
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <Separator className="w-full" />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-            Or continue with
-          </span>
-        </div>
-      </div>
-
-      <Button
-        variant="outline"
-        onClick={handleGoogleSignUp}
-        disabled={isLoading}
-        className="w-full"
-      >
-        <Image
-          src="/google-icon.svg"
-          alt="Google Icon"
-          width={24}
-          height={24}
-        />
-        Sign up with Google
-      </Button>
 
       <div className="text-center text-sm">
         Already have an account?{" "}

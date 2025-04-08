@@ -129,7 +129,8 @@ exports.Prisma.SchoolScalarFieldEnum = {
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   school_type: 'school_type',
-  curriculum_type: 'curriculum_type'
+  curriculum_type: 'curriculum_type',
+  userId: 'userId'
 };
 
 exports.Prisma.SchoolBranchScalarFieldEnum = {
@@ -232,9 +233,9 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 exports.SchoolType = exports.$Enums.SchoolType = {
-  PUBLIC: 'PUBLIC',
+  GOVERNMENT: 'GOVERNMENT',
   PRIVATE: 'PRIVATE',
-  SEMI_PUBLIC: 'SEMI_PUBLIC'
+  SEMI_GOVERNMENT: 'SEMI_GOVERNMENT'
 };
 
 exports.CurriculumType = exports.$Enums.CurriculumType = {

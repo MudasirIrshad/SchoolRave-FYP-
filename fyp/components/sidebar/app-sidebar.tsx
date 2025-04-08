@@ -17,89 +17,70 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import Link from "next/link";
 
-const data = {
-  navMain: [
-    {
-      title: "Home",
-      url: "/dashboard",
-      icon: SquareTerminal,
-      isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
-    },
-  ],
-};
+const schoolNav = [
+  {
+    title: "Dashboard",
+    url: "/dashboard",
+    icon: SquareTerminal,
+    isActive: true,
+    items: [
+      { title: "Admissions", url: "/dashboard/admissions" },
+      { title: "Reviews", url: "/dashboard/reviews" },
+    ],
+  },
+  {
+    title: "Profile",
+    url: "/school/profile",
+    icon: BookOpen,
+    items: [
+      { title: "Edit Info", url: "/school/profile/edit" },
+      { title: "Change Password", url: "/school/profile/password" },
+    ],
+  },
+];
+
+const userNav = [
+  {
+    title: "Explore Schools",
+    url: "/explore",
+    icon: Bot,
+    isActive: true,
+    items: [
+      { title: "Top Rated", url: "/explore/top-rated" },
+      { title: "Nearby", url: "/explore/nearby" },
+    ],
+  },
+  {
+    title: "My Applications",
+    url: "/user/applications",
+    icon: BookOpen,
+    items: [
+      { title: "Pending", url: "/user/applications/pending" },
+      { title: "Accepted", url: "/user/applications/accepted" },
+    ],
+  },
+];
 
 export async function AppSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
   const session = await getServerSession(authOptions);
 
-  console.log(session);
-  data.user = {
-    name: session?.user?.name,
-    email: session?.user?.email,
-    avatar: session?.user?.image,
+  const user = {
+    name: session?.user?.name ?? "",
+    email: session?.user?.email ?? "",
+    avatar: session?.user?.image ?? undefined,
+    role: session?.user?.role ?? "USER", // Default role
   };
+
+  // Dynamically select sidebar routes
+  const navData = user.role === "SCHOOL" ? schoolNav : userNav;
+
   return (
     <Sidebar collapsible="icon" {...props}>
-      <SidebarHeader></SidebarHeader>
+      <SidebarHeader />
       <SidebarContent>
-        {data.navMain.map((item) => (
+        {navData.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>
               <Link href={item.url} className="hover:underline">
@@ -123,7 +104,7 @@ export async function AppSidebar({
       </SidebarContent>
 
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
