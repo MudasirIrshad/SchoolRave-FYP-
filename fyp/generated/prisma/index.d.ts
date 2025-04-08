@@ -1967,7 +1967,6 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     address: string | null
-    affiliation: string | null
     medium_of_instruction: string | null
     description: string | null
     createdAt: Date | null
@@ -1983,7 +1982,6 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     address: string | null
-    affiliation: string | null
     medium_of_instruction: string | null
     description: string | null
     createdAt: Date | null
@@ -1999,7 +1997,6 @@ export namespace Prisma {
     email: number
     phone: number
     address: number
-    affiliation: number
     medium_of_instruction: number
     description: number
     createdAt: number
@@ -2017,7 +2014,6 @@ export namespace Prisma {
     email?: true
     phone?: true
     address?: true
-    affiliation?: true
     medium_of_instruction?: true
     description?: true
     createdAt?: true
@@ -2033,7 +2029,6 @@ export namespace Prisma {
     email?: true
     phone?: true
     address?: true
-    affiliation?: true
     medium_of_instruction?: true
     description?: true
     createdAt?: true
@@ -2049,7 +2044,6 @@ export namespace Prisma {
     email?: true
     phone?: true
     address?: true
-    affiliation?: true
     medium_of_instruction?: true
     description?: true
     createdAt?: true
@@ -2138,7 +2132,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt: Date
@@ -2171,7 +2164,6 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     address?: boolean
-    affiliation?: boolean
     medium_of_instruction?: boolean
     description?: boolean
     createdAt?: boolean
@@ -2195,7 +2187,6 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     address?: boolean
-    affiliation?: boolean
     medium_of_instruction?: boolean
     description?: boolean
     createdAt?: boolean
@@ -2212,7 +2203,6 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     address?: boolean
-    affiliation?: boolean
     medium_of_instruction?: boolean
     description?: boolean
     createdAt?: boolean
@@ -2229,7 +2219,6 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     address?: boolean
-    affiliation?: boolean
     medium_of_instruction?: boolean
     description?: boolean
     createdAt?: boolean
@@ -2239,7 +2228,7 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "affiliation" | "medium_of_instruction" | "description" | "createdAt" | "updatedAt" | "school_type" | "curriculum_type" | "userId", ExtArgs["result"]["school"]>
+  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "description" | "createdAt" | "updatedAt" | "school_type" | "curriculum_type" | "userId", ExtArgs["result"]["school"]>
   export type SchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     schoolBranch?: boolean | School$schoolBranchArgs<ExtArgs>
     class_base_fee?: boolean | School$class_base_feeArgs<ExtArgs>
@@ -2274,7 +2263,6 @@ export namespace Prisma {
       email: string
       phone: string
       address: string
-      affiliation: string
       medium_of_instruction: string
       description: string
       createdAt: Date
@@ -2717,7 +2705,6 @@ export namespace Prisma {
     readonly email: FieldRef<"School", 'String'>
     readonly phone: FieldRef<"School", 'String'>
     readonly address: FieldRef<"School", 'String'>
-    readonly affiliation: FieldRef<"School", 'String'>
     readonly medium_of_instruction: FieldRef<"School", 'String'>
     readonly description: FieldRef<"School", 'String'>
     readonly createdAt: FieldRef<"School", 'DateTime'>
@@ -12556,7 +12543,6 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     address: 'address',
-    affiliation: 'affiliation',
     medium_of_instruction: 'medium_of_instruction',
     description: 'description',
     createdAt: 'createdAt',
@@ -12901,7 +12887,6 @@ export namespace Prisma {
     email?: StringFilter<"School"> | string
     phone?: StringFilter<"School"> | string
     address?: StringFilter<"School"> | string
-    affiliation?: StringFilter<"School"> | string
     medium_of_instruction?: StringFilter<"School"> | string
     description?: StringFilter<"School"> | string
     createdAt?: DateTimeFilter<"School"> | Date | string
@@ -12924,7 +12909,6 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    affiliation?: SortOrder
     medium_of_instruction?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
@@ -12951,7 +12935,6 @@ export namespace Prisma {
     NOT?: SchoolWhereInput | SchoolWhereInput[]
     name?: StringFilter<"School"> | string
     address?: StringFilter<"School"> | string
-    affiliation?: StringFilter<"School"> | string
     medium_of_instruction?: StringFilter<"School"> | string
     description?: StringFilter<"School"> | string
     createdAt?: DateTimeFilter<"School"> | Date | string
@@ -12973,7 +12956,6 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    affiliation?: SortOrder
     medium_of_instruction?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
@@ -12995,7 +12977,6 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"School"> | string
     phone?: StringWithAggregatesFilter<"School"> | string
     address?: StringWithAggregatesFilter<"School"> | string
-    affiliation?: StringWithAggregatesFilter<"School"> | string
     medium_of_instruction?: StringWithAggregatesFilter<"School"> | string
     description?: StringWithAggregatesFilter<"School"> | string
     createdAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
@@ -13608,7 +13589,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -13630,7 +13610,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -13652,7 +13631,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13674,7 +13652,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13696,7 +13673,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -13712,7 +13688,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13727,7 +13702,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14462,7 +14436,6 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    affiliation?: SortOrder
     medium_of_instruction?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
@@ -14478,7 +14451,6 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    affiliation?: SortOrder
     medium_of_instruction?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
@@ -14494,7 +14466,6 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     address?: SortOrder
-    affiliation?: SortOrder
     medium_of_instruction?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
@@ -16691,7 +16662,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -16712,7 +16682,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -16803,7 +16772,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16824,7 +16792,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16912,7 +16879,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -16933,7 +16899,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17011,7 +16976,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17032,7 +16996,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17145,7 +17108,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17166,7 +17128,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17264,7 +17225,6 @@ export namespace Prisma {
     email?: StringFilter<"School"> | string
     phone?: StringFilter<"School"> | string
     address?: StringFilter<"School"> | string
-    affiliation?: StringFilter<"School"> | string
     medium_of_instruction?: StringFilter<"School"> | string
     description?: StringFilter<"School"> | string
     createdAt?: DateTimeFilter<"School"> | Date | string
@@ -17280,7 +17240,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17301,7 +17260,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17404,7 +17362,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17425,7 +17382,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17524,7 +17480,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17545,7 +17500,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17610,7 +17564,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17631,7 +17584,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17695,7 +17647,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17716,7 +17667,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17817,7 +17767,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17838,7 +17787,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17896,7 +17844,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -17917,7 +17864,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -18009,7 +17955,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18030,7 +17975,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18533,7 +18477,6 @@ export namespace Prisma {
     email: string
     phone: string
     address: string
-    affiliation: string
     medium_of_instruction: string
     description: string
     createdAt?: Date | string
@@ -18640,7 +18583,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18661,7 +18603,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18682,7 +18623,6 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     address?: StringFieldUpdateOperationsInput | string
-    affiliation?: StringFieldUpdateOperationsInput | string
     medium_of_instruction?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

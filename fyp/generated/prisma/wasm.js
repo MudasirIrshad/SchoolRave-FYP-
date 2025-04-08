@@ -123,7 +123,6 @@ exports.Prisma.SchoolScalarFieldEnum = {
   email: 'email',
   phone: 'phone',
   address: 'address',
-  affiliation: 'affiliation',
   medium_of_instruction: 'medium_of_instruction',
   description: 'description',
   createdAt: 'createdAt',

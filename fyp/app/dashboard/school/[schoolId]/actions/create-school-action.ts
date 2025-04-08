@@ -6,7 +6,6 @@ interface CreateSchoolActionProps {
   name: string;
   email: string;
   address: string;
-  affiliation: string;
   medium_of_instruction: string;
   description: string;
   schoolId: string;
@@ -18,7 +17,6 @@ export default async function createSchoolAction({
   name,
   email,
   address,
-  affiliation,
   medium_of_instruction,
   description,
   schoolId,
@@ -33,7 +31,6 @@ export default async function createSchoolAction({
         email,
         phone,
         address,
-        affiliation,
         medium_of_instruction,
         description,
         userId: schoolId,

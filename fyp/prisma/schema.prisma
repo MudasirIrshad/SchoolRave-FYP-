@@ -67,7 +67,6 @@ model School {
   email                 String   @unique
   phone                 String   @unique
   address               String
-  affiliation           String
   medium_of_instruction String
   description           String
   createdAt             DateTime @default(now())
