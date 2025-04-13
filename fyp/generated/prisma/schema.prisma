@@ -9,9 +9,9 @@ datasource db {
 }
 
 enum SchoolType {
-  PUBLIC
+  GOVERNMENT
   PRIVATE
-  SEMI_PUBLIC
+  SEMI_GOVERNMENT
 }
 
 enum CurriculumType {
@@ -67,7 +67,6 @@ model School {
   email                 String   @unique
   phone                 String   @unique
   address               String
-  affiliation           String
   medium_of_instruction String
   description           String
   createdAt             DateTime @default(now())
@@ -82,9 +81,14 @@ model School {
 
   subscription Subscription[]
 
+  userId String
+  user   User   @relation(fields: [userId], references: [id])
+
   Payment Payment[]
 
   Admission Admission[]
+
+  @@unique([userId])
 }
 
 model SchoolBranch {
@@ -140,6 +144,8 @@ model User {
   payment Payment[]
 
   Admission Admission[]
+
+  School School[]
 }
 
 model Review {

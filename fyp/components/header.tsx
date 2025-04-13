@@ -15,15 +15,6 @@ export default async function Header() {
         {/* <SignInButton />
               <SignUpButton /> */}
       </SignedOut>
-      <SignedIn>
-        {/* <UserButton /> */}
-        <SignOutButton>
-          <span>
-            <LogOut />
-            <button>Logged Out</button>
-          </span>
-        </SignOutButton>
-      </SignedIn>
     </header>
   );
 }
