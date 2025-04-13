@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 export default function PreSignUpDialog() {
   const router = useRouter();
 
-  const [role, setRole] = useState("GENERAL");
+  const [role, setRole] = useState("USER");
   const [isOpen, setIsOpen] = useState(false);
 
   const handleNext = () => {
@@ -46,8 +46,8 @@ export default function PreSignUpDialog() {
         <div className="grid gap-4 py-4">
           <RadioGroup value={role} onValueChange={setRole}>
             <div className="flex items-center space-x-2">
-              <RadioGroupItem value="GENERAL" id="general" />
-              <Label htmlFor="general">User</Label>
+              <RadioGroupItem value="USER" id="user" />
+              <Label htmlFor="user">User</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="SCHOOL" id="school" />
