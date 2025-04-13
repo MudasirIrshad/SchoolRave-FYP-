@@ -9,7 +9,7 @@ export default async function Dashboard() {
   }
 
   if (user.unsafeMetadata?.role === "SCHOOL")
-    return redirect(`/dashboard/school/${user.id}/Home`);
+    return redirect(`/dashboard/school/${user.id}/schoolHome`);
 
   if (user.unsafeMetadata?.role === "USER")
     return redirect(`/dashboard/user/${user.id}`);

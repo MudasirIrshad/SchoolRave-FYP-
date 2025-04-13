@@ -18,7 +18,11 @@ export default function SidebarRoutes() {
     { icon: Compass, label: "Browse", href: "/search" },
   ];
   const schoolRoutes = [
-    { icon: List, label: "Home", href: `/dashboard/school/${schoolId}/home` },
+    {
+      icon: List,
+      label: "Home",
+      href: `/dashboard/school/${schoolId}/schoolHome`,
+    },
     {
       icon: FileText,
       label: "Create Post",
