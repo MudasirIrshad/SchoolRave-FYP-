@@ -1,7 +1,6 @@
 // app/(auth)/layout.tsx
 
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 export default async function AuthLayout({
@@ -9,10 +8,10 @@ export default async function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
+  const { userId } = await auth();
 
-  if (session) {
-    redirect("/dashboard");
+  if (userId) {
+    redirect("/");
   }
 
   return (

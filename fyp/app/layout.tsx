@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ToastProvider } from "@/components/providers/toaster-provider";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { AppSidebar } from "@/components/sidebar/app-sidebar";
-import Header from "@/components/navbar/header";
-import { AuthProvider } from "@/components/providers/session-provider";
-import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/auth";
+import { ClerkProvider } from "@clerk/nextjs";
+
+import Header from "@/components/header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,25 +26,16 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await getServerSession(authOptions);
-
-  // console.log("THis is the session",session);
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <AuthProvider>
-          <SidebarProvider>
-            {session && <AppSidebar />}
-            <SidebarInset>
-              <Header />
-              <main>{children}</main>
-            </SidebarInset>
-            <ToastProvider />
-          </SidebarProvider>
-        </AuthProvider>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <Header />
+          <main>{children}</main>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
