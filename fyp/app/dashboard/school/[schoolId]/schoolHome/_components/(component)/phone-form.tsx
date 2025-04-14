@@ -18,22 +18,20 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
 
-interface TitleFormProps {
+interface PhoneFormProps {
   initialData: School;
   schoolId: string;
 }
 
 const formSchema = z.object({
-  name: z.string().min(1, {
-    message: "Name is required",
-  }),
+  phone: z.string(),
 });
 
-function TitleForm({ initialData, schoolId }: TitleFormProps) {
+function PhoneForm({ initialData, schoolId }: PhoneFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: initialData.name },
+    defaultValues: { phone: initialData.phone || "" },
   });
 
   const [isEditing, setIsEditing] = useState(false);
@@ -57,21 +55,21 @@ function TitleForm({ initialData, schoolId }: TitleFormProps) {
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        School Name
+        School Phone
         <Button onClick={toggleEdit} variant={"ghost"}>
           {isEditing ? (
             <>Cancle</>
           ) : (
             <>
               <PencilIcon className="h-4 w-4" />
-              Edit Name
+              Edit Phone
             </>
           )}
         </Button>
       </div>
       {!isEditing && (
         <>
-          <p className="text-smmt-2">{initialData.name}</p>
+          <p className="text-smmt-2">{initialData.phone}</p>
         </>
       )}
       {isEditing && (
@@ -83,7 +81,7 @@ function TitleForm({ initialData, schoolId }: TitleFormProps) {
           >
             <FormField
               control={form.control}
-              name="name"
+              name="phone"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
@@ -110,4 +108,4 @@ function TitleForm({ initialData, schoolId }: TitleFormProps) {
   );
 }
 
-export default TitleForm;
+export default PhoneForm;

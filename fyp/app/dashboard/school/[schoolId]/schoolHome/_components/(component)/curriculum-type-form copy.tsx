@@ -1,14 +1,15 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
   FormField,
   FormItem,
+  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { School } from "@/generated/prisma";
+import { CurriculumType, School, SchoolType } from "@/generated/prisma";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { PencilIcon } from "lucide-react";
@@ -17,29 +18,41 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { z } from "zod";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
-interface TitleFormProps {
+interface CurriculumTypeFormProps {
   initialData: School;
   schoolId: string;
 }
 
 const formSchema = z.object({
-  name: z.string().min(1, {
-    message: "Name is required",
-  }),
+  curriculum_type: z.enum([CurriculumType.BALUCHISTAN, CurriculumType.FEDERAL]),
 });
 
-function TitleForm({ initialData, schoolId }: TitleFormProps) {
+function CurriculumTypeForm({
+  initialData,
+  schoolId,
+}: CurriculumTypeFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: initialData.name },
+    defaultValues: {
+      curriculum_type:
+        initialData.curriculum_type === "BALUCHISTAN" ||
+        initialData.curriculum_type === "FEDERAL"
+          ? initialData.curriculum_type
+          : CurriculumType.BALUCHISTAN, // default fallback
+    },
   });
 
   const [isEditing, setIsEditing] = useState(false);
-  const toggleEdit = () => {
-    setIsEditing(!isEditing);
-  };
+  const toggleEdit = () => setIsEditing((prev) => !prev);
 
   const { isSubmitting, isValid } = form.formState;
 
@@ -57,25 +70,24 @@ function TitleForm({ initialData, schoolId }: TitleFormProps) {
   return (
     <div className="mt-6 border bg-slate-100 rounded-md p-4">
       <div className="font-medium flex items-center justify-between">
-        School Name
+        Curriculum Type
         <Button onClick={toggleEdit} variant={"ghost"}>
           {isEditing ? (
-            <>Cancle</>
+            <>Cancel</>
           ) : (
             <>
-              <PencilIcon className="h-4 w-4" />
-              Edit Name
+              <PencilIcon className="h-4 w-4 mr-1" />
+              Edit Curriculum
             </>
           )}
         </Button>
       </div>
+
       {!isEditing && (
-        <>
-          <p className="text-smmt-2">{initialData.name}</p>
-        </>
+        <p className="text-sm mt-2">{initialData.curriculum_type}</p>
       )}
+
       {isEditing && (
-        // <>abc</>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -83,21 +95,33 @@ function TitleForm({ initialData, schoolId }: TitleFormProps) {
           >
             <FormField
               control={form.control}
-              name="name"
+              name="curriculum_type"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input
+                    <Select
+                      value={field.value}
+                      onValueChange={field.onChange}
                       disabled={isSubmitting}
-                      placeholder="e.g. 'Advanced web dev'"
-                      {...field}
-                      className="rounded-sm border-black border-2 bg-white"
-                    />
+                    >
+                      <SelectTrigger className="w-full border-black border-2 bg-white">
+                        <SelectValue placeholder="Select medium" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value={CurriculumType.BALUCHISTAN}>
+                          BALUCHISTAN
+                        </SelectItem>
+                        <SelectItem value={CurriculumType.FEDERAL}>
+                          FEDERAL
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
             <div className="flex items-center gap-x-2">
               <Button disabled={!isValid || isSubmitting} type="submit">
                 Save
@@ -110,4 +134,4 @@ function TitleForm({ initialData, schoolId }: TitleFormProps) {
   );
 }
 
-export default TitleForm;
+export default CurriculumTypeForm;
