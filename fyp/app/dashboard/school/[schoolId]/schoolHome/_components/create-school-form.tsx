@@ -57,9 +57,7 @@ function CreateSchool({ schoolId }: CreateSchoolProps) {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       const response = await axios.post("/api/school", values);
-      router.push(
-        `/dashboard/school/${schoolId}/schoolHome/${response.data.id}`
-      );
+      router.refresh();
       toast.success("School created successfully");
     } catch (error: any) {
       toast.error("Something went wrong");
