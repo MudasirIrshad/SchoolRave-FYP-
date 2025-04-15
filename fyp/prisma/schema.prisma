@@ -65,15 +65,15 @@ model School {
   id                    String   @id @default(uuid())
   name                  String
   email                 String   @unique
-  phone                 String   @unique
-  address               String
-  medium_of_instruction String
-  description           String
+  phone                 String?   @unique
+  address               String?
+  medium_of_instruction String?
+  description           String?
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
 
-  school_type     SchoolType
-  curriculum_type CurriculumType
+  school_type     SchoolType?
+  curriculum_type CurriculumType?
 
   schoolBranch   SchoolBranch[]
   class_base_fee Class_base_fee[]
@@ -82,8 +82,7 @@ model School {
   subscription Subscription[]
 
   userId String
-  user User @relation(fields: [userId],references: [id])
-
+  
   Payment Payment[]
 
   Admission Admission[]
@@ -133,6 +132,7 @@ model User {
   name  String
   email String @unique
 
+
   password String?
 
   createdAt DateTime @default(now())
@@ -145,8 +145,7 @@ model User {
 
   Admission Admission[]
 
-  School School[]
-}
+ }
 
 model Review {
   id        String   @id @default(uuid())
