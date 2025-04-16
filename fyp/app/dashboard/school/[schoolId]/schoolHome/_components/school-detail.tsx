@@ -16,6 +16,7 @@ import AddressForm from "./(component)/address-form";
 import MediumofInstructionForm from "./(component)/medium-of-instruction-form copy";
 import SchoolTypeForm from "./(component)/school-type-form";
 import CurriculumTypeForm from "./(component)/curriculum-type-form copy";
+import ImageForm from "./(component)/image-form";
 
 async function SchoolDetail() {
   const { userId } = await auth();
@@ -26,8 +27,6 @@ async function SchoolDetail() {
       userId: userId,
     },
   });
-
-  console.log(school);
 
   if (!school) return <div>Loading ...</div>;
 
@@ -67,8 +66,9 @@ async function SchoolDetail() {
             <PaperclipIcon className="w-5 h-5" />
             <h2 className="text-xl">School's Attachments</h2>
           </div>
-
-          <div>TODO ATTACHMENT</div>
+          <div>
+            <ImageForm initialData={school} schoolId={school.id} />
+          </div>
         </div>
       </div>
     </>
