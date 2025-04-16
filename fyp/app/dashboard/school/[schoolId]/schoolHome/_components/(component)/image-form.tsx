@@ -15,7 +15,7 @@ interface ImageFormProps {
   schoolId: string;
 }
 const formSchema = z.object({
-  imageURL: z.string().min(1, {
+  imageUrl: z.string().min(1, {
     message: "Image Url is required",
   }),
 });
@@ -27,7 +27,9 @@ function ImageForm({ initialData, schoolId }: ImageFormProps) {
   };
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/school/update-school`, values);
+      await axios.patch(`/api/school/update-school`, {
+        imageUrl: values.imageUrl,
+      });
       toast.success("Course image updated successfully");
       toggleEdit();
       router.refresh();
@@ -41,13 +43,13 @@ function ImageForm({ initialData, schoolId }: ImageFormProps) {
         School Image
         <Button onClick={toggleEdit} variant={"ghost"}>
           {isEditing && <>Cancle</>}
-          {!isEditing && !initialData.imageURL && (
+          {!isEditing && !initialData.imageUrl && (
             <>
               <PlusCircle className="h-4 w-4" />
               Add Image
             </>
           )}
-          {!isEditing && initialData.imageURL && (
+          {!isEditing && initialData.imageUrl && (
             <>
               <PencilIcon className="h-4 w-4" />
               Edit Image
@@ -56,7 +58,7 @@ function ImageForm({ initialData, schoolId }: ImageFormProps) {
         </Button>
       </div>
       {!isEditing &&
-        (!initialData.imageURL ? (
+        (!initialData.imageUrl ? (
           <>
             <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
               <ImageIcon className="h-10 w-10 text-slate-500" />
@@ -69,7 +71,7 @@ function ImageForm({ initialData, schoolId }: ImageFormProps) {
                 alt="Upload"
                 fill
                 className="object-cover rounded-md"
-                src={initialData.imageURL}
+                src={initialData.imageUrl}
               />
             </div>
           </>
@@ -80,7 +82,7 @@ function ImageForm({ initialData, schoolId }: ImageFormProps) {
             endpoint="schoolImage"
             onChange={(url) => {
               if (url) {
-                onSubmit({ imageURL: url });
+                onSubmit({ imageUrl: url });
               }
             }}
           />

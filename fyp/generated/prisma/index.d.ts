@@ -1959,7 +1959,7 @@ export namespace Prisma {
     phone: string | null
     address: string | null
     medium_of_instruction: string | null
-    imageURL: string | null
+    imageUrl: string | null
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1975,7 +1975,7 @@ export namespace Prisma {
     phone: string | null
     address: string | null
     medium_of_instruction: string | null
-    imageURL: string | null
+    imageUrl: string | null
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1991,7 +1991,7 @@ export namespace Prisma {
     phone: number
     address: number
     medium_of_instruction: number
-    imageURL: number
+    imageUrl: number
     description: number
     createdAt: number
     updatedAt: number
@@ -2009,7 +2009,7 @@ export namespace Prisma {
     phone?: true
     address?: true
     medium_of_instruction?: true
-    imageURL?: true
+    imageUrl?: true
     description?: true
     createdAt?: true
     updatedAt?: true
@@ -2025,7 +2025,7 @@ export namespace Prisma {
     phone?: true
     address?: true
     medium_of_instruction?: true
-    imageURL?: true
+    imageUrl?: true
     description?: true
     createdAt?: true
     updatedAt?: true
@@ -2041,7 +2041,7 @@ export namespace Prisma {
     phone?: true
     address?: true
     medium_of_instruction?: true
-    imageURL?: true
+    imageUrl?: true
     description?: true
     createdAt?: true
     updatedAt?: true
@@ -2130,7 +2130,7 @@ export namespace Prisma {
     phone: string | null
     address: string | null
     medium_of_instruction: string | null
-    imageURL: string | null
+    imageUrl: string | null
     description: string | null
     createdAt: Date
     updatedAt: Date
@@ -2163,7 +2163,7 @@ export namespace Prisma {
     phone?: boolean
     address?: boolean
     medium_of_instruction?: boolean
-    imageURL?: boolean
+    imageUrl?: boolean
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2186,7 +2186,7 @@ export namespace Prisma {
     phone?: boolean
     address?: boolean
     medium_of_instruction?: boolean
-    imageURL?: boolean
+    imageUrl?: boolean
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2202,7 +2202,7 @@ export namespace Prisma {
     phone?: boolean
     address?: boolean
     medium_of_instruction?: boolean
-    imageURL?: boolean
+    imageUrl?: boolean
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2218,7 +2218,7 @@ export namespace Prisma {
     phone?: boolean
     address?: boolean
     medium_of_instruction?: boolean
-    imageURL?: boolean
+    imageUrl?: boolean
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -2227,7 +2227,7 @@ export namespace Prisma {
     userId?: boolean
   }
 
-  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "imageURL" | "description" | "createdAt" | "updatedAt" | "school_type" | "curriculum_type" | "userId", ExtArgs["result"]["school"]>
+  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "imageUrl" | "description" | "createdAt" | "updatedAt" | "school_type" | "curriculum_type" | "userId", ExtArgs["result"]["school"]>
   export type SchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     schoolBranch?: boolean | School$schoolBranchArgs<ExtArgs>
     class_base_fee?: boolean | School$class_base_feeArgs<ExtArgs>
@@ -2257,7 +2257,7 @@ export namespace Prisma {
       phone: string | null
       address: string | null
       medium_of_instruction: string | null
-      imageURL: string | null
+      imageUrl: string | null
       description: string | null
       createdAt: Date
       updatedAt: Date
@@ -2699,7 +2699,7 @@ export namespace Prisma {
     readonly phone: FieldRef<"School", 'String'>
     readonly address: FieldRef<"School", 'String'>
     readonly medium_of_instruction: FieldRef<"School", 'String'>
-    readonly imageURL: FieldRef<"School", 'String'>
+    readonly imageUrl: FieldRef<"School", 'String'>
     readonly description: FieldRef<"School", 'String'>
     readonly createdAt: FieldRef<"School", 'DateTime'>
     readonly updatedAt: FieldRef<"School", 'DateTime'>
@@ -12502,7 +12502,7 @@ export namespace Prisma {
     phone: 'phone',
     address: 'address',
     medium_of_instruction: 'medium_of_instruction',
-    imageURL: 'imageURL',
+    imageUrl: 'imageUrl',
     description: 'description',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -12847,7 +12847,7 @@ export namespace Prisma {
     phone?: StringNullableFilter<"School"> | string | null
     address?: StringNullableFilter<"School"> | string | null
     medium_of_instruction?: StringNullableFilter<"School"> | string | null
-    imageURL?: StringNullableFilter<"School"> | string | null
+    imageUrl?: StringNullableFilter<"School"> | string | null
     description?: StringNullableFilter<"School"> | string | null
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
@@ -12869,7 +12869,7 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
     medium_of_instruction?: SortOrderInput | SortOrder
-    imageURL?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12895,7 +12895,7 @@ export namespace Prisma {
     name?: StringFilter<"School"> | string
     address?: StringNullableFilter<"School"> | string | null
     medium_of_instruction?: StringNullableFilter<"School"> | string | null
-    imageURL?: StringNullableFilter<"School"> | string | null
+    imageUrl?: StringNullableFilter<"School"> | string | null
     description?: StringNullableFilter<"School"> | string | null
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
@@ -12916,7 +12916,7 @@ export namespace Prisma {
     phone?: SortOrderInput | SortOrder
     address?: SortOrderInput | SortOrder
     medium_of_instruction?: SortOrderInput | SortOrder
-    imageURL?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -12938,7 +12938,7 @@ export namespace Prisma {
     phone?: StringNullableWithAggregatesFilter<"School"> | string | null
     address?: StringNullableWithAggregatesFilter<"School"> | string | null
     medium_of_instruction?: StringNullableWithAggregatesFilter<"School"> | string | null
-    imageURL?: StringNullableWithAggregatesFilter<"School"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"School"> | string | null
     description?: StringNullableWithAggregatesFilter<"School"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
@@ -13548,7 +13548,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13570,7 +13570,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13592,7 +13592,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13614,7 +13614,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13636,7 +13636,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -13652,7 +13652,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13668,7 +13668,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14414,7 +14414,7 @@ export namespace Prisma {
     phone?: SortOrder
     address?: SortOrder
     medium_of_instruction?: SortOrder
-    imageURL?: SortOrder
+    imageUrl?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14430,7 +14430,7 @@ export namespace Prisma {
     phone?: SortOrder
     address?: SortOrder
     medium_of_instruction?: SortOrder
-    imageURL?: SortOrder
+    imageUrl?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -14446,7 +14446,7 @@ export namespace Prisma {
     phone?: SortOrder
     address?: SortOrder
     medium_of_instruction?: SortOrder
-    imageURL?: SortOrder
+    imageUrl?: SortOrder
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -16494,7 +16494,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16515,7 +16515,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16606,7 +16606,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16627,7 +16627,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16715,7 +16715,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16736,7 +16736,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -16814,7 +16814,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16835,7 +16835,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16996,7 +16996,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17017,7 +17017,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17118,7 +17118,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17139,7 +17139,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17236,7 +17236,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17257,7 +17257,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17322,7 +17322,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17343,7 +17343,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17407,7 +17407,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17428,7 +17428,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17527,7 +17527,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17548,7 +17548,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17604,7 +17604,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17625,7 +17625,7 @@ export namespace Prisma {
     phone?: string | null
     address?: string | null
     medium_of_instruction?: string | null
-    imageURL?: string | null
+    imageUrl?: string | null
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -17715,7 +17715,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17736,7 +17736,7 @@ export namespace Prisma {
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     address?: NullableStringFieldUpdateOperationsInput | string | null
     medium_of_instruction?: NullableStringFieldUpdateOperationsInput | string | null
-    imageURL?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
