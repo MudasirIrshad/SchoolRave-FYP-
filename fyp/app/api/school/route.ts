@@ -34,6 +34,21 @@ export async function POST(req: Request) {
       },
     });
 
+    // const school = await prisma.school.create({
+    //   data: {
+    //     name: title,
+    //     userId,
+    //     email,
+    //     phone,
+    //     address,
+    //     medium_of_instruction,
+    //     description,
+    //     school_type,
+    //     curriculum_type,
+    //     imageURL: "",
+    //   },
+    // });
+
     return NextResponse.json(school);
   } catch (error) {
     console.log("[SCHOOL_CREATE_ERROR]", error);

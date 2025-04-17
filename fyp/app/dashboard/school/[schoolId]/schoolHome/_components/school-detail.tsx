@@ -1,14 +1,9 @@
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
-import { redirect, useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import React from "react";
 import TitleForm from "./(component)/title-form";
-import {
-  LayoutDashboard,
-  Paperclip,
-  PaperclipIcon,
-  PencilIcon,
-} from "lucide-react";
+import { LayoutDashboard, PaperclipIcon, School2Icon } from "lucide-react";
 import DescriptionForm from "./(component)/description-form";
 import EmailForm from "./(component)/email-form";
 import PhoneForm from "./(component)/phone-form";
@@ -16,6 +11,7 @@ import AddressForm from "./(component)/address-form";
 import MediumofInstructionForm from "./(component)/medium-of-instruction-form copy";
 import SchoolTypeForm from "./(component)/school-type-form";
 import CurriculumTypeForm from "./(component)/curriculum-type-form copy";
+import ImageForm from "./(component)/image-form";
 
 async function SchoolDetail() {
   const { userId } = await auth();
@@ -26,8 +22,6 @@ async function SchoolDetail() {
       userId: userId,
     },
   });
-
-  console.log(school);
 
   if (!school) return <div>Loading ...</div>;
 
@@ -67,8 +61,16 @@ async function SchoolDetail() {
             <PaperclipIcon className="w-5 h-5" />
             <h2 className="text-xl">School's Attachments</h2>
           </div>
-
-          <div>TODO ATTACHMENT</div>
+          <div>
+            <ImageForm initialData={school} schoolId={school.id} />
+          </div>
+        </div>
+        <div>
+          <div className="flex items-center gap-x-2">
+            <School2Icon className="w-5 h-5" />
+            <h2 className="text-xl">School's Branches</h2>
+          </div>
+          <div>Todo Create Branches</div>
         </div>
       </div>
     </>
