@@ -12,6 +12,7 @@ import MediumofInstructionForm from "./(component)/medium-of-instruction-form co
 import SchoolTypeForm from "./(component)/school-type-form";
 import CurriculumTypeForm from "./(component)/curriculum-type-form copy";
 import ImageForm from "./(component)/image-form";
+import { Button } from "@/components/ui/button";
 
 async function SchoolDetail() {
   const { userId } = await auth();
@@ -70,7 +71,15 @@ async function SchoolDetail() {
             <School2Icon className="w-5 h-5" />
             <h2 className="text-xl">School's Branches</h2>
           </div>
-          <div>Todo Create Branches</div>
+          <div className="mt-6">
+            {school.subscriptionType === "FREE" ? (
+              <>
+                <Button>Buy Premium</Button>
+              </>
+            ) : (
+              <>abc</>
+            )}
+          </div>
         </div>
       </div>
     </>

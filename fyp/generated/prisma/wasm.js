@@ -128,6 +128,8 @@ exports.Prisma.SchoolScalarFieldEnum = {
   description: 'description',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  subscriptionType: 'subscriptionType',
+  stripeCustomerId: 'stripeCustomerId',
   school_type: 'school_type',
   curriculum_type: 'curriculum_type',
   userId: 'userId'
@@ -232,6 +234,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.SubscriptionType = exports.$Enums.SubscriptionType = {
+  FREE: 'FREE',
+  PAID: 'PAID'
+};
+
 exports.SchoolType = exports.$Enums.SchoolType = {
   GOVERNMENT: 'GOVERNMENT',
   PRIVATE: 'PRIVATE',
@@ -262,19 +269,13 @@ exports.UserRole = exports.$Enums.UserRole = {
 
 exports.SubscriptionPlan = exports.$Enums.SubscriptionPlan = {
   THREE_MONTH: 'THREE_MONTH',
-  SIX_MONTH: 'SIX_MONTH',
-  ONE_YEAR: 'ONE_YEAR'
+  SIX_MONTH: 'SIX_MONTH'
 };
 
 exports.SubscriptionStatus = exports.$Enums.SubscriptionStatus = {
   ACTIVE: 'ACTIVE',
   EXPIRED: 'EXPIRED',
   CANCELLED: 'CANCELLED'
-};
-
-exports.SubscriptionType = exports.$Enums.SubscriptionType = {
-  FREE: 'FREE',
-  PAID: 'PAID'
 };
 
 exports.AdmissionApproval = exports.$Enums.AdmissionApproval = {

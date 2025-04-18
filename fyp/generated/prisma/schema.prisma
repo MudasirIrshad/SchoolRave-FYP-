@@ -39,7 +39,6 @@ enum UserRole {
 enum SubscriptionPlan {
   THREE_MONTH
   SIX_MONTH
-  ONE_YEAR
 }
 
 enum SubscriptionStatus {
@@ -72,6 +71,9 @@ model School {
   description           String?
   createdAt             DateTime @default(now())
   updatedAt             DateTime @updatedAt
+
+  subscriptionType SubscriptionType @default(FREE)
+  stripeCustomerId String?          @unique
 
   school_type     SchoolType?
   curriculum_type CurriculumType?

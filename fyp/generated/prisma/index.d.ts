@@ -108,8 +108,7 @@ export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 
 export const SubscriptionPlan: {
   THREE_MONTH: 'THREE_MONTH',
-  SIX_MONTH: 'SIX_MONTH',
-  ONE_YEAR: 'ONE_YEAR'
+  SIX_MONTH: 'SIX_MONTH'
 };
 
 export type SubscriptionPlan = (typeof SubscriptionPlan)[keyof typeof SubscriptionPlan]
@@ -1963,6 +1962,8 @@ export namespace Prisma {
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    subscriptionType: $Enums.SubscriptionType | null
+    stripeCustomerId: string | null
     school_type: $Enums.SchoolType | null
     curriculum_type: $Enums.CurriculumType | null
     userId: string | null
@@ -1979,6 +1980,8 @@ export namespace Prisma {
     description: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    subscriptionType: $Enums.SubscriptionType | null
+    stripeCustomerId: string | null
     school_type: $Enums.SchoolType | null
     curriculum_type: $Enums.CurriculumType | null
     userId: string | null
@@ -1995,6 +1998,8 @@ export namespace Prisma {
     description: number
     createdAt: number
     updatedAt: number
+    subscriptionType: number
+    stripeCustomerId: number
     school_type: number
     curriculum_type: number
     userId: number
@@ -2013,6 +2018,8 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
+    subscriptionType?: true
+    stripeCustomerId?: true
     school_type?: true
     curriculum_type?: true
     userId?: true
@@ -2029,6 +2036,8 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
+    subscriptionType?: true
+    stripeCustomerId?: true
     school_type?: true
     curriculum_type?: true
     userId?: true
@@ -2045,6 +2054,8 @@ export namespace Prisma {
     description?: true
     createdAt?: true
     updatedAt?: true
+    subscriptionType?: true
+    stripeCustomerId?: true
     school_type?: true
     curriculum_type?: true
     userId?: true
@@ -2134,6 +2145,8 @@ export namespace Prisma {
     description: string | null
     createdAt: Date
     updatedAt: Date
+    subscriptionType: $Enums.SubscriptionType
+    stripeCustomerId: string | null
     school_type: $Enums.SchoolType | null
     curriculum_type: $Enums.CurriculumType | null
     userId: string
@@ -2167,6 +2180,8 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subscriptionType?: boolean
+    stripeCustomerId?: boolean
     school_type?: boolean
     curriculum_type?: boolean
     userId?: boolean
@@ -2190,6 +2205,8 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subscriptionType?: boolean
+    stripeCustomerId?: boolean
     school_type?: boolean
     curriculum_type?: boolean
     userId?: boolean
@@ -2206,6 +2223,8 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subscriptionType?: boolean
+    stripeCustomerId?: boolean
     school_type?: boolean
     curriculum_type?: boolean
     userId?: boolean
@@ -2222,12 +2241,14 @@ export namespace Prisma {
     description?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    subscriptionType?: boolean
+    stripeCustomerId?: boolean
     school_type?: boolean
     curriculum_type?: boolean
     userId?: boolean
   }
 
-  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "imageUrl" | "description" | "createdAt" | "updatedAt" | "school_type" | "curriculum_type" | "userId", ExtArgs["result"]["school"]>
+  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "imageUrl" | "description" | "createdAt" | "updatedAt" | "subscriptionType" | "stripeCustomerId" | "school_type" | "curriculum_type" | "userId", ExtArgs["result"]["school"]>
   export type SchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     schoolBranch?: boolean | School$schoolBranchArgs<ExtArgs>
     class_base_fee?: boolean | School$class_base_feeArgs<ExtArgs>
@@ -2261,6 +2282,8 @@ export namespace Prisma {
       description: string | null
       createdAt: Date
       updatedAt: Date
+      subscriptionType: $Enums.SubscriptionType
+      stripeCustomerId: string | null
       school_type: $Enums.SchoolType | null
       curriculum_type: $Enums.CurriculumType | null
       userId: string
@@ -2703,6 +2726,8 @@ export namespace Prisma {
     readonly description: FieldRef<"School", 'String'>
     readonly createdAt: FieldRef<"School", 'DateTime'>
     readonly updatedAt: FieldRef<"School", 'DateTime'>
+    readonly subscriptionType: FieldRef<"School", 'SubscriptionType'>
+    readonly stripeCustomerId: FieldRef<"School", 'String'>
     readonly school_type: FieldRef<"School", 'SchoolType'>
     readonly curriculum_type: FieldRef<"School", 'CurriculumType'>
     readonly userId: FieldRef<"School", 'String'>
@@ -12506,6 +12531,8 @@ export namespace Prisma {
     description: 'description',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    subscriptionType: 'subscriptionType',
+    stripeCustomerId: 'stripeCustomerId',
     school_type: 'school_type',
     curriculum_type: 'curriculum_type',
     userId: 'userId'
@@ -12681,6 +12708,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'SubscriptionType'
+   */
+  export type EnumSubscriptionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionType'>
+    
+
+
+  /**
+   * Reference to a field of type 'SubscriptionType[]'
+   */
+  export type ListEnumSubscriptionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionType[]'>
+    
+
+
+  /**
    * Reference to a field of type 'SchoolType'
    */
   export type EnumSchoolTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SchoolType'>
@@ -12793,20 +12834,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'SubscriptionType'
-   */
-  export type EnumSubscriptionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionType'>
-    
-
-
-  /**
-   * Reference to a field of type 'SubscriptionType[]'
-   */
-  export type ListEnumSubscriptionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionType[]'>
-    
-
-
-  /**
    * Reference to a field of type 'AdmissionApproval'
    */
   export type EnumAdmissionApprovalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdmissionApproval'>
@@ -12851,6 +12878,8 @@ export namespace Prisma {
     description?: StringNullableFilter<"School"> | string | null
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
+    subscriptionType?: EnumSubscriptionTypeFilter<"School"> | $Enums.SubscriptionType
+    stripeCustomerId?: StringNullableFilter<"School"> | string | null
     school_type?: EnumSchoolTypeNullableFilter<"School"> | $Enums.SchoolType | null
     curriculum_type?: EnumCurriculumTypeNullableFilter<"School"> | $Enums.CurriculumType | null
     userId?: StringFilter<"School"> | string
@@ -12873,6 +12902,8 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionType?: SortOrder
+    stripeCustomerId?: SortOrderInput | SortOrder
     school_type?: SortOrderInput | SortOrder
     curriculum_type?: SortOrderInput | SortOrder
     userId?: SortOrder
@@ -12888,6 +12919,7 @@ export namespace Prisma {
     id?: string
     email?: string
     phone?: string
+    stripeCustomerId?: string
     userId?: string
     AND?: SchoolWhereInput | SchoolWhereInput[]
     OR?: SchoolWhereInput[]
@@ -12899,6 +12931,7 @@ export namespace Prisma {
     description?: StringNullableFilter<"School"> | string | null
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
+    subscriptionType?: EnumSubscriptionTypeFilter<"School"> | $Enums.SubscriptionType
     school_type?: EnumSchoolTypeNullableFilter<"School"> | $Enums.SchoolType | null
     curriculum_type?: EnumCurriculumTypeNullableFilter<"School"> | $Enums.CurriculumType | null
     schoolBranch?: SchoolBranchListRelationFilter
@@ -12907,7 +12940,7 @@ export namespace Prisma {
     subscription?: SubscriptionListRelationFilter
     Payment?: PaymentListRelationFilter
     Admission?: AdmissionListRelationFilter
-  }, "id" | "email" | "phone" | "userId">
+  }, "id" | "email" | "phone" | "stripeCustomerId" | "userId">
 
   export type SchoolOrderByWithAggregationInput = {
     id?: SortOrder
@@ -12920,6 +12953,8 @@ export namespace Prisma {
     description?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionType?: SortOrder
+    stripeCustomerId?: SortOrderInput | SortOrder
     school_type?: SortOrderInput | SortOrder
     curriculum_type?: SortOrderInput | SortOrder
     userId?: SortOrder
@@ -12942,6 +12977,8 @@ export namespace Prisma {
     description?: StringNullableWithAggregatesFilter<"School"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
+    subscriptionType?: EnumSubscriptionTypeWithAggregatesFilter<"School"> | $Enums.SubscriptionType
+    stripeCustomerId?: StringNullableWithAggregatesFilter<"School"> | string | null
     school_type?: EnumSchoolTypeNullableWithAggregatesFilter<"School"> | $Enums.SchoolType | null
     curriculum_type?: EnumCurriculumTypeNullableWithAggregatesFilter<"School"> | $Enums.CurriculumType | null
     userId?: StringWithAggregatesFilter<"School"> | string
@@ -13552,6 +13589,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -13574,6 +13613,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -13596,6 +13637,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -13618,6 +13661,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -13640,6 +13685,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -13656,6 +13703,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -13672,6 +13721,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -14328,6 +14379,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type EnumSubscriptionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumSubscriptionTypeFilter<$PrismaModel> | $Enums.SubscriptionType
+  }
+
   export type EnumSchoolTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.SchoolType | EnumSchoolTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.SchoolType[] | ListEnumSchoolTypeFieldRefInput<$PrismaModel> | null
@@ -14418,6 +14476,8 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionType?: SortOrder
+    stripeCustomerId?: SortOrder
     school_type?: SortOrder
     curriculum_type?: SortOrder
     userId?: SortOrder
@@ -14434,6 +14494,8 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionType?: SortOrder
+    stripeCustomerId?: SortOrder
     school_type?: SortOrder
     curriculum_type?: SortOrder
     userId?: SortOrder
@@ -14450,6 +14512,8 @@ export namespace Prisma {
     description?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    subscriptionType?: SortOrder
+    stripeCustomerId?: SortOrder
     school_type?: SortOrder
     curriculum_type?: SortOrder
     userId?: SortOrder
@@ -14503,6 +14567,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumSubscriptionTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumSubscriptionTypeWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
+    _max?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
   }
 
   export type EnumSchoolTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -14794,13 +14868,6 @@ export namespace Prisma {
     not?: NestedEnumSubscriptionStatusFilter<$PrismaModel> | $Enums.SubscriptionStatus
   }
 
-  export type EnumSubscriptionTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionTypeFilter<$PrismaModel> | $Enums.SubscriptionType
-  }
-
   export type SubscriptionSchoolIdStatusCompoundUniqueInput = {
     schoolId: string
     status: $Enums.SubscriptionStatus
@@ -14857,16 +14924,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
     _max?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
-  }
-
-  export type EnumSubscriptionTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionTypeWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
-    _max?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
   }
 
   export type SubscriptionNullableScalarRelationFilter = {
@@ -15125,6 +15182,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type EnumSubscriptionTypeFieldUpdateOperationsInput = {
+    set?: $Enums.SubscriptionType
   }
 
   export type NullableEnumSchoolTypeFieldUpdateOperationsInput = {
@@ -15655,10 +15716,6 @@ export namespace Prisma {
     set?: $Enums.SubscriptionStatus
   }
 
-  export type EnumSubscriptionTypeFieldUpdateOperationsInput = {
-    set?: $Enums.SubscriptionType
-  }
-
   export type SchoolUpdateOneRequiredWithoutSubscriptionNestedInput = {
     create?: XOR<SchoolCreateWithoutSubscriptionInput, SchoolUncheckedCreateWithoutSubscriptionInput>
     connectOrCreate?: SchoolCreateOrConnectWithoutSubscriptionInput
@@ -15866,6 +15923,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedEnumSubscriptionTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumSubscriptionTypeFilter<$PrismaModel> | $Enums.SubscriptionType
+  }
+
   export type NestedEnumSchoolTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.SchoolType | EnumSchoolTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.SchoolType[] | ListEnumSchoolTypeFieldRefInput<$PrismaModel> | null
@@ -15948,6 +16012,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumSubscriptionTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumSubscriptionTypeWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
+    _max?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumSchoolTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -16062,13 +16136,6 @@ export namespace Prisma {
     not?: NestedEnumSubscriptionStatusFilter<$PrismaModel> | $Enums.SubscriptionStatus
   }
 
-  export type NestedEnumSubscriptionTypeFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionTypeFilter<$PrismaModel> | $Enums.SubscriptionType
-  }
-
   export type NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
     in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
@@ -16087,16 +16154,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
     _max?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
-  }
-
-  export type NestedEnumSubscriptionTypeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionTypeWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionType
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
-    _max?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
   }
 
   export type NestedEnumAdmissionApprovalFilter<$PrismaModel = never> = {
@@ -16498,6 +16555,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -16519,6 +16578,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -16610,6 +16671,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -16631,6 +16694,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -16719,6 +16784,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -16740,6 +16807,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -16818,6 +16887,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -16839,6 +16910,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -17000,6 +17073,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -17021,6 +17096,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -17122,6 +17199,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -17143,6 +17222,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -17240,6 +17321,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -17261,6 +17344,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -17326,6 +17411,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -17347,6 +17434,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -17411,6 +17500,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -17432,6 +17523,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -17531,6 +17624,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -17552,6 +17647,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -17608,6 +17705,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -17629,6 +17728,8 @@ export namespace Prisma {
     description?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    subscriptionType?: $Enums.SubscriptionType
+    stripeCustomerId?: string | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
     userId: string
@@ -17719,6 +17820,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
@@ -17740,6 +17843,8 @@ export namespace Prisma {
     description?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
+    stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
     userId?: StringFieldUpdateOperationsInput | string
