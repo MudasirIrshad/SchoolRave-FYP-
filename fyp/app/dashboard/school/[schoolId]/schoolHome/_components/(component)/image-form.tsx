@@ -30,7 +30,7 @@ function ImageForm({ initialData, schoolId }: ImageFormProps) {
       await axios.patch(`/api/school/update-school`, {
         imageUrl: values.imageUrl,
       });
-      toast.success("Course image updated successfully");
+      toast.success("School image updated successfully");
       toggleEdit();
       router.refresh();
     } catch (error) {
