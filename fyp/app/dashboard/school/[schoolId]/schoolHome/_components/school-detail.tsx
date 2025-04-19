@@ -13,6 +13,7 @@ import SchoolTypeForm from "./(component)/school-type-form";
 import CurriculumTypeForm from "./(component)/curriculum-type-form copy";
 import ImageForm from "./(component)/image-form";
 import { Button } from "@/components/ui/button";
+import SubscriptionCard from "./(component)/subscription-card";
 
 async function SchoolDetail() {
   const { userId } = await auth();
@@ -73,11 +74,11 @@ async function SchoolDetail() {
           </div>
           <div className="mt-6">
             {school.subscriptionType === "FREE" ? (
-              <>
-                <Button>Buy Premium</Button>
-              </>
+              <SubscriptionCard />
             ) : (
-              <>abc</>
+              <div className="text-green-600 font-medium">
+                You are a premium user
+              </div>
             )}
           </div>
         </div>
