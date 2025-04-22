@@ -7985,7 +7985,6 @@ export namespace Prisma {
 
   export type SubscriptionMinAggregateOutputType = {
     id: string | null
-    plan: $Enums.SubscriptionPlan | null
     status: $Enums.SubscriptionStatus | null
     type: $Enums.SubscriptionType | null
     createdAt: Date | null
@@ -7996,7 +7995,6 @@ export namespace Prisma {
 
   export type SubscriptionMaxAggregateOutputType = {
     id: string | null
-    plan: $Enums.SubscriptionPlan | null
     status: $Enums.SubscriptionStatus | null
     type: $Enums.SubscriptionType | null
     createdAt: Date | null
@@ -8007,7 +8005,6 @@ export namespace Prisma {
 
   export type SubscriptionCountAggregateOutputType = {
     id: number
-    plan: number
     status: number
     type: number
     createdAt: number
@@ -8020,7 +8017,6 @@ export namespace Prisma {
 
   export type SubscriptionMinAggregateInputType = {
     id?: true
-    plan?: true
     status?: true
     type?: true
     createdAt?: true
@@ -8031,7 +8027,6 @@ export namespace Prisma {
 
   export type SubscriptionMaxAggregateInputType = {
     id?: true
-    plan?: true
     status?: true
     type?: true
     createdAt?: true
@@ -8042,7 +8037,6 @@ export namespace Prisma {
 
   export type SubscriptionCountAggregateInputType = {
     id?: true
-    plan?: true
     status?: true
     type?: true
     createdAt?: true
@@ -8126,7 +8120,6 @@ export namespace Prisma {
 
   export type SubscriptionGroupByOutputType = {
     id: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt: Date
@@ -8154,7 +8147,6 @@ export namespace Prisma {
 
   export type SubscriptionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    plan?: boolean
     status?: boolean
     type?: boolean
     createdAt?: boolean
@@ -8168,7 +8160,6 @@ export namespace Prisma {
 
   export type SubscriptionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    plan?: boolean
     status?: boolean
     type?: boolean
     createdAt?: boolean
@@ -8180,7 +8171,6 @@ export namespace Prisma {
 
   export type SubscriptionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    plan?: boolean
     status?: boolean
     type?: boolean
     createdAt?: boolean
@@ -8192,7 +8182,6 @@ export namespace Prisma {
 
   export type SubscriptionSelectScalar = {
     id?: boolean
-    plan?: boolean
     status?: boolean
     type?: boolean
     createdAt?: boolean
@@ -8201,7 +8190,7 @@ export namespace Prisma {
     schoolId?: boolean
   }
 
-  export type SubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "plan" | "status" | "type" | "createdAt" | "startDate" | "endDate" | "schoolId", ExtArgs["result"]["subscription"]>
+  export type SubscriptionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "status" | "type" | "createdAt" | "startDate" | "endDate" | "schoolId", ExtArgs["result"]["subscription"]>
   export type SubscriptionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     school?: boolean | SchoolDefaultArgs<ExtArgs>
     payment?: boolean | Subscription$paymentArgs<ExtArgs>
@@ -8222,7 +8211,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      plan: $Enums.SubscriptionPlan
       status: $Enums.SubscriptionStatus
       type: $Enums.SubscriptionType
       createdAt: Date
@@ -8655,7 +8643,6 @@ export namespace Prisma {
    */ 
   interface SubscriptionFieldRefs {
     readonly id: FieldRef<"Subscription", 'String'>
-    readonly plan: FieldRef<"Subscription", 'SubscriptionPlan'>
     readonly status: FieldRef<"Subscription", 'SubscriptionStatus'>
     readonly type: FieldRef<"Subscription", 'SubscriptionType'>
     readonly createdAt: FieldRef<"Subscription", 'DateTime'>
@@ -12598,7 +12585,6 @@ export namespace Prisma {
 
   export const SubscriptionScalarFieldEnum: {
     id: 'id',
-    plan: 'plan',
     status: 'status',
     type: 'type',
     createdAt: 'createdAt',
@@ -12802,20 +12788,6 @@ export namespace Prisma {
    * Reference to a field of type 'UserRole[]'
    */
   export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'SubscriptionPlan'
-   */
-  export type EnumSubscriptionPlanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionPlan'>
-    
-
-
-  /**
-   * Reference to a field of type 'SubscriptionPlan[]'
-   */
-  export type ListEnumSubscriptionPlanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionPlan[]'>
     
 
 
@@ -13291,7 +13263,6 @@ export namespace Prisma {
     OR?: SubscriptionWhereInput[]
     NOT?: SubscriptionWhereInput | SubscriptionWhereInput[]
     id?: StringFilter<"Subscription"> | string
-    plan?: EnumSubscriptionPlanFilter<"Subscription"> | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFilter<"Subscription"> | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFilter<"Subscription"> | $Enums.SubscriptionType
     createdAt?: DateTimeFilter<"Subscription"> | Date | string
@@ -13304,7 +13275,6 @@ export namespace Prisma {
 
   export type SubscriptionOrderByWithRelationInput = {
     id?: SortOrder
-    plan?: SortOrder
     status?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
@@ -13317,24 +13287,21 @@ export namespace Prisma {
 
   export type SubscriptionWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    schoolId_status?: SubscriptionSchoolIdStatusCompoundUniqueInput
+    schoolId?: string
     AND?: SubscriptionWhereInput | SubscriptionWhereInput[]
     OR?: SubscriptionWhereInput[]
     NOT?: SubscriptionWhereInput | SubscriptionWhereInput[]
-    plan?: EnumSubscriptionPlanFilter<"Subscription"> | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFilter<"Subscription"> | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFilter<"Subscription"> | $Enums.SubscriptionType
     createdAt?: DateTimeFilter<"Subscription"> | Date | string
     startDate?: DateTimeFilter<"Subscription"> | Date | string
     endDate?: DateTimeFilter<"Subscription"> | Date | string
-    schoolId?: StringFilter<"Subscription"> | string
     school?: XOR<SchoolScalarRelationFilter, SchoolWhereInput>
     payment?: PaymentListRelationFilter
-  }, "id" | "schoolId_status">
+  }, "id" | "schoolId">
 
   export type SubscriptionOrderByWithAggregationInput = {
     id?: SortOrder
-    plan?: SortOrder
     status?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
@@ -13351,7 +13318,6 @@ export namespace Prisma {
     OR?: SubscriptionScalarWhereWithAggregatesInput[]
     NOT?: SubscriptionScalarWhereWithAggregatesInput | SubscriptionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Subscription"> | string
-    plan?: EnumSubscriptionPlanWithAggregatesFilter<"Subscription"> | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusWithAggregatesFilter<"Subscription"> | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeWithAggregatesFilter<"Subscription"> | $Enums.SubscriptionType
     createdAt?: DateTimeWithAggregatesFilter<"Subscription"> | Date | string
@@ -14045,7 +14011,6 @@ export namespace Prisma {
 
   export type SubscriptionCreateInput = {
     id?: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt?: Date | string
@@ -14057,7 +14022,6 @@ export namespace Prisma {
 
   export type SubscriptionUncheckedCreateInput = {
     id?: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt?: Date | string
@@ -14069,7 +14033,6 @@ export namespace Prisma {
 
   export type SubscriptionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14081,7 +14044,6 @@ export namespace Prisma {
 
   export type SubscriptionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14093,7 +14055,6 @@ export namespace Prisma {
 
   export type SubscriptionCreateManyInput = {
     id?: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt?: Date | string
@@ -14104,7 +14065,6 @@ export namespace Prisma {
 
   export type SubscriptionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14114,7 +14074,6 @@ export namespace Prisma {
 
   export type SubscriptionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14854,13 +14813,6 @@ export namespace Prisma {
     rating?: SortOrder
   }
 
-  export type EnumSubscriptionPlanFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionPlanFilter<$PrismaModel> | $Enums.SubscriptionPlan
-  }
-
   export type EnumSubscriptionStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.SubscriptionStatus | EnumSubscriptionStatusFieldRefInput<$PrismaModel>
     in?: $Enums.SubscriptionStatus[] | ListEnumSubscriptionStatusFieldRefInput<$PrismaModel>
@@ -14868,14 +14820,8 @@ export namespace Prisma {
     not?: NestedEnumSubscriptionStatusFilter<$PrismaModel> | $Enums.SubscriptionStatus
   }
 
-  export type SubscriptionSchoolIdStatusCompoundUniqueInput = {
-    schoolId: string
-    status: $Enums.SubscriptionStatus
-  }
-
   export type SubscriptionCountOrderByAggregateInput = {
     id?: SortOrder
-    plan?: SortOrder
     status?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
@@ -14886,7 +14832,6 @@ export namespace Prisma {
 
   export type SubscriptionMaxOrderByAggregateInput = {
     id?: SortOrder
-    plan?: SortOrder
     status?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
@@ -14897,23 +14842,12 @@ export namespace Prisma {
 
   export type SubscriptionMinOrderByAggregateInput = {
     id?: SortOrder
-    plan?: SortOrder
     status?: SortOrder
     type?: SortOrder
     createdAt?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
     schoolId?: SortOrder
-  }
-
-  export type EnumSubscriptionPlanWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionPlan
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
-    _max?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
   }
 
   export type EnumSubscriptionStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -15708,10 +15642,6 @@ export namespace Prisma {
     connect?: PaymentWhereUniqueInput | PaymentWhereUniqueInput[]
   }
 
-  export type EnumSubscriptionPlanFieldUpdateOperationsInput = {
-    set?: $Enums.SubscriptionPlan
-  }
-
   export type EnumSubscriptionStatusFieldUpdateOperationsInput = {
     set?: $Enums.SubscriptionStatus
   }
@@ -16122,28 +16052,11 @@ export namespace Prisma {
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
   }
 
-  export type NestedEnumSubscriptionPlanFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionPlanFilter<$PrismaModel> | $Enums.SubscriptionPlan
-  }
-
   export type NestedEnumSubscriptionStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.SubscriptionStatus | EnumSubscriptionStatusFieldRefInput<$PrismaModel>
     in?: $Enums.SubscriptionStatus[] | ListEnumSubscriptionStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.SubscriptionStatus[] | ListEnumSubscriptionStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumSubscriptionStatusFilter<$PrismaModel> | $Enums.SubscriptionStatus
-  }
-
-  export type NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.SubscriptionPlan | EnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    in?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    notIn?: $Enums.SubscriptionPlan[] | ListEnumSubscriptionPlanFieldRefInput<$PrismaModel>
-    not?: NestedEnumSubscriptionPlanWithAggregatesFilter<$PrismaModel> | $Enums.SubscriptionPlan
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
-    _max?: NestedEnumSubscriptionPlanFilter<$PrismaModel>
   }
 
   export type NestedEnumSubscriptionStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -16269,7 +16182,6 @@ export namespace Prisma {
 
   export type SubscriptionCreateWithoutSchoolInput = {
     id?: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt?: Date | string
@@ -16280,7 +16192,6 @@ export namespace Prisma {
 
   export type SubscriptionUncheckedCreateWithoutSchoolInput = {
     id?: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt?: Date | string
@@ -16474,7 +16385,6 @@ export namespace Prisma {
     OR?: SubscriptionScalarWhereInput[]
     NOT?: SubscriptionScalarWhereInput | SubscriptionScalarWhereInput[]
     id?: StringFilter<"Subscription"> | string
-    plan?: EnumSubscriptionPlanFilter<"Subscription"> | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFilter<"Subscription"> | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFilter<"Subscription"> | $Enums.SubscriptionType
     createdAt?: DateTimeFilter<"Subscription"> | Date | string
@@ -17464,7 +17374,6 @@ export namespace Prisma {
 
   export type SubscriptionCreateWithoutPaymentInput = {
     id?: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt?: Date | string
@@ -17475,7 +17384,6 @@ export namespace Prisma {
 
   export type SubscriptionUncheckedCreateWithoutPaymentInput = {
     id?: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt?: Date | string
@@ -17582,7 +17490,6 @@ export namespace Prisma {
 
   export type SubscriptionUpdateWithoutPaymentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -17593,7 +17500,6 @@ export namespace Prisma {
 
   export type SubscriptionUncheckedUpdateWithoutPaymentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18017,7 +17923,6 @@ export namespace Prisma {
 
   export type SubscriptionCreateManySchoolInput = {
     id?: string
-    plan: $Enums.SubscriptionPlan
     status: $Enums.SubscriptionStatus
     type: $Enums.SubscriptionType
     createdAt?: Date | string
@@ -18142,7 +18047,6 @@ export namespace Prisma {
 
   export type SubscriptionUpdateWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18153,7 +18057,6 @@ export namespace Prisma {
 
   export type SubscriptionUncheckedUpdateWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -18164,7 +18067,6 @@ export namespace Prisma {
 
   export type SubscriptionUncheckedUpdateManyWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    plan?: EnumSubscriptionPlanFieldUpdateOperationsInput | $Enums.SubscriptionPlan
     status?: EnumSubscriptionStatusFieldUpdateOperationsInput | $Enums.SubscriptionStatus
     type?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

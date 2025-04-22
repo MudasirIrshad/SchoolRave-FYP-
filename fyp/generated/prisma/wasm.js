@@ -180,7 +180,6 @@ exports.Prisma.ReviewScalarFieldEnum = {
 
 exports.Prisma.SubscriptionScalarFieldEnum = {
   id: 'id',
-  plan: 'plan',
   status: 'status',
   type: 'type',
   createdAt: 'createdAt',
@@ -265,11 +264,6 @@ exports.UserRole = exports.$Enums.UserRole = {
   SCHOOL: 'SCHOOL',
   GENERAL: 'GENERAL',
   ADMIN: 'ADMIN'
-};
-
-exports.SubscriptionPlan = exports.$Enums.SubscriptionPlan = {
-  THREE_MONTH: 'THREE_MONTH',
-  SIX_MONTH: 'SIX_MONTH'
 };
 
 exports.SubscriptionStatus = exports.$Enums.SubscriptionStatus = {

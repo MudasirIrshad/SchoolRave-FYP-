@@ -170,7 +170,6 @@ model Review {
 
 model Subscription {
   id     String             @id @default(uuid())
-  plan   SubscriptionPlan // 3 month, 6 month, 1 year
   status SubscriptionStatus // active, expired, cancelled
   type   SubscriptionType // free, paid
 
@@ -184,7 +183,7 @@ model Subscription {
 
   payment Payment[]
 
-  @@unique([schoolId, status])
+  @@unique([schoolId])
 }
 
 model Payment {
