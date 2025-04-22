@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.BASE_URL}/dashboard`,
+      success_url: `${process.env.BASE_URL}/payment_success`,
       cancel_url: `${process.env.BASE_URL}/dashboard`,
       metadata: {
         userId,
