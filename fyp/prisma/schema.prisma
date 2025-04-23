@@ -169,6 +169,7 @@ model Review {
 }
 
 model Subscription {
+  
   id     String             @id @default(uuid())
   status SubscriptionStatus // active, expired, cancelled
   type   SubscriptionType // free, paid
