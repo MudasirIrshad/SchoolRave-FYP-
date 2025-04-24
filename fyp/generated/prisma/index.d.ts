@@ -3452,15 +3452,15 @@ export namespace Prisma {
 
   export type SchoolBranchGroupByOutputType = {
     id: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name: string | null
+    address: string | null
+    city: string | null
+    email: string | null
+    phone: string | null
+    description: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities: string | null
     schoolId: string
     _count: SchoolBranchCountAggregateOutputType | null
     _min: SchoolBranchMinAggregateOutputType | null
@@ -3566,15 +3566,15 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      name: string
-      address: string
-      city: string
-      email: string
-      phone: string
-      description: string
+      name: string | null
+      address: string | null
+      city: string | null
+      email: string | null
+      phone: string | null
+      description: string | null
       admission_status: $Enums.AdmissionStatus
       gender_policy: $Enums.GenderPolicy
-      facilities: string
+      facilities: string | null
       schoolId: string
     }, ExtArgs["result"]["schoolBranch"]>
     composites: {}
@@ -12961,15 +12961,15 @@ export namespace Prisma {
     OR?: SchoolBranchWhereInput[]
     NOT?: SchoolBranchWhereInput | SchoolBranchWhereInput[]
     id?: StringFilter<"SchoolBranch"> | string
-    name?: StringFilter<"SchoolBranch"> | string
-    address?: StringFilter<"SchoolBranch"> | string
-    city?: StringFilter<"SchoolBranch"> | string
-    email?: StringFilter<"SchoolBranch"> | string
-    phone?: StringFilter<"SchoolBranch"> | string
-    description?: StringFilter<"SchoolBranch"> | string
+    name?: StringNullableFilter<"SchoolBranch"> | string | null
+    address?: StringNullableFilter<"SchoolBranch"> | string | null
+    city?: StringNullableFilter<"SchoolBranch"> | string | null
+    email?: StringNullableFilter<"SchoolBranch"> | string | null
+    phone?: StringNullableFilter<"SchoolBranch"> | string | null
+    description?: StringNullableFilter<"SchoolBranch"> | string | null
     admission_status?: EnumAdmissionStatusFilter<"SchoolBranch"> | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFilter<"SchoolBranch"> | $Enums.GenderPolicy
-    facilities?: StringFilter<"SchoolBranch"> | string
+    facilities?: StringNullableFilter<"SchoolBranch"> | string | null
     schoolId?: StringFilter<"SchoolBranch"> | string
     school?: XOR<SchoolScalarRelationFilter, SchoolWhereInput>
     class_base_fee?: Class_base_feeListRelationFilter
@@ -12978,15 +12978,15 @@ export namespace Prisma {
 
   export type SchoolBranchOrderByWithRelationInput = {
     id?: SortOrder
-    name?: SortOrder
-    address?: SortOrder
-    city?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    description?: SortOrder
+    name?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     admission_status?: SortOrder
     gender_policy?: SortOrder
-    facilities?: SortOrder
+    facilities?: SortOrderInput | SortOrder
     schoolId?: SortOrder
     school?: SchoolOrderByWithRelationInput
     class_base_fee?: Class_base_feeOrderByRelationAggregateInput
@@ -13000,13 +13000,13 @@ export namespace Prisma {
     AND?: SchoolBranchWhereInput | SchoolBranchWhereInput[]
     OR?: SchoolBranchWhereInput[]
     NOT?: SchoolBranchWhereInput | SchoolBranchWhereInput[]
-    name?: StringFilter<"SchoolBranch"> | string
-    address?: StringFilter<"SchoolBranch"> | string
-    city?: StringFilter<"SchoolBranch"> | string
-    description?: StringFilter<"SchoolBranch"> | string
+    name?: StringNullableFilter<"SchoolBranch"> | string | null
+    address?: StringNullableFilter<"SchoolBranch"> | string | null
+    city?: StringNullableFilter<"SchoolBranch"> | string | null
+    description?: StringNullableFilter<"SchoolBranch"> | string | null
     admission_status?: EnumAdmissionStatusFilter<"SchoolBranch"> | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFilter<"SchoolBranch"> | $Enums.GenderPolicy
-    facilities?: StringFilter<"SchoolBranch"> | string
+    facilities?: StringNullableFilter<"SchoolBranch"> | string | null
     schoolId?: StringFilter<"SchoolBranch"> | string
     school?: XOR<SchoolScalarRelationFilter, SchoolWhereInput>
     class_base_fee?: Class_base_feeListRelationFilter
@@ -13015,15 +13015,15 @@ export namespace Prisma {
 
   export type SchoolBranchOrderByWithAggregationInput = {
     id?: SortOrder
-    name?: SortOrder
-    address?: SortOrder
-    city?: SortOrder
-    email?: SortOrder
-    phone?: SortOrder
-    description?: SortOrder
+    name?: SortOrderInput | SortOrder
+    address?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
+    email?: SortOrderInput | SortOrder
+    phone?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
     admission_status?: SortOrder
     gender_policy?: SortOrder
-    facilities?: SortOrder
+    facilities?: SortOrderInput | SortOrder
     schoolId?: SortOrder
     _count?: SchoolBranchCountOrderByAggregateInput
     _max?: SchoolBranchMaxOrderByAggregateInput
@@ -13035,15 +13035,15 @@ export namespace Prisma {
     OR?: SchoolBranchScalarWhereWithAggregatesInput[]
     NOT?: SchoolBranchScalarWhereWithAggregatesInput | SchoolBranchScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"SchoolBranch"> | string
-    name?: StringWithAggregatesFilter<"SchoolBranch"> | string
-    address?: StringWithAggregatesFilter<"SchoolBranch"> | string
-    city?: StringWithAggregatesFilter<"SchoolBranch"> | string
-    email?: StringWithAggregatesFilter<"SchoolBranch"> | string
-    phone?: StringWithAggregatesFilter<"SchoolBranch"> | string
-    description?: StringWithAggregatesFilter<"SchoolBranch"> | string
+    name?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
+    address?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
+    city?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
+    email?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
+    phone?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
+    description?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
     admission_status?: EnumAdmissionStatusWithAggregatesFilter<"SchoolBranch"> | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyWithAggregatesFilter<"SchoolBranch"> | $Enums.GenderPolicy
-    facilities?: StringWithAggregatesFilter<"SchoolBranch"> | string
+    facilities?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
     schoolId?: StringWithAggregatesFilter<"SchoolBranch"> | string
   }
 
@@ -13696,15 +13696,15 @@ export namespace Prisma {
 
   export type SchoolBranchCreateInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolBranchInput
     reviews?: ReviewCreateNestedManyWithoutSchoolBranchInput
@@ -13712,15 +13712,15 @@ export namespace Prisma {
 
   export type SchoolBranchUncheckedCreateInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     schoolId: string
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolBranchInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolBranchInput
@@ -13728,15 +13728,15 @@ export namespace Prisma {
 
   export type SchoolBranchUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolBranchNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolBranchNestedInput
@@ -13744,15 +13744,15 @@ export namespace Prisma {
 
   export type SchoolBranchUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: StringFieldUpdateOperationsInput | string
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolBranchNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolBranchNestedInput
@@ -13760,42 +13760,42 @@ export namespace Prisma {
 
   export type SchoolBranchCreateManyInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     schoolId: string
   }
 
   export type SchoolBranchUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SchoolBranchUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -16088,30 +16088,30 @@ export namespace Prisma {
 
   export type SchoolBranchCreateWithoutSchoolInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolBranchInput
     reviews?: ReviewCreateNestedManyWithoutSchoolBranchInput
   }
 
   export type SchoolBranchUncheckedCreateWithoutSchoolInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolBranchInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolBranchInput
   }
@@ -16295,15 +16295,15 @@ export namespace Prisma {
     OR?: SchoolBranchScalarWhereInput[]
     NOT?: SchoolBranchScalarWhereInput | SchoolBranchScalarWhereInput[]
     id?: StringFilter<"SchoolBranch"> | string
-    name?: StringFilter<"SchoolBranch"> | string
-    address?: StringFilter<"SchoolBranch"> | string
-    city?: StringFilter<"SchoolBranch"> | string
-    email?: StringFilter<"SchoolBranch"> | string
-    phone?: StringFilter<"SchoolBranch"> | string
-    description?: StringFilter<"SchoolBranch"> | string
+    name?: StringNullableFilter<"SchoolBranch"> | string | null
+    address?: StringNullableFilter<"SchoolBranch"> | string | null
+    city?: StringNullableFilter<"SchoolBranch"> | string | null
+    email?: StringNullableFilter<"SchoolBranch"> | string | null
+    phone?: StringNullableFilter<"SchoolBranch"> | string | null
+    description?: StringNullableFilter<"SchoolBranch"> | string | null
     admission_status?: EnumAdmissionStatusFilter<"SchoolBranch"> | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFilter<"SchoolBranch"> | $Enums.GenderPolicy
-    facilities?: StringFilter<"SchoolBranch"> | string
+    facilities?: StringNullableFilter<"SchoolBranch"> | string | null
     schoolId?: StringFilter<"SchoolBranch"> | string
   }
 
@@ -16650,30 +16650,30 @@ export namespace Prisma {
 
   export type SchoolBranchCreateWithoutClass_base_feeInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
     reviews?: ReviewCreateNestedManyWithoutSchoolBranchInput
   }
 
   export type SchoolBranchUncheckedCreateWithoutClass_base_feeInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     schoolId: string
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolBranchInput
   }
@@ -16747,30 +16747,30 @@ export namespace Prisma {
 
   export type SchoolBranchUpdateWithoutClass_base_feeInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolBranchNestedInput
   }
 
   export type SchoolBranchUncheckedUpdateWithoutClass_base_feeInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: StringFieldUpdateOperationsInput | string
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolBranchNestedInput
   }
@@ -17025,30 +17025,30 @@ export namespace Prisma {
 
   export type SchoolBranchCreateWithoutReviewsInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolBranchInput
   }
 
   export type SchoolBranchUncheckedCreateWithoutReviewsInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
     schoolId: string
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolBranchInput
   }
@@ -17157,30 +17157,30 @@ export namespace Prisma {
 
   export type SchoolBranchUpdateWithoutReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolBranchNestedInput
   }
 
   export type SchoolBranchUncheckedUpdateWithoutReviewsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: StringFieldUpdateOperationsInput | string
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolBranchNestedInput
   }
@@ -17893,15 +17893,15 @@ export namespace Prisma {
 
   export type SchoolBranchCreateManySchoolInput = {
     id?: string
-    name: string
-    address: string
-    city: string
-    email: string
-    phone: string
-    description: string
+    name?: string | null
+    address?: string | null
+    city?: string | null
+    email?: string | null
+    phone?: string | null
+    description?: string | null
     admission_status: $Enums.AdmissionStatus
     gender_policy: $Enums.GenderPolicy
-    facilities: string
+    facilities?: string | null
   }
 
   export type Class_base_feeCreateManySchoolInput = {
@@ -17953,45 +17953,45 @@ export namespace Prisma {
 
   export type SchoolBranchUpdateWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolBranchNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolBranchNestedInput
   }
 
   export type SchoolBranchUncheckedUpdateWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolBranchNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolBranchNestedInput
   }
 
   export type SchoolBranchUncheckedUpdateManyWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    name?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    city?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    phone?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    address?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
-    facilities?: StringFieldUpdateOperationsInput | string
+    facilities?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type Class_base_feeUpdateWithoutSchoolInput = {
