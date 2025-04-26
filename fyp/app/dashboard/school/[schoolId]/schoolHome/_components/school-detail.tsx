@@ -13,8 +13,8 @@ import SchoolTypeForm from "./(component)/school-type-form";
 import CurriculumTypeForm from "./(component)/curriculum-type-form copy";
 import ImageForm from "./(component)/image-form";
 import { Button } from "@/components/ui/button";
-import SubscriptionCard from "./(component)/subscription-card";
-
+import SubscriptionCard from "../../../../../../components/subscription-card";
+import CreateSchoolBranch from "./(component)/school-branch";
 async function SchoolDetail() {
   const { userId } = await auth();
   if (!userId) return redirect("/dashboard");
@@ -76,8 +76,8 @@ async function SchoolDetail() {
             {school.subscriptionType === "FREE" ? (
               <SubscriptionCard />
             ) : (
-              <div className="text-green-600 font-medium">
-                You are a premium user
+              <div className="font-medium">
+                <CreateSchoolBranch initialData={school} />
               </div>
             )}
           </div>
