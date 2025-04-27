@@ -101,11 +101,12 @@ model SchoolBranch {
   email            String?          @unique
   phone            String?          @unique
   description      String?
-  admission_status AdmissionStatus
+  admission_status AdmissionStatus?
 
-  gender_policy GenderPolicy
+  gender_policy GenderPolicy?
 
   facilities String?
+  
 
   schoolId String
   school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)

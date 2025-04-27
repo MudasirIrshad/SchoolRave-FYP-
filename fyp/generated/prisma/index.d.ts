@@ -449,8 +449,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.5.0
-   * Query Engine version: 173f8d54f8d52e692c7e27e72a88314ec7aeff60
+   * Prisma Client JS version: 6.6.0
+   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
    */
   export type PrismaVersion = {
     client: string
@@ -2714,7 +2714,7 @@ export namespace Prisma {
 
   /**
    * Fields of the School model
-   */ 
+   */
   interface SchoolFieldRefs {
     readonly id: FieldRef<"School", 'String'>
     readonly name: FieldRef<"School", 'String'>
@@ -3458,8 +3458,8 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     description: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status: $Enums.AdmissionStatus | null
+    gender_policy: $Enums.GenderPolicy | null
     facilities: string | null
     schoolId: string
     _count: SchoolBranchCountAggregateOutputType | null
@@ -3572,8 +3572,8 @@ export namespace Prisma {
       email: string | null
       phone: string | null
       description: string | null
-      admission_status: $Enums.AdmissionStatus
-      gender_policy: $Enums.GenderPolicy
+      admission_status: $Enums.AdmissionStatus | null
+      gender_policy: $Enums.GenderPolicy | null
       facilities: string | null
       schoolId: string
     }, ExtArgs["result"]["schoolBranch"]>
@@ -4000,7 +4000,7 @@ export namespace Prisma {
 
   /**
    * Fields of the SchoolBranch model
-   */ 
+   */
   interface SchoolBranchFieldRefs {
     readonly id: FieldRef<"SchoolBranch", 'String'>
     readonly name: FieldRef<"SchoolBranch", 'String'>
@@ -5170,7 +5170,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Class_base_fee model
-   */ 
+   */
   interface Class_base_feeFieldRefs {
     readonly id: FieldRef<"Class_base_fee", 'String'>
     readonly name: FieldRef<"Class_base_fee", 'String'>
@@ -6295,7 +6295,7 @@ export namespace Prisma {
 
   /**
    * Fields of the User model
-   */ 
+   */
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
@@ -7493,7 +7493,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Review model
-   */ 
+   */
   interface ReviewFieldRefs {
     readonly id: FieldRef<"Review", 'String'>
     readonly rating: FieldRef<"Review", 'Int'>
@@ -8640,7 +8640,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Subscription model
-   */ 
+   */
   interface SubscriptionFieldRefs {
     readonly id: FieldRef<"Subscription", 'String'>
     readonly status: FieldRef<"Subscription", 'SubscriptionStatus'>
@@ -9798,7 +9798,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Payment model
-   */ 
+   */
   interface PaymentFieldRefs {
     readonly id: FieldRef<"Payment", 'String'>
     readonly amount: FieldRef<"Payment", 'Int'>
@@ -10985,7 +10985,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Admission model
-   */ 
+   */
   interface AdmissionFieldRefs {
     readonly id: FieldRef<"Admission", 'String'>
     readonly student_name: FieldRef<"Admission", 'String'>
@@ -12072,7 +12072,7 @@ export namespace Prisma {
 
   /**
    * Fields of the Document model
-   */ 
+   */
   interface DocumentFieldRefs {
     readonly id: FieldRef<"Document", 'String'>
     readonly url: FieldRef<"Document", 'String'>
@@ -12661,7 +12661,7 @@ export namespace Prisma {
 
 
   /**
-   * Field references 
+   * Field references
    */
 
 
@@ -12967,8 +12967,8 @@ export namespace Prisma {
     email?: StringNullableFilter<"SchoolBranch"> | string | null
     phone?: StringNullableFilter<"SchoolBranch"> | string | null
     description?: StringNullableFilter<"SchoolBranch"> | string | null
-    admission_status?: EnumAdmissionStatusFilter<"SchoolBranch"> | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFilter<"SchoolBranch"> | $Enums.GenderPolicy
+    admission_status?: EnumAdmissionStatusNullableFilter<"SchoolBranch"> | $Enums.AdmissionStatus | null
+    gender_policy?: EnumGenderPolicyNullableFilter<"SchoolBranch"> | $Enums.GenderPolicy | null
     facilities?: StringNullableFilter<"SchoolBranch"> | string | null
     schoolId?: StringFilter<"SchoolBranch"> | string
     school?: XOR<SchoolScalarRelationFilter, SchoolWhereInput>
@@ -12984,8 +12984,8 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
-    admission_status?: SortOrder
-    gender_policy?: SortOrder
+    admission_status?: SortOrderInput | SortOrder
+    gender_policy?: SortOrderInput | SortOrder
     facilities?: SortOrderInput | SortOrder
     schoolId?: SortOrder
     school?: SchoolOrderByWithRelationInput
@@ -13004,8 +13004,8 @@ export namespace Prisma {
     address?: StringNullableFilter<"SchoolBranch"> | string | null
     city?: StringNullableFilter<"SchoolBranch"> | string | null
     description?: StringNullableFilter<"SchoolBranch"> | string | null
-    admission_status?: EnumAdmissionStatusFilter<"SchoolBranch"> | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFilter<"SchoolBranch"> | $Enums.GenderPolicy
+    admission_status?: EnumAdmissionStatusNullableFilter<"SchoolBranch"> | $Enums.AdmissionStatus | null
+    gender_policy?: EnumGenderPolicyNullableFilter<"SchoolBranch"> | $Enums.GenderPolicy | null
     facilities?: StringNullableFilter<"SchoolBranch"> | string | null
     schoolId?: StringFilter<"SchoolBranch"> | string
     school?: XOR<SchoolScalarRelationFilter, SchoolWhereInput>
@@ -13021,8 +13021,8 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
-    admission_status?: SortOrder
-    gender_policy?: SortOrder
+    admission_status?: SortOrderInput | SortOrder
+    gender_policy?: SortOrderInput | SortOrder
     facilities?: SortOrderInput | SortOrder
     schoolId?: SortOrder
     _count?: SchoolBranchCountOrderByAggregateInput
@@ -13041,8 +13041,8 @@ export namespace Prisma {
     email?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
     phone?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
     description?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
-    admission_status?: EnumAdmissionStatusWithAggregatesFilter<"SchoolBranch"> | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyWithAggregatesFilter<"SchoolBranch"> | $Enums.GenderPolicy
+    admission_status?: EnumAdmissionStatusNullableWithAggregatesFilter<"SchoolBranch"> | $Enums.AdmissionStatus | null
+    gender_policy?: EnumGenderPolicyNullableWithAggregatesFilter<"SchoolBranch"> | $Enums.GenderPolicy | null
     facilities?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
     schoolId?: StringWithAggregatesFilter<"SchoolBranch"> | string
   }
@@ -13702,8 +13702,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolBranchInput
@@ -13718,8 +13718,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     schoolId: string
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolBranchInput
@@ -13734,8 +13734,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolBranchNestedInput
@@ -13750,8 +13750,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: StringFieldUpdateOperationsInput | string
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolBranchNestedInput
@@ -13766,8 +13766,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     schoolId: string
   }
@@ -13780,8 +13780,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -13793,8 +13793,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: StringFieldUpdateOperationsInput | string
   }
@@ -14558,18 +14558,18 @@ export namespace Prisma {
     _max?: NestedEnumCurriculumTypeNullableFilter<$PrismaModel>
   }
 
-  export type EnumAdmissionStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumAdmissionStatusFilter<$PrismaModel> | $Enums.AdmissionStatus
+  export type EnumAdmissionStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumAdmissionStatusNullableFilter<$PrismaModel> | $Enums.AdmissionStatus | null
   }
 
-  export type EnumGenderPolicyFilter<$PrismaModel = never> = {
-    equals?: $Enums.GenderPolicy | EnumGenderPolicyFieldRefInput<$PrismaModel>
-    in?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderPolicyFilter<$PrismaModel> | $Enums.GenderPolicy
+  export type EnumGenderPolicyNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.GenderPolicy | EnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    in?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumGenderPolicyNullableFilter<$PrismaModel> | $Enums.GenderPolicy | null
   }
 
   export type SchoolScalarRelationFilter = {
@@ -14619,24 +14619,24 @@ export namespace Prisma {
     schoolId?: SortOrder
   }
 
-  export type EnumAdmissionStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumAdmissionStatusWithAggregatesFilter<$PrismaModel> | $Enums.AdmissionStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAdmissionStatusFilter<$PrismaModel>
-    _max?: NestedEnumAdmissionStatusFilter<$PrismaModel>
+  export type EnumAdmissionStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumAdmissionStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.AdmissionStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumAdmissionStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumAdmissionStatusNullableFilter<$PrismaModel>
   }
 
-  export type EnumGenderPolicyWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.GenderPolicy | EnumGenderPolicyFieldRefInput<$PrismaModel>
-    in?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderPolicyWithAggregatesFilter<$PrismaModel> | $Enums.GenderPolicy
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumGenderPolicyFilter<$PrismaModel>
-    _max?: NestedEnumGenderPolicyFilter<$PrismaModel>
+  export type EnumGenderPolicyNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.GenderPolicy | EnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    in?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumGenderPolicyNullableWithAggregatesFilter<$PrismaModel> | $Enums.GenderPolicy | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumGenderPolicyNullableFilter<$PrismaModel>
+    _max?: NestedEnumGenderPolicyNullableFilter<$PrismaModel>
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -15332,12 +15332,12 @@ export namespace Prisma {
     connect?: ReviewWhereUniqueInput | ReviewWhereUniqueInput[]
   }
 
-  export type EnumAdmissionStatusFieldUpdateOperationsInput = {
-    set?: $Enums.AdmissionStatus
+  export type NullableEnumAdmissionStatusFieldUpdateOperationsInput = {
+    set?: $Enums.AdmissionStatus | null
   }
 
-  export type EnumGenderPolicyFieldUpdateOperationsInput = {
-    set?: $Enums.GenderPolicy
+  export type NullableEnumGenderPolicyFieldUpdateOperationsInput = {
+    set?: $Enums.GenderPolicy | null
   }
 
   export type SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput = {
@@ -15974,38 +15974,38 @@ export namespace Prisma {
     _max?: NestedEnumCurriculumTypeNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumAdmissionStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumAdmissionStatusFilter<$PrismaModel> | $Enums.AdmissionStatus
+  export type NestedEnumAdmissionStatusNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumAdmissionStatusNullableFilter<$PrismaModel> | $Enums.AdmissionStatus | null
   }
 
-  export type NestedEnumGenderPolicyFilter<$PrismaModel = never> = {
-    equals?: $Enums.GenderPolicy | EnumGenderPolicyFieldRefInput<$PrismaModel>
-    in?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderPolicyFilter<$PrismaModel> | $Enums.GenderPolicy
+  export type NestedEnumGenderPolicyNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.GenderPolicy | EnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    in?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumGenderPolicyNullableFilter<$PrismaModel> | $Enums.GenderPolicy | null
   }
 
-  export type NestedEnumAdmissionStatusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumAdmissionStatusWithAggregatesFilter<$PrismaModel> | $Enums.AdmissionStatus
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumAdmissionStatusFilter<$PrismaModel>
-    _max?: NestedEnumAdmissionStatusFilter<$PrismaModel>
+  export type NestedEnumAdmissionStatusNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumAdmissionStatusNullableWithAggregatesFilter<$PrismaModel> | $Enums.AdmissionStatus | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumAdmissionStatusNullableFilter<$PrismaModel>
+    _max?: NestedEnumAdmissionStatusNullableFilter<$PrismaModel>
   }
 
-  export type NestedEnumGenderPolicyWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.GenderPolicy | EnumGenderPolicyFieldRefInput<$PrismaModel>
-    in?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel>
-    notIn?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel>
-    not?: NestedEnumGenderPolicyWithAggregatesFilter<$PrismaModel> | $Enums.GenderPolicy
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumGenderPolicyFilter<$PrismaModel>
-    _max?: NestedEnumGenderPolicyFilter<$PrismaModel>
+  export type NestedEnumGenderPolicyNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.GenderPolicy | EnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    in?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.GenderPolicy[] | ListEnumGenderPolicyFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumGenderPolicyNullableWithAggregatesFilter<$PrismaModel> | $Enums.GenderPolicy | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumGenderPolicyNullableFilter<$PrismaModel>
+    _max?: NestedEnumGenderPolicyNullableFilter<$PrismaModel>
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -16094,8 +16094,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolBranchInput
     reviews?: ReviewCreateNestedManyWithoutSchoolBranchInput
@@ -16109,8 +16109,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolBranchInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolBranchInput
@@ -16301,8 +16301,8 @@ export namespace Prisma {
     email?: StringNullableFilter<"SchoolBranch"> | string | null
     phone?: StringNullableFilter<"SchoolBranch"> | string | null
     description?: StringNullableFilter<"SchoolBranch"> | string | null
-    admission_status?: EnumAdmissionStatusFilter<"SchoolBranch"> | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFilter<"SchoolBranch"> | $Enums.GenderPolicy
+    admission_status?: EnumAdmissionStatusNullableFilter<"SchoolBranch"> | $Enums.AdmissionStatus | null
+    gender_policy?: EnumGenderPolicyNullableFilter<"SchoolBranch"> | $Enums.GenderPolicy | null
     facilities?: StringNullableFilter<"SchoolBranch"> | string | null
     schoolId?: StringFilter<"SchoolBranch"> | string
   }
@@ -16656,8 +16656,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
     reviews?: ReviewCreateNestedManyWithoutSchoolBranchInput
@@ -16671,8 +16671,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     schoolId: string
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolBranchInput
@@ -16753,8 +16753,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolBranchNestedInput
@@ -16768,8 +16768,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: StringFieldUpdateOperationsInput | string
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolBranchNestedInput
@@ -17031,8 +17031,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolBranchInput
@@ -17046,8 +17046,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
     schoolId: string
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolBranchInput
@@ -17163,8 +17163,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolBranchNestedInput
@@ -17178,8 +17178,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     schoolId?: StringFieldUpdateOperationsInput | string
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolBranchNestedInput
@@ -17899,8 +17899,8 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
-    admission_status: $Enums.AdmissionStatus
-    gender_policy: $Enums.GenderPolicy
+    admission_status?: $Enums.AdmissionStatus | null
+    gender_policy?: $Enums.GenderPolicy | null
     facilities?: string | null
   }
 
@@ -17959,8 +17959,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolBranchNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolBranchNestedInput
@@ -17974,8 +17974,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolBranchNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolBranchNestedInput
@@ -17989,8 +17989,8 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
-    gender_policy?: EnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy
+    admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
