@@ -1,5 +1,5 @@
+"use client";
 import { School, SchoolBranch as SchoolBranchType } from "@/generated/prisma";
-import { auth } from "@clerk/nextjs/server";
 import { PencilIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
@@ -9,7 +9,7 @@ interface SchoolBranchProps {
   schoolId: string;
 }
 
-async function SchoolBranch({ initialData, schoolId }: SchoolBranchProps) {
+function SchoolBranch({ initialData, schoolId }: SchoolBranchProps) {
   const router = useRouter();
   return (
     <div className="max-h-44 overflow-y-auto space-y-3 p-2 bg-gray-50 rounded-lg">
