@@ -1,12 +1,31 @@
 import { School, SchoolBranch } from "@/generated/prisma";
 import React from "react";
+import CreateBranch from "./(school_branch_components)/create-branch-form";
+import prisma from "@/lib/prisma";
+import { auth } from "@clerk/nextjs/server";
 
 interface SchoolBranchProps {
   initialData: School;
-  items?: SchoolBranch[];
 }
-function CreateSchoolBranch({ initialData, items }: SchoolBranchProps) {
-  return <div>SchoolBranch</div>;
+async function CreateSchoolBranch({ initialData }: SchoolBranchProps) {
+  const { userId } = await auth();
+
+  const school = await prisma.school.findUnique({
+    where: {
+      userId: userId!,
+    },
+  });
+  return (
+    <div>
+      <CreateBranch
+        initialData={{
+          ...initialData,
+          schoolBranch: [], // or a list of branches if you have them
+        }}
+        schoolId={school?.id}
+      />
+    </div>
+  );
 }
 
 export default CreateSchoolBranch;
