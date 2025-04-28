@@ -1,0 +1,16 @@
+import { z } from "zod";
+import { UserSchema } from "./user";
+
+export const ReviewSchema = z.object({
+  id: z.string(),
+  rating: z.number(),
+  comment: z.string().optional(),
+  schoolId: z.string().optional(),
+  schoolBranchId: z.string().optional(),
+  reviewerId: z.string().optional(),
+  reviewer: UserSchema,
+  createdAt: z.string(),
+  updatedAt: z.string(),
+});
+
+export type Review = z.infer<typeof ReviewSchema>;

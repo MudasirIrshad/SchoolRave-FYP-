@@ -1,7 +1,6 @@
 import prisma from "@/lib/prisma";
-import { auth } from "@clerk/nextjs/server";
 import React from "react";
-import SubscriptionCard from "../../../../../components/subscription-card";
+import SubscriptionCard from "@/components/subscription-card";
 
 async function CreatePost({ params }: { params: { schoolId: string } }) {
   const school = await prisma.school.findUnique({

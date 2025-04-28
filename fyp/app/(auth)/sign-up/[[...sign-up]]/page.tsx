@@ -31,6 +31,8 @@ import VerificationForm from "./components/verify-otp";
 
 // Define the sign-up form schema
 const signUpFormSchema = z.object({
+  firstName: z.string().min(1, { message: "First name is required" }),
+  lastName: z.string().min(1, { message: "Last name is required" }),
   emailAddress: z
     .string()
     .email({ message: "Please enter a valid email address" }),
@@ -49,6 +51,8 @@ export default function SignUpPage() {
   const form = useForm<z.infer<typeof signUpFormSchema>>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
+      firstName: "",
+      lastName: "",
       emailAddress: "",
       password: "",
     },
@@ -64,7 +68,12 @@ export default function SignUpPage() {
     try {
       const storedValue = sessionStorage.getItem("role");
 
+      const username = values.firstName + "_" + values.lastName;
+
       await signUp.create({
+        username,
+        // firstName: values.firstName,
+        // lastName: values.lastName,
         emailAddress: values.emailAddress,
         password: values.password,
         unsafeMetadata: {
@@ -72,6 +81,7 @@ export default function SignUpPage() {
         },
       });
 
+      // console.log("signUpComplete:", signUpComplete);
       // Send the user an email with the verification code
       await signUp.prepareEmailAddressVerification({
         strategy: "email_code",
@@ -80,7 +90,7 @@ export default function SignUpPage() {
       // Display the verification form
       setVerifying(true);
       setIsLoading(false);
-    } catch (err: any) {
+    } catch (err) {
       setIsLoading(false);
       console.error(JSON.stringify(err, null, 2));
       setError(err.errors?.[0]?.message || "An error occurred during sign up");
@@ -112,6 +122,43 @@ export default function SignUpPage() {
           )}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              <div className="grid grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>First Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="John"
+                          {...field}
+                          disabled={isLoading}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Last Name</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Doe"
+                          {...field}
+                          disabled={isLoading}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
               <FormField
                 control={form.control}
                 name="emailAddress"

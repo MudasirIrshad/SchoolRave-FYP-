@@ -61,19 +61,20 @@ enum AdmissionApproval {
 // DATABASE MODELS
 
 model School {
-  id                    String   @id @default(uuid())
+  id                    String  @id @default(uuid())
   name                  String
-  email                 String   @unique
-  phone                 String?   @unique
+  email                 String  @unique
+  phone                 String? @unique
   address               String?
   medium_of_instruction String?
-  imageUrl String?
+  imageUrl              String?
   description           String?
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @updatedAt
 
-  subscriptionType SubscriptionType @default(FREE) 
-  stripeCustomerId String? @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  subscriptionType SubscriptionType @default(FREE)
+  stripeCustomerId String?          @unique
 
   school_type     SchoolType?
   curriculum_type CurriculumType?
@@ -85,7 +86,7 @@ model School {
   subscription Subscription[]
 
   userId String
-  
+
   Payment Payment[]
 
   Admission Admission[]
@@ -98,8 +99,8 @@ model SchoolBranch {
   name             String?
   address          String?
   city             String?
-  email            String?          @unique
-  phone            String?          @unique
+  email            String?         @unique
+  phone            String?         @unique
   description      String?
   admission_status AdmissionStatus
 
@@ -135,7 +136,6 @@ model User {
   name  String
   email String @unique
 
-
   password String?
 
   createdAt DateTime @default(now())
@@ -147,8 +147,7 @@ model User {
   payment Payment[]
 
   Admission Admission[]
-
- }
+}
 
 model Review {
   id        String   @id @default(uuid())
@@ -169,7 +168,6 @@ model Review {
 }
 
 model Subscription {
-  
   id     String             @id @default(uuid())
   status SubscriptionStatus // active, expired, cancelled
   type   SubscriptionType // free, paid

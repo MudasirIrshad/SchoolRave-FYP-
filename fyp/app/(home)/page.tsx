@@ -2,10 +2,29 @@ import SearchBar from "@/app/(home)/components/search-bar";
 import SchoolCard from "@/app/(home)/components/school-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getFeaturedSchools } from "./data/api";
+import prisma from "@/lib/prisma";
 
-export default async function Home() {
-  const featuredSchools = await getFeaturedSchools();
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { query?: string };
+}) {
+  // const featuredSchools = await getFeaturedSchools();
+
+  const featuredSchools = await prisma.school.findMany({
+    where: {
+      name: {
+        contains: searchParams.query?.toString(),
+        mode: "insensitive",
+      },
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+
+  // console.log("SCHOOLDANGER: ", searchParams.query);
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Hero Section */}
@@ -40,10 +59,10 @@ export default async function Home() {
         <div className="container mx-auto px-6 md:px-8 lg:px-12">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-textColor font-open">
-              Top Schools in New York City
+              Top Schools in Quetta City
             </h2>
             <Link
-              href="/search?city=New York"
+              href="/search?city=quetta"
               className="text-primary hover:text-accent font-semibold flex items-center"
             >
               View All <span className="ml-1">→</span>

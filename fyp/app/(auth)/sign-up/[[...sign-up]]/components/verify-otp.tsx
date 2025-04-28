@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { addUserInDatabase } from "./action";
 export default function VerificationForm({ signUp, setActive }) {
   const [error, setError] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(false);
@@ -62,17 +63,11 @@ export default function VerificationForm({ signUp, setActive }) {
       if (signUpAttempt.status === "complete") {
         await setActive({ session: signUpAttempt.createdSessionId });
 
-        // 👇 Access role from user metadata
-        // const role = signUpAttempt.user?.unsafeMetadata?.role || "user";
+        const result = await addUserInDatabase();
+        if (!result.success) {
+          router.push("/dashboard");
+        }
 
-        router.push("/dashboard");
-
-        // // 👇 Route based on role
-        // if (role === "SCHOOL") {
-        //   router.push("/school");
-        // } else {
-        //   router.push("/dashboard");
-        // }
         setIsLoading(false);
       } else {
         // If the status is not complete, check why
