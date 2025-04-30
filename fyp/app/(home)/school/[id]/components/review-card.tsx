@@ -1,4 +1,4 @@
-import { Review } from "@/lib/zod-types/review";
+// import { Review } from "@/lib/zod-types/review";
 import { Star } from "lucide-react";
 import { format } from "date-fns";
 import {
@@ -8,13 +8,18 @@ import {
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
+import { Review as PrismaReview, User } from "@/generated/prisma";
+
+interface ReviewWithReviewer extends PrismaReview {
+  reviewer?: User | null;
+}
 
 interface ReviewCardProps {
-  review: Review;
+  review: ReviewWithReviewer;
 }
 
 export default function ReviewCard({ review }: ReviewCardProps) {
-  console.log("DANGERSCHOOL:", review);
+  // console.log("DANGERSCHOOL:", review);
   return (
     <Card>
       <CardHeader className="flex flex-row justify-between items-start gap-4">

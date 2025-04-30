@@ -1,7 +1,14 @@
-import { School } from "@/lib/zod-types/school";
+// import { School } from "@/lib/zod-types/school";
+import { School } from "@/generated/prisma";
 import { MapPin, Star } from "lucide-react";
 
-export default function SchoolDetailHeader({ school }: { school: School }) {
+export default function SchoolDetailHeader({
+  school,
+  ratingAvg,
+}: {
+  school: School;
+  ratingAvg: number;
+}) {
   return (
     <section className="bg-white border-b">
       <div className="container mx-auto px-6 md:px-8 lg:px-12 py-6">
@@ -22,11 +29,11 @@ export default function SchoolDetailHeader({ school }: { school: School }) {
           </div>
           <div className="flex items-center">
             <div className="bg-primary text-white text-2xl font-bold h-14 w-14 flex items-center justify-center rounded-lg">
-              {school.rating >= 4.7
+              {ratingAvg >= 4.7
                 ? "A+"
-                : school.rating >= 4.3
+                : ratingAvg >= 4.3
                 ? "A"
-                : school.rating >= 4.0
+                : ratingAvg >= 4.0
                 ? "A-"
                 : "B+"}
             </div>
@@ -39,7 +46,7 @@ export default function SchoolDetailHeader({ school }: { school: School }) {
                     <Star
                       key={i}
                       className={`w-4 h-4 ${
-                        i < Math.floor(school.rating) ? "fill-current" : ""
+                        i < Math.floor(ratingAvg) ? "fill-current" : ""
                       }`}
                     />
                   ))}

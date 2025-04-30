@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { School } from "@/lib/zod-types/school";
+import Image from "next/image";
 import React from "react";
 
 export default function SchoolDetailSidebar({ school }: { school: School }) {
@@ -11,11 +12,8 @@ export default function SchoolDetailSidebar({ school }: { school: School }) {
           Interested in this school?
         </h3>
         <div className="space-y-3">
-          <Button className="w-full">Request Information</Button>
+          <Button className="w-full">Apply Online</Button>
           <Button variant="outline" className="w-full">
-            Schedule a Tour
-          </Button>
-          <Button variant="ghost" className="w-full">
             Save to Favorites
           </Button>
         </div>
@@ -69,10 +67,11 @@ export default function SchoolDetailSidebar({ school }: { school: School }) {
               key={index}
               className="aspect-video rounded-md overflow-hidden"
             >
-              <img
+              <Image
                 src={imgUrl || "https://placehold.co/600x400?text=No+Image"}
                 alt={`${school.name} gallery image ${index + 1}`}
-                className="w-full h-full object-cover"
+                className="object-cover"
+                fill
               />
             </div>
           ))}

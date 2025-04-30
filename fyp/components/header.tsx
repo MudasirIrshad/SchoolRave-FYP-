@@ -1,19 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { SignedIn, SignedOut } from "@clerk/nextjs";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
-import PreSignUpDialog from "@/app/(auth)/components/pre-sign-up-dialog";
 import { headers } from "next/headers";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { SignOutButton } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Header() {
   const headersList = headers();
@@ -62,13 +52,15 @@ export default async function Header() {
                   <Button asChild>
                     <Link href="/sign-in">Sign In</Link>
                   </Button>
-                  <PreSignUpDialog />
+                  <Button asChild variant="outline">
+                    <Link href="/sign-up">Sign Up</Link>
+                  </Button>
                 </li>
               </SignedOut>
 
               <SignedIn>
                 <li className="ml-4">
-                  <UserDropdown />
+                  <UserButton />
                 </li>
               </SignedIn>
             </ul>
@@ -102,13 +94,13 @@ export default async function Header() {
                       <Button asChild className="w-full">
                         <Link href="/sign-in">Sign In</Link>
                       </Button>
-                      <PreSignUpDialog />
+                      <Button asChild className="w-full" variant="outline">
+                        <Link href="/sign-up">Sign Up</Link>
+                      </Button>
                     </div>
                   </SignedOut>
                   <SignedIn>
-                    <div className="pt-4 border-t">
-                      <UserDropdown mobile />
-                    </div>
+                    <UserButton />
                   </SignedIn>
                 </nav>
               </SheetContent>
@@ -117,53 +109,5 @@ export default async function Header() {
         </div>
       </div>
     </header>
-  );
-}
-
-async function UserDropdown({ mobile = false }: { mobile?: boolean }) {
-  const user = await currentUser();
-
-  // console.log("USERDANGER: ", user);
-
-  const initials = `${user?.firstName?.charAt(0) || ""}${
-    user?.lastName?.charAt(0) || ""
-  }`;
-
-  return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          variant="ghost"
-          className={`relative h-8 w-8 rounded-full ${
-            mobile ? "w-full justify-start gap-2 p-2" : ""
-          }`}
-        >
-          <Avatar className="h-8 w-8">
-            <AvatarImage src={user?.imageUrl} />
-            <AvatarFallback>{initials}</AvatarFallback>
-          </Avatar>
-          {mobile && (
-            <span className="font-medium">
-              {user?.firstName} {user?.lastName}
-            </span>
-          )}
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56" align="end" forceMount>
-        <DropdownMenuItem asChild>
-          <Link href="/profile" className="w-full cursor-pointer">
-            Profile
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link href="/settings" className="w-full cursor-pointer">
-            Settings
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem>
-          <SignOutButton>Log out</SignOutButton>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
   );
 }

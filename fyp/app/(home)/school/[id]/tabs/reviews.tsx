@@ -1,11 +1,12 @@
 // "use client";
 
-import { Review } from "@/lib/zod-types/review";
+// import { Review } from "@/lib/zod-types/review";
 import { School } from "@/lib/zod-types/school";
 import ReviewCard from "../components/review-card";
 import AddReviewDialog from "../components/add-review-dialog";
 import { auth } from "@clerk/nextjs/server";
 import prisma from "@/lib/prisma";
+import { Review } from "@/generated/prisma";
 
 export default async function Reviews({ school }: { school: School }) {
   const { userId } = await auth();

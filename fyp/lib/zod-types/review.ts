@@ -13,4 +13,15 @@ export const ReviewSchema = z.object({
   updatedAt: z.string(),
 });
 
+export const AddReviewSchema = z.object({
+  rating: z
+    .number()
+    .min(1, "Rating must be at least 1")
+    .max(5, "Rating cannot exceed 5"),
+  comment: z.string().optional(),
+  schoolId: z.string(),
+  userId: z.string(),
+});
+
 export type Review = z.infer<typeof ReviewSchema>;
+export type AddReview = z.infer<typeof AddReviewSchema>;

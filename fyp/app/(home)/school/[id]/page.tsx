@@ -1,16 +1,16 @@
-import SchoolProfile from "./components/school-profile";
+import prisma from "@/lib/prisma";
+import Link from "next/link";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
-import prisma from "@/lib/prisma";
+import SchoolProfile from "./components/school-profile";
 import SchoolDetailHeader from "./components/school-detail-header";
+import SchoolDetailSidebar from "./components/school-detail-sidebar";
+import Reviews from "./tabs/reviews";
 import Academics from "./tabs/academics";
 import Teachers from "./tabs/teachers";
 import Activities from "./tabs/activities";
-import SchoolDetailSidebar from "./components/school-detail-sidebar";
-import Image from "next/image";
-import { notFound } from "next/navigation";
-import Reviews from "./tabs/reviews";
 
 interface PageParams {
   params: {
@@ -31,7 +31,16 @@ export default async function SchoolDetailPage({ params }: PageParams) {
     },
   });
 
-  console.log("schoolData: ", schoolData);
+  const ratingAvg = await prisma.review.aggregate({
+    _avg: {
+      rating: true,
+    },
+    where: {
+      schoolId,
+    },
+  });
+
+  // console.log("schoolData: ", schoolData);
 
   const school = {
     ...schoolData,
@@ -64,7 +73,7 @@ export default async function SchoolDetailPage({ params }: PageParams) {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* School Header */}
-      <SchoolDetailHeader school={school} />
+      <SchoolDetailHeader school={school} ratingAvg={ratingAvg} />
 
       {/* Main Content */}
       <section className="py-8 md:py-12">
