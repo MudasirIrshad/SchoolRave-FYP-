@@ -10,6 +10,13 @@ import {
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import SchoolBranchTitleForm from "./_components/school-branch-title-form";
+import SchoolBranchEmailForm from "./_components/school-branch-email-form";
+import SchoolBranchAddressForm from "./_components/school-branch-address-form";
+import SchoolBranchPhoneForm from "./_components/school-branch-phone-form";
+import SchoolBranchCityForm from "./_components/school-branch-city-form";
+import SchoolBranchDescriptionForm from "./_components/school-branch-description-form";
+import SchoolBranchAdmissionStatusForm from "./_components/school-branch-admissionStatus-form";
+import SchoolBranchGenderPolicyForm from "./_components/school-branch-genderPolicy-form";
 
 async function SchoolBranchPage({
   params,
@@ -72,12 +79,58 @@ async function SchoolBranchPage({
                 schoolId={school?.id!}
               />
             </div>
-          </div>
-          <div className="mt-3">
-            <div className="border rounded-md p-4 bg-slate-100">
-              <SchoolBranchTitleForm
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchEmailForm
                 schoolBranchId={params.schoolBranchId}
-                schoolBranchName={schoolBranch.name!}
+                schoolBranchEmail={schoolBranch.email!}
+                schoolId={school?.id!}
+              />
+            </div>
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchCityForm
+                schoolBranchId={params.schoolBranchId}
+                schoolBranchCity={schoolBranch.city!}
+                schoolId={school?.id!}
+              />
+            </div>
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchAdmissionStatusForm
+                schoolBranchId={params.schoolBranchId}
+                admissionStatus={schoolBranch.admission_status!}
+                schoolId={school?.id!}
+              />
+            </div>
+          </div>
+
+          {/* ----------------------------------- */}
+          {/* ------------------------------------ */}
+          <div className="space-y-4">
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchAddressForm
+                schoolBranchId={params.schoolBranchId}
+                schoolBranchAddress={schoolBranch.address!}
+                schoolId={school?.id!}
+              />
+            </div>
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchPhoneForm
+                schoolBranchId={params.schoolBranchId}
+                schoolBranchPhone={schoolBranch.phone!}
+                schoolId={school?.id!}
+              />
+            </div>
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchDescriptionForm
+                schoolBranchId={params.schoolBranchId}
+                schoolBranchDescription={schoolBranch.description!}
+                schoolId={school?.id!}
+              />
+            </div>
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchGenderPolicyForm
+                schoolBranchId={params.schoolBranchId}
+                genderPolicy={schoolBranch.gender_policy!}
+                schoolId={school?.id!}
               />
             </div>
           </div>

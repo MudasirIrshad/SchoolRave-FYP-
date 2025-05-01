@@ -89,7 +89,7 @@ export type AdmissionStatus = (typeof AdmissionStatus)[keyof typeof AdmissionSta
 
 
 export const GenderPolicy: {
-  COEDUCATION: 'COEDUCATION',
+  CO_EDUCATION: 'CO_EDUCATION',
   BOYS_ONLY: 'BOYS_ONLY',
   GIRLS_ONLY: 'GIRLS_ONLY'
 };

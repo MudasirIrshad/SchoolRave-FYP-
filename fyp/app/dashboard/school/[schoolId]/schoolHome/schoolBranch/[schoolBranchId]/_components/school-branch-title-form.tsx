@@ -52,6 +52,7 @@ function SchoolBranchTitleForm({
 
   return (
     <div className="w-full">
+      Branch Name
       {isEditing ? (
         <div className="flex flex-col gap-2 w-full">
           <div className="flex items-center gap-2 w-full">
