@@ -21,6 +21,11 @@ async function SchoolBranchPage({
 }) {
   const { userId } = await auth();
   if (!userId) return redirect("/");
+  const school = await prisma.school.findUnique({
+    where: {
+      userId: params.schoolId,
+    },
+  });
 
   const schoolBranch = await prisma.schoolBranch.findUnique({
     where: {
@@ -64,6 +69,7 @@ async function SchoolBranchPage({
               <SchoolBranchTitleForm
                 schoolBranchId={params.schoolBranchId}
                 schoolBranchName={schoolBranch.name!}
+                schoolId={school?.id!}
               />
             </div>
           </div>

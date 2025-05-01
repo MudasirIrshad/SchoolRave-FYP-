@@ -5,19 +5,23 @@ import { Input } from "@/components/ui/input";
 import { Pencil, Save, X } from "lucide-react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 interface SchoolBranchTitleFormProps {
   schoolBranchId: string;
   schoolBranchName: string;
+  schoolId: string;
 }
 
 function SchoolBranchTitleForm({
   schoolBranchId,
   schoolBranchName,
+  schoolId,
 }: SchoolBranchTitleFormProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [name, setName] = useState(schoolBranchName);
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const toggleEdit = () => setIsEditing(!isEditing);
 
@@ -29,9 +33,15 @@ function SchoolBranchTitleForm({
   const handleSave = async () => {
     try {
       setIsLoading(true);
-      // await axios.patch(`/api/school-branches/${schoolBranchId}`, { name });
-      toast.success("TODO WORK TODAY");
+      await axios.patch(
+        `/api/school/${schoolId}/school-branch/${schoolBranchId}`,
+        {
+          name,
+        }
+      );
+      toast.success("School Branch Name Updated");
       setIsEditing(false);
+      router.refresh();
     } catch (error) {
       toast.error("Something went wrong");
       console.error(error);
