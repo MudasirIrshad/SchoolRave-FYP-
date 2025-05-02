@@ -23,6 +23,9 @@ async function SchoolDetail() {
     where: {
       userId: userId,
     },
+    include: {
+      schoolBranch: true,
+    },
   });
 
   if (!school) return <div>Loading ...</div>;

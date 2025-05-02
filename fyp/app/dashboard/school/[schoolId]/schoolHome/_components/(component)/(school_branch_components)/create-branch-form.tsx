@@ -21,7 +21,7 @@ import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { School, SchoolBranch } from "@/generated/prisma";
-// import ChapterList from "./chapters-list";
+import SchoolBranchList from "./school_branch_list";
 
 interface ChapterFormProps {
   initialData: School & { schoolBranch: SchoolBranch[] };
@@ -53,9 +53,6 @@ function CreateBranch({ initialData, schoolId }: ChapterFormProps) {
     }
   };
 
-  const onEdit = (id: string) => {
-    // router.push(`/teacher/courses/${courseId}/chapters/${id}`);
-  };
   return (
     <div className="relative mt-6 border bg-slate-100 rounded-md p-4">
       {isUpdating && (
@@ -114,13 +111,16 @@ function CreateBranch({ initialData, schoolId }: ChapterFormProps) {
             !initialData.schoolBranch.length && "text-slate-500 italic"
           )}
         >
-          {!initialData.schoolBranch.length && "No Chapters"}
-          {/* <ChapterList
-            onEdit={onEdit}
-            onReorder={onReorder}
-            items={initialData.chapters || []}
-          /> */}
-          <>Todo branch list</>
+          {!initialData.schoolBranch.length ? (
+            <>No Branches</>
+          ) : (
+            <>
+              <SchoolBranchList
+                initialData={initialData.schoolBranch}
+                schoolId={initialData.userId}
+              />{" "}
+            </>
+          )}
         </div>
       )}
     </div>

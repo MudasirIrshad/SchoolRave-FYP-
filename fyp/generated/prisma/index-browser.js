@@ -255,7 +255,7 @@ exports.AdmissionStatus = exports.$Enums.AdmissionStatus = {
 };
 
 exports.GenderPolicy = exports.$Enums.GenderPolicy = {
-  COEDUCATION: 'COEDUCATION',
+  CO_EDUCATION: 'CO_EDUCATION',
   BOYS_ONLY: 'BOYS_ONLY',
   GIRLS_ONLY: 'GIRLS_ONLY'
 };

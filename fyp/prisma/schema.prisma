@@ -25,7 +25,7 @@ enum AdmissionStatus {
 }
 
 enum GenderPolicy {
-  COEDUCATION
+  CO_EDUCATION
   BOYS_ONLY
   GIRLS_ONLY
 }
@@ -102,9 +102,9 @@ model SchoolBranch {
   email            String?         @unique
   phone            String?         @unique
   description      String?
-  admission_status AdmissionStatus?
+  admission_status AdmissionStatus? @default(OPEN)
 
-  gender_policy GenderPolicy?
+  gender_policy GenderPolicy? @default(CO_EDUCATION)
 
   facilities String?
   

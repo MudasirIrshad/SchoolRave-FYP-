@@ -18,10 +18,7 @@ async function CreateSchoolBranch({ initialData }: SchoolBranchProps) {
   return (
     <div>
       <CreateBranch
-        initialData={{
-          ...initialData,
-          schoolBranch: [], // or a list of branches if you have them
-        }}
+        initialData={initialData}
         schoolId={school?.id}
       />
     </div>
