@@ -38,7 +38,7 @@ export default function ChooseRoleForm() {
         if (selectedRole === "SCHOOL") {
           router.push(`/dashboard/school/${userId}/schoolHome`);
         } else {
-          router.push("/");
+          router.push(`/dashboard/user/${userId}`);
         }
       } catch (error) {
         console.error("Error saving user role:", error);

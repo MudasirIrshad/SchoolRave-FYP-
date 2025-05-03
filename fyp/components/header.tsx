@@ -58,11 +58,11 @@ export default async function Header() {
                 </li>
               </SignedOut>
 
-              <SignedIn>
-                <li className="ml-4">
+              <li className="ml-4">
+                <SignedIn>
                   <UserButton />
-                </li>
-              </SignedIn>
+                </SignedIn>
+              </li>
             </ul>
           </nav>
 
