@@ -1,18 +1,10 @@
-"use client";
-import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+"use server";
+import { auth } from "@clerk/nextjs/server";
+import { redirect, useRouter } from "next/navigation";
 
-export default function RedirectPage() {
-  const router = useRouter();
+export default async function RedirectPage() {
+  const { userId } = await auth();
 
-  useEffect(() => {
-    // Simulate a delay before redirecting to dashboard
-    const timeout = setTimeout(() => {
-      router.push("/dashboard"); // Redirect to dashboard after 3 seconds
-    }, 5000);
-
-    return () => clearTimeout(timeout); // Cleanup timeout on component unmount
-  }, [router]);
-
-  return <div></div>; // Optional: display message to user
+  redirect(`/dashboard/school/${userId}/schoolHome`);
+  return <></>;
 }
