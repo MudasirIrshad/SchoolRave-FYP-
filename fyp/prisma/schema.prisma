@@ -95,19 +95,18 @@ model School {
 }
 
 model SchoolBranch {
-  id               String          @id @default(uuid())
+  id               String           @id @default(uuid())
   name             String?
   address          String?
   city             String?
-  email            String?         @unique
-  phone            String?         @unique
+  email            String?          @unique
+  phone            String?          @unique
   description      String?
   admission_status AdmissionStatus? @default(OPEN)
 
   gender_policy GenderPolicy? @default(CO_EDUCATION)
 
-  facilities String?
-  
+  facilities String[]
 
   schoolId String
   school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
