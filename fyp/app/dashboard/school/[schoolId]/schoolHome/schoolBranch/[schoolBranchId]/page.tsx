@@ -17,6 +17,7 @@ import SchoolBranchCityForm from "./_components/school-branch-city-form";
 import SchoolBranchDescriptionForm from "./_components/school-branch-description-form";
 import SchoolBranchAdmissionStatusForm from "./_components/school-branch-admissionStatus-form";
 import SchoolBranchGenderPolicyForm from "./_components/school-branch-genderPolicy-form";
+import SchoolBranchFacilities from "./_components/school-branch-facility-form";
 
 async function SchoolBranchPage({
   params,
@@ -97,6 +98,13 @@ async function SchoolBranchPage({
               <SchoolBranchAdmissionStatusForm
                 schoolBranchId={params.schoolBranchId}
                 admissionStatus={schoolBranch.admission_status!}
+                schoolId={school?.id!}
+              />
+            </div>
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchFacilities
+                schoolBranchId={params.schoolBranchId}
+                schoolfacilities={schoolBranch.facilities!}
                 schoolId={school?.id!}
               />
             </div>

@@ -18,7 +18,7 @@ export async function saveUserRole(role: "SCHOOL" | "GENERAL") {
 
     // Save or update user in database
     await prisma.user.upsert({
-      where: { id: clerkUser.id },
+      where: { email },
       update: { role },
       create: {
         id: clerkUser.id,

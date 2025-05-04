@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import React from "react";
 import SubscriptionCard from "@/components/subscription-card";
+import { redirect } from "next/navigation";
 
 async function CreatePost({ params }: { params: { schoolId: string } }) {
   const school = await prisma.school.findUnique({
@@ -8,7 +9,6 @@ async function CreatePost({ params }: { params: { schoolId: string } }) {
       userId: params.schoolId,
     },
   });
-
   return (
     <div>
       <div>

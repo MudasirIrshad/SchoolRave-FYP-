@@ -277,7 +277,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\Zahaab\\Desktop\\fyp\\SchoolRave-FYP-\\fyp\\generated\\prisma",
+      "value": "E:\\Github Repos\\SchoolRave-FYP-\\fyp\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -291,7 +291,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Zahaab\\Desktop\\fyp\\SchoolRave-FYP-\\fyp\\prisma\\schema.prisma",
+    "sourceFilePath": "E:\\Github Repos\\SchoolRave-FYP-\\fyp\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -309,7 +309,7 @@ const config = {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://postgres:root@localhost:5432/schoolrave"
+        "value": "postgresql://neondb_owner:npg_iQ1tCWdaSoz9@ep-purple-art-a58wmvi7-pooler.us-east-2.aws.neon.tech/neondb?sslmode=require"
       }
     }
   },

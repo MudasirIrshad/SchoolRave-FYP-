@@ -9,21 +9,31 @@ export default async function Home({
 }: {
   searchParams: { query?: string };
 }) {
-  // const featuredSchools = await getFeaturedSchools();
+  let featuredSchools: any[] = [];
+  let error = null;
 
-  const featuredSchools = await prisma.school.findMany({
-    where: {
-      name: {
-        contains: searchParams.query?.toString(),
-        mode: "insensitive",
+  try {
+    // Ensure database connection is healthy
+    await prisma.$connect();
+
+    featuredSchools = await prisma.school.findMany({
+      where: {
+        name: {
+          contains: searchParams.query?.toString(),
+          mode: "insensitive",
+        },
       },
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
-
-  // console.log("SCHOOLDANGER: ", searchParams.query);
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    console.log(featuredSchools);
+  } catch (err) {
+    console.error("Database error:", err);
+    error = "Failed to load schools. Please try again later.";
+  } finally {
+    await prisma.$disconnect();
+  }
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -39,7 +49,6 @@ export default async function Home({
               information, reviews, and insights.
             </p>
 
-            {/* Search Bar Component */}
             <div className="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
               <SearchBar />
             </div>
@@ -48,13 +57,10 @@ export default async function Home({
         <div
           className="absolute bottom-0 right-0 opacity-10 w-1/2 h-full"
           aria-hidden="true"
-        >
-          {/* Abstract school-related pattern background */}
-        </div>
+        />
       </section>
 
       {/* Top Schools Section */}
-
       <section className="py-12 md:py-16">
         <div className="container mx-auto px-6 md:px-8 lg:px-12">
           <div className="flex justify-between items-center mb-8">
@@ -69,17 +75,27 @@ export default async function Home({
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {featuredSchools?.length ? (
-              featuredSchools.map((school) => (
-                <SchoolCard key={school.id} school={school} />
-              ))
-            ) : (
-              <div className="col-span-3 text-center py-8">
-                <p className="text-gray-500">No featured schools found</p>
-              </div>
-            )}
-          </div>
+          {error ? (
+            <div className="col-span-3 text-center py-8">
+              <p className="text-red-500">{error}</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {featuredSchools.length > 0 ? (
+                featuredSchools.map((school) => (
+                  <SchoolCard key={school.id} school={school} />
+                ))
+              ) : (
+                <div className="col-span-3 text-center py-8">
+                  <p className="text-gray-500">
+                    {searchParams.query
+                      ? "No schools match your search criteria"
+                      : "No featured schools found"}
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </section>
 
@@ -100,8 +116,9 @@ export default async function Home({
             <Button
               variant="outline"
               className="border-white text-white hover:bg-white hover:text-primary"
+              asChild
             >
-              <Link href="/search">Create an Account</Link>
+              <Link href="/signup">Create an Account</Link>
             </Button>
           </div>
         </div>
