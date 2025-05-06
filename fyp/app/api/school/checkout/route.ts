@@ -26,8 +26,8 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.BASE_URL}/payment_success`,
-      cancel_url: `${process.env.BASE_URL}/check`,
+      success_url: `${process.env.BASE_URL}/verify-payment`,
+      cancel_url: `${process.env.BASE_URL}/dashboard/school/${userId}/schoolHome`,
       metadata: {
         userId,
         duration,
