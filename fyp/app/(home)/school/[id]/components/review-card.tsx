@@ -1,5 +1,3 @@
-// import { Review } from "@/lib/zod-types/review";
-import { Star } from "lucide-react";
 import { format } from "date-fns";
 import {
   Card,
@@ -9,6 +7,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Review as PrismaReview, User } from "@/generated/prisma";
+import { StarRating } from "@/app/(home)/components/star-rating";
 
 interface ReviewWithReviewer extends PrismaReview {
   reviewer?: User | null;
@@ -27,18 +26,7 @@ export default function ReviewCard({ review }: ReviewCardProps) {
           <CardTitle className="text-lg font-open">
             {review?.reviewer?.name}
           </CardTitle>
-          <div className="flex text-yellow-400 mt-1">
-            {Array(5)
-              .fill(0)
-              .map((_, i) => (
-                <Star
-                  key={i}
-                  className={`w-4 h-4 ${
-                    i < Math.floor(review?.rating) ? "fill-current" : ""
-                  }`}
-                />
-              ))}
-          </div>
+          <StarRating rating={review?.rating} size="sm" className="mt-1" />
         </div>
         <div className="bg-blue-100 text-primary text-xs px-3 py-1 rounded-full self-start">
           {review?.reviewer?.role}
@@ -50,9 +38,6 @@ export default function ReviewCard({ review }: ReviewCardProps) {
       </CardContent>
 
       <CardFooter className="flex justify-between items-center text-xs text-gray-500">
-        <div>
-          {review?.reviewer?.name} • {review.reviewer?.role}
-        </div>
         <div>Posted {format(review?.createdAt, "dd/MM/yyyy")}</div>
       </CardFooter>
     </Card>

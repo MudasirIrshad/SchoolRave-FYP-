@@ -19,8 +19,9 @@ export const AddReviewSchema = z.object({
     .min(1, "Rating must be at least 1")
     .max(5, "Rating cannot exceed 5"),
   comment: z.string().optional(),
-  schoolId: z.string(),
+  entityId: z.string(),
   userId: z.string(),
+  entityType: z.string(),
 });
 
 export type Review = z.infer<typeof ReviewSchema>;

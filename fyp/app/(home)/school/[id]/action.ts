@@ -2,6 +2,7 @@
 
 import prisma from "@/lib/prisma";
 import { AddReviewSchema } from "@/lib/zod-types/review";
+import { revalidatePath } from "next/cache";
 import { z } from "zod";
 
 export async function addReview(
@@ -17,17 +18,29 @@ export async function addReview(
     );
 
     // console.log("DANGER:", input);
-    const { rating, comment, schoolId, userId } = input;
+    const { rating, comment, entityId, userId, entityType } = input;
 
-    await prisma.review.create({
-      data: {
-        rating,
-        comment,
-        schoolId,
-        reviewerId: userId,
-      },
-    });
+    if (entityType === "school") {
+      await prisma.review.create({
+        data: {
+          rating,
+          comment,
+          schoolId: entityId,
+          reviewerId: userId,
+        },
+      });
+    } else {
+      await prisma.review.create({
+        data: {
+          rating,
+          comment,
+          schoolBranchId: entityId,
+          reviewerId: userId,
+        },
+      });
+    }
 
+    revalidatePath("/school");
     return { success: true };
   } catch (error) {
     if (error instanceof Error) {

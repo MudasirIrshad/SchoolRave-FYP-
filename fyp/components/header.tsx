@@ -4,8 +4,17 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { headers } from "next/headers";
+import {
+  NavigationMenu,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+import { currentUser } from "@clerk/nextjs/server";
 
 export default async function Header() {
+  const user = await currentUser();
   const headersList = headers();
   const pathname = headersList.get("x-invoke-path") || "/";
 
@@ -17,6 +26,19 @@ export default async function Header() {
     { href: "/search?rating=4.5", label: "Rankings" },
     { href: "#", label: "About" },
   ];
+
+  // Add Dashboard link if user is signed in
+  if (user) {
+    const userRole = user.publicMetadata?.role || "GENERAL";
+    const dashboardLink = {
+      href:
+        userRole === "SCHOOL"
+          ? `/dashboard/school/${user.id}/schoolHome`
+          : `/dashboard/user/${user.id}`,
+      label: "Dashboard",
+    };
+    navLinks.splice(1, 0, dashboardLink);
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
@@ -30,41 +52,47 @@ export default async function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:block">
-            <ul className="flex items-center space-x-6">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={`font-open transition-colors ${
-                      isActive(link.href)
-                        ? "text-primary font-semibold"
-                        : "text-gray-600 hover:text-primary"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+          <div className="hidden md:flex items-center gap-6">
+            <NavigationMenu>
+              <NavigationMenuList>
+                {navLinks.map((link) => (
+                  <NavigationMenuItem key={link.href}>
+                    <Link href={link.href} legacyBehavior passHref>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                        active={isActive(link.href)}
+                      >
+                        <span
+                          className={`font-open ${
+                            isActive(link.href)
+                              ? "text-primary font-semibold"
+                              : "text-gray-600 hover:text-primary"
+                          }`}
+                        >
+                          {link.label}
+                        </span>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                ))}
+              </NavigationMenuList>
+            </NavigationMenu>
 
-              <SignedOut>
-                <li className="ml-4 flex items-center space-x-3">
-                  <Button asChild>
-                    <Link href="/sign-in">Sign In</Link>
-                  </Button>
-                  <Button asChild variant="outline">
-                    <Link href="/sign-up">Sign Up</Link>
-                  </Button>
-                </li>
-              </SignedOut>
+            <SignedOut>
+              <div className="flex items-center space-x-3">
+                <Button asChild>
+                  <Link href="/sign-in">Sign In</Link>
+                </Button>
+                <Button asChild variant="outline">
+                  <Link href="/sign-up">Sign Up</Link>
+                </Button>
+              </div>
+            </SignedOut>
 
-              <li className="ml-4">
-                <SignedIn>
-                  <UserButton />
-                </SignedIn>
-              </li>
-            </ul>
-          </nav>
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
+          </div>
 
           {/* Mobile Navigation */}
           <div className="md:hidden">

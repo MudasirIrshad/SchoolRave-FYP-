@@ -8,9 +8,9 @@ import SchoolProfile from "./components/school-profile";
 import SchoolDetailHeader from "./components/school-detail-header";
 import SchoolDetailSidebar from "./components/school-detail-sidebar";
 import Reviews from "./tabs/reviews";
-import Academics from "./tabs/academics";
-import Teachers from "./tabs/teachers";
 import Activities from "./tabs/activities";
+import { MapPin } from "lucide-react";
+import { SchoolBranches } from "./components/school-branches";
 
 interface PageParams {
   params: {
@@ -25,9 +25,12 @@ export default async function SchoolDetailPage({ params }: PageParams) {
     return notFound();
   }
 
-  const schoolData = await prisma.school.findUnique({
+  const school = await prisma.school.findUnique({
     where: {
       id: schoolId,
+    },
+    include: {
+      schoolBranch: true,
     },
   });
 
@@ -40,18 +43,9 @@ export default async function SchoolDetailPage({ params }: PageParams) {
     },
   });
 
-  // console.log("schoolData: ", schoolData);
+  // console.log("schoolData: ", school);
 
-  const school = {
-    ...schoolData,
-    studentCount: 33,
-    rating: 4.5,
-    gradeRange: "k-12",
-    studentTeacherRatio: "10:1",
-    collegePlacement: 95,
-    facilities: ["Science labs", "Libraries", "Computer labs", "Gymnasiums"],
-    galleryImages: [],
-  };
+  const hasBranches = school?.schoolBranch && school?.schoolBranch.length > 0;
 
   if (!school) {
     return (
@@ -73,7 +67,7 @@ export default async function SchoolDetailPage({ params }: PageParams) {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* School Header */}
-      <SchoolDetailHeader school={school} ratingAvg={ratingAvg} />
+      <SchoolDetailHeader school={school} ratingAvg={ratingAvg._avg.rating} />
 
       {/* Main Content */}
       <section className="py-8 md:py-12">
@@ -96,55 +90,10 @@ export default async function SchoolDetailPage({ params }: PageParams) {
                 />
               </div>
 
-              {/* Key Stats */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="p-4 border border-gray-200 rounded-lg">
-                  <div className="text-sm text-gray-500 mb-1">Enrollment</div>
-                  <div className="text-xl font-semibold">
-                    {school.studentCount.toLocaleString()} Students
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    {school.gradeRange}
-                  </div>
-                </div>
-                <div className="p-4 border border-gray-200 rounded-lg">
-                  <div className="text-sm text-gray-500 mb-1">
-                    Student-Teacher Ratio
-                  </div>
-                  <div className="text-xl font-semibold">
-                    {school.studentTeacherRatio}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    National Avg: 17:1
-                  </div>
-                </div>
-                <div className="p-4 border border-gray-200 rounded-lg">
-                  <div className="text-sm text-gray-500 mb-1">
-                    College Readiness
-                  </div>
-                  <div className="text-xl font-semibold">
-                    {school.collegePlacement
-                      ? `${school.collegePlacement}%`
-                      : "N/A"}
-                  </div>
-                  <div className="text-sm text-gray-600">
-                    {school.collegePlacement > 95
-                      ? "Top 5% Nationally"
-                      : school.collegePlacement > 85
-                      ? "Top 15% Nationally"
-                      : school.collegePlacement > 75
-                      ? "Above Average"
-                      : "Average"}
-                  </div>
-                </div>
-              </div>
-
               {/* Tabs Section */}
               <Tabs defaultValue="overview" className="mb-8">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-5">
+                <TabsList className="grid w-full grid-cols-3">
                   <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="academics">Academics</TabsTrigger>
-                  <TabsTrigger value="teachers">Teachers</TabsTrigger>
                   <TabsTrigger value="activities">Activities</TabsTrigger>
                   <TabsTrigger value="reviews">Reviews</TabsTrigger>
                 </TabsList>
@@ -153,21 +102,47 @@ export default async function SchoolDetailPage({ params }: PageParams) {
                   <SchoolProfile school={school} />
                 </TabsContent>
 
-                <TabsContent value="academics" className="pt-6">
-                  <Academics school={school} />
-                </TabsContent>
-
-                <TabsContent value="teachers" className="pt-6">
-                  <Teachers school={school} />
-                </TabsContent>
-
                 <TabsContent value="activities" className="pt-6">
                   <Activities school={school} />
                 </TabsContent>
                 <TabsContent value="reviews" className="pt-6">
-                  <Reviews school={school} />
+                  <Reviews entity={school} type="school" />
                 </TabsContent>
               </Tabs>
+
+              {hasBranches ? (
+                <SchoolBranches
+                  branches={school.schoolBranch}
+                  // reviews={school.reviews || []}
+                />
+              ) : (
+                <>
+                  <div className="mt-8">
+                    <h2 className="text-xl font-bold mb-4">
+                      Location & Contact
+                    </h2>
+                    <div className="bg-gray-50 p-4 rounded-lg">
+                      <div className="flex items-start gap-3 mb-3">
+                        <MapPin className="h-5 w-5 text-gray-500 mt-0.5" />
+                        <div>
+                          <p className="font-medium">{school.address}</p>
+                          {school.address && (
+                            <p className="text-gray-600">{school.address}</p>
+                          )}
+                        </div>
+                      </div>
+                      {school.phone && (
+                        <div className="flex items-center gap-3">
+                          <div className="h-5 w-5 flex items-center justify-center text-gray-500">
+                            <span className="text-sm">📞</span>
+                          </div>
+                          <p>{school.phone}</p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </>
+              )}
             </div>
 
             {/* Sidebar */}

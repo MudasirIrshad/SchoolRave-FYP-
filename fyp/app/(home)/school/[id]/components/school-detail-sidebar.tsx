@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { School } from "@/lib/zod-types/school";
-import Image from "next/image";
+// import Image from "next/image";
 import React from "react";
 
 export default function SchoolDetailSidebar({ school }: { school: School }) {
@@ -28,38 +28,28 @@ export default function SchoolDetailSidebar({ school }: { school: School }) {
             <div className="font-medium">{school.school_type}</div>
           </div>
           <div>
+            <div className="text-sm text-gray-500 mb-1">
+              Medium of Instruction
+            </div>
+            <div className="font-medium">{school.medium_of_instruction}</div>
+          </div>
+          <div>
+            <div className="text-sm text-gray-500 mb-1">Curriculum Type</div>
+            <div className="font-medium">{school.curriculum_type}</div>
+          </div>
+          <div>
             <div className="text-sm text-gray-500 mb-1">Grades</div>
             <div className="font-medium">{school.gradeRange}</div>
           </div>
           <div>
             <div className="text-sm text-gray-500 mb-1">Total Students</div>
-            <div className="font-medium">
-              {school.studentCount.toLocaleString()}
-            </div>
+            <div className="font-medium">{school.studentCount || 0}</div>
           </div>
-          <div>
-            <div className="text-sm text-gray-500 mb-1">Average Class Size</div>
-            <div className="font-medium">22 students</div>
-          </div>
-          <div>
-            <div className="text-sm text-gray-500 mb-1">
-              Student-Teacher Ratio
-            </div>
-            <div className="font-medium">{school.studentTeacherRatio}</div>
-          </div>
-          {school.collegePlacement > 0 && (
-            <div>
-              <div className="text-sm text-gray-500 mb-1">
-                College Placement
-              </div>
-              <div className="font-medium">{school.collegePlacement}%</div>
-            </div>
-          )}
         </div>
       </div>
 
       {/* Photo Gallery */}
-      <div className="bg-white rounded-lg shadow p-6">
+      {/* <div className="bg-white rounded-lg shadow p-6">
         <h3 className="font-semibold text-lg mb-4">School Gallery</h3>
         <div className="grid grid-cols-2 gap-2">
           {school.galleryImages.map((imgUrl, index) => (
@@ -81,7 +71,7 @@ export default function SchoolDetailSidebar({ school }: { school: School }) {
             View All Photos
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

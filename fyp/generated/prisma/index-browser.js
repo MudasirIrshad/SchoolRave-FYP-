@@ -126,13 +126,16 @@ exports.Prisma.SchoolScalarFieldEnum = {
   medium_of_instruction: 'medium_of_instruction',
   imageUrl: 'imageUrl',
   description: 'description',
+  gradeRange: 'gradeRange',
+  studentCount: 'studentCount',
+  userId: 'userId',
+  facilities: 'facilities',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   subscriptionType: 'subscriptionType',
   stripeCustomerId: 'stripeCustomerId',
   school_type: 'school_type',
-  curriculum_type: 'curriculum_type',
-  userId: 'userId'
+  curriculum_type: 'curriculum_type'
 };
 
 exports.Prisma.SchoolBranchScalarFieldEnum = {
@@ -172,10 +175,10 @@ exports.Prisma.ReviewScalarFieldEnum = {
   id: 'id',
   rating: 'rating',
   comment: 'comment',
-  createdAt: 'createdAt',
   schoolId: 'schoolId',
   schoolBranchId: 'schoolBranchId',
-  reviewerId: 'reviewerId'
+  reviewerId: 'reviewerId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SubscriptionScalarFieldEnum = {
