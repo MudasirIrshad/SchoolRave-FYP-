@@ -34,7 +34,7 @@ async function SchoolDetail() {
 
   return (
     <>
-      <div className="flex items-center gap-x-2">
+      <div className="flex items-center gap-x-2 mt-4">
         <LayoutDashboard />
         <h2 className="text-xl">Customize School</h2>
       </div>

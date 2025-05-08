@@ -1,11 +1,17 @@
 import React from "react";
-// import Logo from "./logo";
 import SidebarRoutes from "./sidebar-routes";
+import Link from "next/link";
 
 function Sidebar() {
   return (
-    <div className="h-full border-r  flex flex-col overflow-y-auto bg-white shadow-sm">
-      <div className="p-6">{/* <Logo /> */}</div>
+    <div className="h-full border-r flex flex-col overflow-y-auto bg-white shadow-sm">
+      <div className="p-6 flex justify-center">
+        <Link href="/">
+          <h1 className="text-primary font-bold text-2xl font-open">
+            SchoolRave
+          </h1>
+        </Link>
+      </div>
       <div>
         <SidebarRoutes />
       </div>
