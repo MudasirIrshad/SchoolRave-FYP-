@@ -18,7 +18,6 @@ interface ReviewCardProps {
 }
 
 export default function ReviewCard({ review }: ReviewCardProps) {
-  // console.log("DANGERSCHOOL:", review);
   return (
     <Card>
       <CardHeader className="flex flex-row justify-between items-start gap-4">

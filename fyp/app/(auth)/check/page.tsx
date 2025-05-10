@@ -15,7 +15,7 @@ export default async function CheckPage() {
   if (role === "SCHOOL")
     return redirect(`/dashboard/school/${user.id}/schoolHome`);
 
-  if (role === "GENERAL") return redirect(`/dashboard/user/${user.id}`);
+  if (role === "GENERAL") return redirect(`/`);
 
   if (role === "ADMIN") return redirect(`/dashboard/admin/${user.id}`);
 

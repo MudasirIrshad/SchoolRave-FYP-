@@ -9,7 +9,7 @@ export async function addReview(
   formData: FormData | z.infer<typeof AddReviewSchema>
 ) {
   try {
-    console.log("formData: ", formData);
+    // console.log("formData: ", formData);
     // Parse and validate input
     const input = AddReviewSchema.parse(
       formData instanceof FormData
@@ -19,6 +19,8 @@ export async function addReview(
 
     // console.log("DANGER:", input);
     const { rating, comment, entityId, userId, entityType } = input;
+
+    // console.log("entityType: ", entityType);
 
     if (entityType === "school") {
       await prisma.review.create({

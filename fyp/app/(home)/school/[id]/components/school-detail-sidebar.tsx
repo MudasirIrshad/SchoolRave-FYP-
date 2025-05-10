@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { School } from "@/lib/zod-types/school";
-// import Image from "next/image";
+import { School } from "@/generated/prisma";
 import React from "react";
 
 export default function SchoolDetailSidebar({ school }: { school: School }) {

@@ -32,9 +32,7 @@ export default async function Header() {
     const userRole = user.publicMetadata?.role || "GENERAL";
     const dashboardLink = {
       href:
-        userRole === "SCHOOL"
-          ? `/dashboard/school/${user.id}/schoolHome`
-          : `/dashboard/user/${user.id}`,
+        userRole === "SCHOOL" ? `/dashboard/school/${user.id}/schoolHome` : `/`,
       label: "Dashboard",
     };
     navLinks.splice(1, 0, dashboardLink);

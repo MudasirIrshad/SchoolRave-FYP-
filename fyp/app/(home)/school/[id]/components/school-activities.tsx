@@ -1,7 +1,7 @@
-import { School } from "@/lib/zod-types/school";
+import { School } from "@/generated/prisma";
 import { Award, Users } from "lucide-react";
 
-export default function Activities({ school }: { school: School }) {
+export default function SchoolActivities({ school }: { school: School }) {
   return (
     <div>
       <h3 className="text-xl font-semibold mb-4">Clubs & Activities</h3>
