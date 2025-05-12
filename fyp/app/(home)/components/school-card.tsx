@@ -10,7 +10,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { School } from "../types";
+import { School } from "@/generated/prisma";
 
 export default function SchoolCard({ school }: { school: School }) {
   return (

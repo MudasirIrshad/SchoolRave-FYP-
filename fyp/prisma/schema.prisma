@@ -89,6 +89,7 @@ model School {
   subscription   Subscription[]
   Payment        Payment[]
   Admission      Admission[]
+  Post Post[]
 
   @@unique([userId])
 }
@@ -234,4 +235,17 @@ model Document {
 
   admissionId String
   admission   Admission @relation(fields: [admissionId], references: [id], onDelete: Cascade)
+}
+
+
+model Post {
+  id String @id @default(uuid())
+  schoolId String
+  content String?
+  image String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  school School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
+
 }
