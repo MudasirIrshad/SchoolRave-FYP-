@@ -38,7 +38,10 @@ export default function ChooseRoleForm() {
         if (selectedRole === "SCHOOL") {
           router.push(`/dashboard/school/${userId}/schoolHome`);
         } else {
+<<<<<<< HEAD
           // router.push(`/dashboard/user/${userId}`);
+=======
+>>>>>>> 2bd22d340c0a21f51a7bb791a7c5b6daa4bb4f93
           router.push(`/`);
         }
       } catch (error) {

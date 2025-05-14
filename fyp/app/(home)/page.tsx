@@ -9,31 +9,17 @@ export default async function Home({
 }: {
   searchParams: { query?: string };
 }) {
-  let featuredSchools: any[] = [];
-  let error = null;
-
-  try {
-    // Ensure database connection is healthy
-    await prisma.$connect();
-
-    featuredSchools = await prisma.school.findMany({
-      where: {
-        name: {
-          contains: searchParams.query?.toString(),
-          mode: "insensitive",
-        },
+  const featuredSchools = await prisma.school.findMany({
+    where: {
+      name: {
+        contains: searchParams.query?.toString(),
+        mode: "insensitive",
       },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-    console.log(featuredSchools);
-  } catch (err) {
-    console.error("Database error:", err);
-    error = "Failed to load schools. Please try again later.";
-  } finally {
-    await prisma.$disconnect();
-  }
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -75,11 +61,7 @@ export default async function Home({
             </Link>
           </div>
 
-          {error ? (
-            <div className="col-span-3 text-center py-8">
-              <p className="text-red-500">{error}</p>
-            </div>
-          ) : (
+          {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
               {featuredSchools.length > 0 ? (
                 featuredSchools.map((school) => (
@@ -95,7 +77,7 @@ export default async function Home({
                 </div>
               )}
             </div>
-          )}
+          }
         </div>
       </section>
 

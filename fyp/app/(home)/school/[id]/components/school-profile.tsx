@@ -1,4 +1,5 @@
-import { School } from "@/lib/zod-types/school";
+import { MapPin, PhoneIcon } from "lucide-react";
+import { School } from "@/generated/prisma";
 
 export default function SchoolProfile({ school }: { school: School }) {
   return (
@@ -20,15 +21,19 @@ export default function SchoolProfile({ school }: { school: School }) {
         ))}
       </div>
 
-      {/* <h3 className="text-xl font-semibold mb-4">School Highlights</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-        {school?.schoolHighlights.map((highlight, index) => (
-          <div key={index} className="border p-4 rounded-lg">
-            <h4 className="font-semibold mb-2">{highlight.title}</h4>
-            <p className="text-sm text-gray-600">{highlight.description}</p>
-          </div>
-        ))}
-      </div> */}
+      <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+      <div className="bg-gray-50 p-4 rounded-lg mb-6">
+        <div className="flex items-start gap-3 mb-3">
+          <MapPin className="h-5 w-5 text-gray-500 mt-0.5" />
+          <p className="text-gray-700 font-medium">
+            {school.address || "Address not available"}
+          </p>
+        </div>
+        <div className="flex items-center gap-3">
+          <PhoneIcon className="h-5 w-5 text-gray-500" />
+          <p>{school.phone || "Phone not available"}</p>
+        </div>
+      </div>
     </div>
   );
 }

@@ -222,6 +222,15 @@ exports.Prisma.DocumentScalarFieldEnum = {
   admissionId: 'admissionId'
 };
 
+exports.Prisma.PostScalarFieldEnum = {
+  id: 'id',
+  schoolId: 'schoolId',
+  content: 'content',
+  image: 'image',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -290,7 +299,8 @@ exports.Prisma.ModelName = {
   Subscription: 'Subscription',
   Payment: 'Payment',
   Admission: 'Admission',
-  Document: 'Document'
+  Document: 'Document',
+  Post: 'Post'
 };
 
 /**
