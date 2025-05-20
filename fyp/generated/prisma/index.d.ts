@@ -144,6 +144,15 @@ export const AdmissionApproval: {
 
 export type AdmissionApproval = (typeof AdmissionApproval)[keyof typeof AdmissionApproval]
 
+
+export const SchoolCategory: {
+  PRIMARY: 'PRIMARY',
+  MIDDLE: 'MIDDLE',
+  HIGH: 'HIGH'
+};
+
+export type SchoolCategory = (typeof SchoolCategory)[keyof typeof SchoolCategory]
+
 }
 
 export type SchoolType = $Enums.SchoolType
@@ -181,6 +190,10 @@ export const SubscriptionType: typeof $Enums.SubscriptionType
 export type AdmissionApproval = $Enums.AdmissionApproval
 
 export const AdmissionApproval: typeof $Enums.AdmissionApproval
+
+export type SchoolCategory = $Enums.SchoolCategory
+
+export const SchoolCategory: typeof $Enums.SchoolCategory
 
 /**
  * ##  Prisma Client ʲˢ
@@ -2077,8 +2090,10 @@ export namespace Prisma {
     updatedAt: Date | null
     subscriptionType: $Enums.SubscriptionType | null
     stripeCustomerId: string | null
+    schoolCategory: $Enums.SchoolCategory | null
     school_type: $Enums.SchoolType | null
     curriculum_type: $Enums.CurriculumType | null
+    admissionFormUrl: string | null
   }
 
   export type SchoolMaxAggregateOutputType = {
@@ -2097,8 +2112,10 @@ export namespace Prisma {
     updatedAt: Date | null
     subscriptionType: $Enums.SubscriptionType | null
     stripeCustomerId: string | null
+    schoolCategory: $Enums.SchoolCategory | null
     school_type: $Enums.SchoolType | null
     curriculum_type: $Enums.CurriculumType | null
+    admissionFormUrl: string | null
   }
 
   export type SchoolCountAggregateOutputType = {
@@ -2118,8 +2135,10 @@ export namespace Prisma {
     updatedAt: number
     subscriptionType: number
     stripeCustomerId: number
+    schoolCategory: number
     school_type: number
     curriculum_type: number
+    admissionFormUrl: number
     _all: number
   }
 
@@ -2148,8 +2167,10 @@ export namespace Prisma {
     updatedAt?: true
     subscriptionType?: true
     stripeCustomerId?: true
+    schoolCategory?: true
     school_type?: true
     curriculum_type?: true
+    admissionFormUrl?: true
   }
 
   export type SchoolMaxAggregateInputType = {
@@ -2168,8 +2189,10 @@ export namespace Prisma {
     updatedAt?: true
     subscriptionType?: true
     stripeCustomerId?: true
+    schoolCategory?: true
     school_type?: true
     curriculum_type?: true
+    admissionFormUrl?: true
   }
 
   export type SchoolCountAggregateInputType = {
@@ -2189,8 +2212,10 @@ export namespace Prisma {
     updatedAt?: true
     subscriptionType?: true
     stripeCustomerId?: true
+    schoolCategory?: true
     school_type?: true
     curriculum_type?: true
+    admissionFormUrl?: true
     _all?: true
   }
 
@@ -2297,8 +2322,10 @@ export namespace Prisma {
     updatedAt: Date
     subscriptionType: $Enums.SubscriptionType
     stripeCustomerId: string | null
+    schoolCategory: $Enums.SchoolCategory | null
     school_type: $Enums.SchoolType | null
     curriculum_type: $Enums.CurriculumType | null
+    admissionFormUrl: string | null
     _count: SchoolCountAggregateOutputType | null
     _avg: SchoolAvgAggregateOutputType | null
     _sum: SchoolSumAggregateOutputType | null
@@ -2337,8 +2364,10 @@ export namespace Prisma {
     updatedAt?: boolean
     subscriptionType?: boolean
     stripeCustomerId?: boolean
+    schoolCategory?: boolean
     school_type?: boolean
     curriculum_type?: boolean
+    admissionFormUrl?: boolean
     schoolBranch?: boolean | School$schoolBranchArgs<ExtArgs>
     class_base_fee?: boolean | School$class_base_feeArgs<ExtArgs>
     reviews?: boolean | School$reviewsArgs<ExtArgs>
@@ -2366,8 +2395,10 @@ export namespace Prisma {
     updatedAt?: boolean
     subscriptionType?: boolean
     stripeCustomerId?: boolean
+    schoolCategory?: boolean
     school_type?: boolean
     curriculum_type?: boolean
+    admissionFormUrl?: boolean
   }, ExtArgs["result"]["school"]>
 
   export type SchoolSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2387,8 +2418,10 @@ export namespace Prisma {
     updatedAt?: boolean
     subscriptionType?: boolean
     stripeCustomerId?: boolean
+    schoolCategory?: boolean
     school_type?: boolean
     curriculum_type?: boolean
+    admissionFormUrl?: boolean
   }, ExtArgs["result"]["school"]>
 
   export type SchoolSelectScalar = {
@@ -2408,11 +2441,13 @@ export namespace Prisma {
     updatedAt?: boolean
     subscriptionType?: boolean
     stripeCustomerId?: boolean
+    schoolCategory?: boolean
     school_type?: boolean
     curriculum_type?: boolean
+    admissionFormUrl?: boolean
   }
 
-  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "imageUrl" | "description" | "gradeRange" | "studentCount" | "userId" | "facilities" | "createdAt" | "updatedAt" | "subscriptionType" | "stripeCustomerId" | "school_type" | "curriculum_type", ExtArgs["result"]["school"]>
+  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "imageUrl" | "description" | "gradeRange" | "studentCount" | "userId" | "facilities" | "createdAt" | "updatedAt" | "subscriptionType" | "stripeCustomerId" | "schoolCategory" | "school_type" | "curriculum_type" | "admissionFormUrl", ExtArgs["result"]["school"]>
   export type SchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     schoolBranch?: boolean | School$schoolBranchArgs<ExtArgs>
     class_base_fee?: boolean | School$class_base_feeArgs<ExtArgs>
@@ -2454,8 +2489,10 @@ export namespace Prisma {
       updatedAt: Date
       subscriptionType: $Enums.SubscriptionType
       stripeCustomerId: string | null
+      schoolCategory: $Enums.SchoolCategory | null
       school_type: $Enums.SchoolType | null
       curriculum_type: $Enums.CurriculumType | null
+      admissionFormUrl: string | null
     }, ExtArgs["result"]["school"]>
     composites: {}
   }
@@ -2902,8 +2939,10 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"School", 'DateTime'>
     readonly subscriptionType: FieldRef<"School", 'SubscriptionType'>
     readonly stripeCustomerId: FieldRef<"School", 'String'>
+    readonly schoolCategory: FieldRef<"School", 'SchoolCategory'>
     readonly school_type: FieldRef<"School", 'SchoolType'>
     readonly curriculum_type: FieldRef<"School", 'CurriculumType'>
+    readonly admissionFormUrl: FieldRef<"School", 'String'>
   }
     
 
@@ -3496,7 +3535,10 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     description: string | null
+    imageUrl: string | null
+    admissionFormUrl: string | null
     admission_status: $Enums.AdmissionStatus | null
+    schoolBranchCategory: $Enums.SchoolCategory | null
     gender_policy: $Enums.GenderPolicy | null
     schoolId: string | null
   }
@@ -3509,7 +3551,10 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     description: string | null
+    imageUrl: string | null
+    admissionFormUrl: string | null
     admission_status: $Enums.AdmissionStatus | null
+    schoolBranchCategory: $Enums.SchoolCategory | null
     gender_policy: $Enums.GenderPolicy | null
     schoolId: string | null
   }
@@ -3522,7 +3567,10 @@ export namespace Prisma {
     email: number
     phone: number
     description: number
+    imageUrl: number
+    admissionFormUrl: number
     admission_status: number
+    schoolBranchCategory: number
     gender_policy: number
     facilities: number
     schoolId: number
@@ -3538,7 +3586,10 @@ export namespace Prisma {
     email?: true
     phone?: true
     description?: true
+    imageUrl?: true
+    admissionFormUrl?: true
     admission_status?: true
+    schoolBranchCategory?: true
     gender_policy?: true
     schoolId?: true
   }
@@ -3551,7 +3602,10 @@ export namespace Prisma {
     email?: true
     phone?: true
     description?: true
+    imageUrl?: true
+    admissionFormUrl?: true
     admission_status?: true
+    schoolBranchCategory?: true
     gender_policy?: true
     schoolId?: true
   }
@@ -3564,7 +3618,10 @@ export namespace Prisma {
     email?: true
     phone?: true
     description?: true
+    imageUrl?: true
+    admissionFormUrl?: true
     admission_status?: true
+    schoolBranchCategory?: true
     gender_policy?: true
     facilities?: true
     schoolId?: true
@@ -3651,7 +3708,10 @@ export namespace Prisma {
     email: string | null
     phone: string | null
     description: string | null
+    imageUrl: string | null
+    admissionFormUrl: string | null
     admission_status: $Enums.AdmissionStatus | null
+    schoolBranchCategory: $Enums.SchoolCategory | null
     gender_policy: $Enums.GenderPolicy | null
     facilities: string[]
     schoolId: string
@@ -3682,7 +3742,10 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     description?: boolean
+    imageUrl?: boolean
+    admissionFormUrl?: boolean
     admission_status?: boolean
+    schoolBranchCategory?: boolean
     gender_policy?: boolean
     facilities?: boolean
     schoolId?: boolean
@@ -3700,7 +3763,10 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     description?: boolean
+    imageUrl?: boolean
+    admissionFormUrl?: boolean
     admission_status?: boolean
+    schoolBranchCategory?: boolean
     gender_policy?: boolean
     facilities?: boolean
     schoolId?: boolean
@@ -3715,7 +3781,10 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     description?: boolean
+    imageUrl?: boolean
+    admissionFormUrl?: boolean
     admission_status?: boolean
+    schoolBranchCategory?: boolean
     gender_policy?: boolean
     facilities?: boolean
     schoolId?: boolean
@@ -3730,13 +3799,16 @@ export namespace Prisma {
     email?: boolean
     phone?: boolean
     description?: boolean
+    imageUrl?: boolean
+    admissionFormUrl?: boolean
     admission_status?: boolean
+    schoolBranchCategory?: boolean
     gender_policy?: boolean
     facilities?: boolean
     schoolId?: boolean
   }
 
-  export type SchoolBranchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "city" | "email" | "phone" | "description" | "admission_status" | "gender_policy" | "facilities" | "schoolId", ExtArgs["result"]["schoolBranch"]>
+  export type SchoolBranchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "address" | "city" | "email" | "phone" | "description" | "imageUrl" | "admissionFormUrl" | "admission_status" | "schoolBranchCategory" | "gender_policy" | "facilities" | "schoolId", ExtArgs["result"]["schoolBranch"]>
   export type SchoolBranchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     school?: boolean | SchoolDefaultArgs<ExtArgs>
     class_base_fee?: boolean | SchoolBranch$class_base_feeArgs<ExtArgs>
@@ -3765,7 +3837,10 @@ export namespace Prisma {
       email: string | null
       phone: string | null
       description: string | null
+      imageUrl: string | null
+      admissionFormUrl: string | null
       admission_status: $Enums.AdmissionStatus | null
+      schoolBranchCategory: $Enums.SchoolCategory | null
       gender_policy: $Enums.GenderPolicy | null
       facilities: string[]
       schoolId: string
@@ -4202,7 +4277,10 @@ export namespace Prisma {
     readonly email: FieldRef<"SchoolBranch", 'String'>
     readonly phone: FieldRef<"SchoolBranch", 'String'>
     readonly description: FieldRef<"SchoolBranch", 'String'>
+    readonly imageUrl: FieldRef<"SchoolBranch", 'String'>
+    readonly admissionFormUrl: FieldRef<"SchoolBranch", 'String'>
     readonly admission_status: FieldRef<"SchoolBranch", 'AdmissionStatus'>
+    readonly schoolBranchCategory: FieldRef<"SchoolBranch", 'SchoolCategory'>
     readonly gender_policy: FieldRef<"SchoolBranch", 'GenderPolicy'>
     readonly facilities: FieldRef<"SchoolBranch", 'String[]'>
     readonly schoolId: FieldRef<"SchoolBranch", 'String'>
@@ -13788,8 +13866,10 @@ export namespace Prisma {
     updatedAt: 'updatedAt',
     subscriptionType: 'subscriptionType',
     stripeCustomerId: 'stripeCustomerId',
+    schoolCategory: 'schoolCategory',
     school_type: 'school_type',
-    curriculum_type: 'curriculum_type'
+    curriculum_type: 'curriculum_type',
+    admissionFormUrl: 'admissionFormUrl'
   };
 
   export type SchoolScalarFieldEnum = (typeof SchoolScalarFieldEnum)[keyof typeof SchoolScalarFieldEnum]
@@ -13803,7 +13883,10 @@ export namespace Prisma {
     email: 'email',
     phone: 'phone',
     description: 'description',
+    imageUrl: 'imageUrl',
+    admissionFormUrl: 'admissionFormUrl',
     admission_status: 'admission_status',
+    schoolBranchCategory: 'schoolBranchCategory',
     gender_policy: 'gender_policy',
     facilities: 'facilities',
     schoolId: 'schoolId'
@@ -14001,6 +14084,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'SchoolCategory'
+   */
+  export type EnumSchoolCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SchoolCategory'>
+    
+
+
+  /**
+   * Reference to a field of type 'SchoolCategory[]'
+   */
+  export type ListEnumSchoolCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SchoolCategory[]'>
+    
+
+
+  /**
    * Reference to a field of type 'SchoolType'
    */
   export type EnumSchoolTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SchoolType'>
@@ -14135,8 +14232,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"School"> | Date | string
     subscriptionType?: EnumSubscriptionTypeFilter<"School"> | $Enums.SubscriptionType
     stripeCustomerId?: StringNullableFilter<"School"> | string | null
+    schoolCategory?: EnumSchoolCategoryNullableFilter<"School"> | $Enums.SchoolCategory | null
     school_type?: EnumSchoolTypeNullableFilter<"School"> | $Enums.SchoolType | null
     curriculum_type?: EnumCurriculumTypeNullableFilter<"School"> | $Enums.CurriculumType | null
+    admissionFormUrl?: StringNullableFilter<"School"> | string | null
     schoolBranch?: SchoolBranchListRelationFilter
     class_base_fee?: Class_base_feeListRelationFilter
     reviews?: ReviewListRelationFilter
@@ -14163,8 +14262,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrderInput | SortOrder
+    schoolCategory?: SortOrderInput | SortOrder
     school_type?: SortOrderInput | SortOrder
     curriculum_type?: SortOrderInput | SortOrder
+    admissionFormUrl?: SortOrderInput | SortOrder
     schoolBranch?: SchoolBranchOrderByRelationAggregateInput
     class_base_fee?: Class_base_feeOrderByRelationAggregateInput
     reviews?: ReviewOrderByRelationAggregateInput
@@ -14194,8 +14295,10 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
     subscriptionType?: EnumSubscriptionTypeFilter<"School"> | $Enums.SubscriptionType
+    schoolCategory?: EnumSchoolCategoryNullableFilter<"School"> | $Enums.SchoolCategory | null
     school_type?: EnumSchoolTypeNullableFilter<"School"> | $Enums.SchoolType | null
     curriculum_type?: EnumCurriculumTypeNullableFilter<"School"> | $Enums.CurriculumType | null
+    admissionFormUrl?: StringNullableFilter<"School"> | string | null
     schoolBranch?: SchoolBranchListRelationFilter
     class_base_fee?: Class_base_feeListRelationFilter
     reviews?: ReviewListRelationFilter
@@ -14222,8 +14325,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrderInput | SortOrder
+    schoolCategory?: SortOrderInput | SortOrder
     school_type?: SortOrderInput | SortOrder
     curriculum_type?: SortOrderInput | SortOrder
+    admissionFormUrl?: SortOrderInput | SortOrder
     _count?: SchoolCountOrderByAggregateInput
     _avg?: SchoolAvgOrderByAggregateInput
     _max?: SchoolMaxOrderByAggregateInput
@@ -14251,8 +14356,10 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
     subscriptionType?: EnumSubscriptionTypeWithAggregatesFilter<"School"> | $Enums.SubscriptionType
     stripeCustomerId?: StringNullableWithAggregatesFilter<"School"> | string | null
+    schoolCategory?: EnumSchoolCategoryNullableWithAggregatesFilter<"School"> | $Enums.SchoolCategory | null
     school_type?: EnumSchoolTypeNullableWithAggregatesFilter<"School"> | $Enums.SchoolType | null
     curriculum_type?: EnumCurriculumTypeNullableWithAggregatesFilter<"School"> | $Enums.CurriculumType | null
+    admissionFormUrl?: StringNullableWithAggregatesFilter<"School"> | string | null
   }
 
   export type SchoolBranchWhereInput = {
@@ -14266,7 +14373,10 @@ export namespace Prisma {
     email?: StringNullableFilter<"SchoolBranch"> | string | null
     phone?: StringNullableFilter<"SchoolBranch"> | string | null
     description?: StringNullableFilter<"SchoolBranch"> | string | null
+    imageUrl?: StringNullableFilter<"SchoolBranch"> | string | null
+    admissionFormUrl?: StringNullableFilter<"SchoolBranch"> | string | null
     admission_status?: EnumAdmissionStatusNullableFilter<"SchoolBranch"> | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: EnumSchoolCategoryNullableFilter<"SchoolBranch"> | $Enums.SchoolCategory | null
     gender_policy?: EnumGenderPolicyNullableFilter<"SchoolBranch"> | $Enums.GenderPolicy | null
     facilities?: StringNullableListFilter<"SchoolBranch">
     schoolId?: StringFilter<"SchoolBranch"> | string
@@ -14283,7 +14393,10 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    admissionFormUrl?: SortOrderInput | SortOrder
     admission_status?: SortOrderInput | SortOrder
+    schoolBranchCategory?: SortOrderInput | SortOrder
     gender_policy?: SortOrderInput | SortOrder
     facilities?: SortOrder
     schoolId?: SortOrder
@@ -14303,7 +14416,10 @@ export namespace Prisma {
     address?: StringNullableFilter<"SchoolBranch"> | string | null
     city?: StringNullableFilter<"SchoolBranch"> | string | null
     description?: StringNullableFilter<"SchoolBranch"> | string | null
+    imageUrl?: StringNullableFilter<"SchoolBranch"> | string | null
+    admissionFormUrl?: StringNullableFilter<"SchoolBranch"> | string | null
     admission_status?: EnumAdmissionStatusNullableFilter<"SchoolBranch"> | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: EnumSchoolCategoryNullableFilter<"SchoolBranch"> | $Enums.SchoolCategory | null
     gender_policy?: EnumGenderPolicyNullableFilter<"SchoolBranch"> | $Enums.GenderPolicy | null
     facilities?: StringNullableListFilter<"SchoolBranch">
     schoolId?: StringFilter<"SchoolBranch"> | string
@@ -14320,7 +14436,10 @@ export namespace Prisma {
     email?: SortOrderInput | SortOrder
     phone?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
+    imageUrl?: SortOrderInput | SortOrder
+    admissionFormUrl?: SortOrderInput | SortOrder
     admission_status?: SortOrderInput | SortOrder
+    schoolBranchCategory?: SortOrderInput | SortOrder
     gender_policy?: SortOrderInput | SortOrder
     facilities?: SortOrder
     schoolId?: SortOrder
@@ -14340,7 +14459,10 @@ export namespace Prisma {
     email?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
     phone?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
     description?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
+    imageUrl?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
+    admissionFormUrl?: StringNullableWithAggregatesFilter<"SchoolBranch"> | string | null
     admission_status?: EnumAdmissionStatusNullableWithAggregatesFilter<"SchoolBranch"> | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: EnumSchoolCategoryNullableWithAggregatesFilter<"SchoolBranch"> | $Enums.SchoolCategory | null
     gender_policy?: EnumGenderPolicyNullableWithAggregatesFilter<"SchoolBranch"> | $Enums.GenderPolicy | null
     facilities?: StringNullableListFilter<"SchoolBranch">
     schoolId?: StringWithAggregatesFilter<"SchoolBranch"> | string
@@ -14920,8 +15042,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolInput
     reviews?: ReviewCreateNestedManyWithoutSchoolInput
@@ -14948,8 +15072,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchUncheckedCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolInput
@@ -14976,8 +15102,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolNestedInput
@@ -15004,8 +15132,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUncheckedUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolNestedInput
@@ -15032,8 +15162,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
   }
 
   export type SchoolUpdateManyMutationInput = {
@@ -15053,8 +15185,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SchoolUncheckedUpdateManyInput = {
@@ -15074,8 +15208,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type SchoolBranchCreateInput = {
@@ -15086,7 +15222,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
@@ -15102,7 +15241,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     schoolId: string
@@ -15118,7 +15260,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
@@ -15134,7 +15279,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     schoolId?: StringFieldUpdateOperationsInput | string
@@ -15150,7 +15298,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     schoolId: string
@@ -15164,7 +15315,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
   }
@@ -15177,7 +15331,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     schoolId?: StringFieldUpdateOperationsInput | string
@@ -15810,6 +15967,13 @@ export namespace Prisma {
     not?: NestedEnumSubscriptionTypeFilter<$PrismaModel> | $Enums.SubscriptionType
   }
 
+  export type EnumSchoolCategoryNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.SchoolCategory | EnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SchoolCategory[] | ListEnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SchoolCategory[] | ListEnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSchoolCategoryNullableFilter<$PrismaModel> | $Enums.SchoolCategory | null
+  }
+
   export type EnumSchoolTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.SchoolType | EnumSchoolTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.SchoolType[] | ListEnumSchoolTypeFieldRefInput<$PrismaModel> | null
@@ -15916,8 +16080,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrder
+    schoolCategory?: SortOrder
     school_type?: SortOrder
     curriculum_type?: SortOrder
+    admissionFormUrl?: SortOrder
   }
 
   export type SchoolAvgOrderByAggregateInput = {
@@ -15940,8 +16106,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrder
+    schoolCategory?: SortOrder
     school_type?: SortOrder
     curriculum_type?: SortOrder
+    admissionFormUrl?: SortOrder
   }
 
   export type SchoolMinOrderByAggregateInput = {
@@ -15960,8 +16128,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrder
+    schoolCategory?: SortOrder
     school_type?: SortOrder
     curriculum_type?: SortOrder
+    admissionFormUrl?: SortOrder
   }
 
   export type SchoolSumOrderByAggregateInput = {
@@ -16044,6 +16214,16 @@ export namespace Prisma {
     _max?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
   }
 
+  export type EnumSchoolCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SchoolCategory | EnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SchoolCategory[] | ListEnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SchoolCategory[] | ListEnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSchoolCategoryNullableWithAggregatesFilter<$PrismaModel> | $Enums.SchoolCategory | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumSchoolCategoryNullableFilter<$PrismaModel>
+    _max?: NestedEnumSchoolCategoryNullableFilter<$PrismaModel>
+  }
+
   export type EnumSchoolTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.SchoolType | EnumSchoolTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.SchoolType[] | ListEnumSchoolTypeFieldRefInput<$PrismaModel> | null
@@ -16091,7 +16271,10 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     description?: SortOrder
+    imageUrl?: SortOrder
+    admissionFormUrl?: SortOrder
     admission_status?: SortOrder
+    schoolBranchCategory?: SortOrder
     gender_policy?: SortOrder
     facilities?: SortOrder
     schoolId?: SortOrder
@@ -16105,7 +16288,10 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     description?: SortOrder
+    imageUrl?: SortOrder
+    admissionFormUrl?: SortOrder
     admission_status?: SortOrder
+    schoolBranchCategory?: SortOrder
     gender_policy?: SortOrder
     schoolId?: SortOrder
   }
@@ -16118,7 +16304,10 @@ export namespace Prisma {
     email?: SortOrder
     phone?: SortOrder
     description?: SortOrder
+    imageUrl?: SortOrder
+    admissionFormUrl?: SortOrder
     admission_status?: SortOrder
+    schoolBranchCategory?: SortOrder
     gender_policy?: SortOrder
     schoolId?: SortOrder
   }
@@ -16682,6 +16871,10 @@ export namespace Prisma {
 
   export type EnumSubscriptionTypeFieldUpdateOperationsInput = {
     set?: $Enums.SubscriptionType
+  }
+
+  export type NullableEnumSchoolCategoryFieldUpdateOperationsInput = {
+    set?: $Enums.SchoolCategory | null
   }
 
   export type NullableEnumSchoolTypeFieldUpdateOperationsInput = {
@@ -17484,6 +17677,13 @@ export namespace Prisma {
     not?: NestedEnumSubscriptionTypeFilter<$PrismaModel> | $Enums.SubscriptionType
   }
 
+  export type NestedEnumSchoolCategoryNullableFilter<$PrismaModel = never> = {
+    equals?: $Enums.SchoolCategory | EnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SchoolCategory[] | ListEnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SchoolCategory[] | ListEnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSchoolCategoryNullableFilter<$PrismaModel> | $Enums.SchoolCategory | null
+  }
+
   export type NestedEnumSchoolTypeNullableFilter<$PrismaModel = never> = {
     equals?: $Enums.SchoolType | EnumSchoolTypeFieldRefInput<$PrismaModel> | null
     in?: $Enums.SchoolType[] | ListEnumSchoolTypeFieldRefInput<$PrismaModel> | null
@@ -17592,6 +17792,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
     _max?: NestedEnumSubscriptionTypeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumSchoolCategoryNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.SchoolCategory | EnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    in?: $Enums.SchoolCategory[] | ListEnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    notIn?: $Enums.SchoolCategory[] | ListEnumSchoolCategoryFieldRefInput<$PrismaModel> | null
+    not?: NestedEnumSchoolCategoryNullableWithAggregatesFilter<$PrismaModel> | $Enums.SchoolCategory | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedEnumSchoolCategoryNullableFilter<$PrismaModel>
+    _max?: NestedEnumSchoolCategoryNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumSchoolTypeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -17734,7 +17944,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolBranchInput
@@ -17749,7 +17962,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolBranchInput
@@ -17967,7 +18183,10 @@ export namespace Prisma {
     email?: StringNullableFilter<"SchoolBranch"> | string | null
     phone?: StringNullableFilter<"SchoolBranch"> | string | null
     description?: StringNullableFilter<"SchoolBranch"> | string | null
+    imageUrl?: StringNullableFilter<"SchoolBranch"> | string | null
+    admissionFormUrl?: StringNullableFilter<"SchoolBranch"> | string | null
     admission_status?: EnumAdmissionStatusNullableFilter<"SchoolBranch"> | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: EnumSchoolCategoryNullableFilter<"SchoolBranch"> | $Enums.SchoolCategory | null
     gender_policy?: EnumGenderPolicyNullableFilter<"SchoolBranch"> | $Enums.GenderPolicy | null
     facilities?: StringNullableListFilter<"SchoolBranch">
     schoolId?: StringFilter<"SchoolBranch"> | string
@@ -18165,8 +18384,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolInput
     reviews?: ReviewCreateNestedManyWithoutSchoolInput
     subscription?: SubscriptionCreateNestedManyWithoutSchoolInput
@@ -18192,8 +18413,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolInput
     subscription?: SubscriptionUncheckedCreateNestedManyWithoutSchoolInput
@@ -18289,8 +18512,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolNestedInput
     subscription?: SubscriptionUpdateManyWithoutSchoolNestedInput
@@ -18316,8 +18541,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolNestedInput
     subscription?: SubscriptionUncheckedUpdateManyWithoutSchoolNestedInput
@@ -18366,7 +18593,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
@@ -18381,7 +18611,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     schoolId: string
@@ -18410,8 +18643,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchCreateNestedManyWithoutSchoolInput
     reviews?: ReviewCreateNestedManyWithoutSchoolInput
     subscription?: SubscriptionCreateNestedManyWithoutSchoolInput
@@ -18437,8 +18672,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchUncheckedCreateNestedManyWithoutSchoolInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolInput
     subscription?: SubscriptionUncheckedCreateNestedManyWithoutSchoolInput
@@ -18471,7 +18708,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
@@ -18486,7 +18726,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     schoolId?: StringFieldUpdateOperationsInput | string
@@ -18521,8 +18764,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolNestedInput
     subscription?: SubscriptionUpdateManyWithoutSchoolNestedInput
@@ -18548,8 +18793,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUncheckedUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolNestedInput
     subscription?: SubscriptionUncheckedUpdateManyWithoutSchoolNestedInput
@@ -18715,8 +18962,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolInput
     subscription?: SubscriptionCreateNestedManyWithoutSchoolInput
@@ -18742,8 +18991,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchUncheckedCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolInput
     subscription?: SubscriptionUncheckedCreateNestedManyWithoutSchoolInput
@@ -18765,7 +19016,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     school: SchoolCreateNestedOneWithoutSchoolBranchInput
@@ -18780,7 +19034,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
     schoolId: string
@@ -18849,8 +19106,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolNestedInput
     subscription?: SubscriptionUpdateManyWithoutSchoolNestedInput
@@ -18876,8 +19135,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUncheckedUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolNestedInput
     subscription?: SubscriptionUncheckedUpdateManyWithoutSchoolNestedInput
@@ -18905,7 +19166,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     school?: SchoolUpdateOneRequiredWithoutSchoolBranchNestedInput
@@ -18920,7 +19184,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     schoolId?: StringFieldUpdateOperationsInput | string
@@ -18979,8 +19246,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolInput
     reviews?: ReviewCreateNestedManyWithoutSchoolInput
@@ -19006,8 +19275,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchUncheckedCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolInput
@@ -19077,8 +19348,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolNestedInput
@@ -19104,8 +19377,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUncheckedUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolNestedInput
@@ -19172,8 +19447,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolInput
     reviews?: ReviewCreateNestedManyWithoutSchoolInput
@@ -19199,8 +19476,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchUncheckedCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolInput
@@ -19302,8 +19581,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolNestedInput
@@ -19329,8 +19610,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUncheckedUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolNestedInput
@@ -19391,8 +19674,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolInput
     reviews?: ReviewCreateNestedManyWithoutSchoolInput
@@ -19418,8 +19703,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchUncheckedCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolInput
@@ -19514,8 +19801,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolNestedInput
@@ -19541,8 +19830,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUncheckedUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolNestedInput
@@ -19698,8 +19989,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeCreateNestedManyWithoutSchoolInput
     reviews?: ReviewCreateNestedManyWithoutSchoolInput
@@ -19725,8 +20018,10 @@ export namespace Prisma {
     updatedAt?: Date | string
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
+    schoolCategory?: $Enums.SchoolCategory | null
     school_type?: $Enums.SchoolType | null
     curriculum_type?: $Enums.CurriculumType | null
+    admissionFormUrl?: string | null
     schoolBranch?: SchoolBranchUncheckedCreateNestedManyWithoutSchoolInput
     class_base_fee?: Class_base_feeUncheckedCreateNestedManyWithoutSchoolInput
     reviews?: ReviewUncheckedCreateNestedManyWithoutSchoolInput
@@ -19768,8 +20063,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUpdateManyWithoutSchoolNestedInput
@@ -19795,8 +20092,10 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
+    schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     school_type?: NullableEnumSchoolTypeFieldUpdateOperationsInput | $Enums.SchoolType | null
     curriculum_type?: NullableEnumCurriculumTypeFieldUpdateOperationsInput | $Enums.CurriculumType | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     schoolBranch?: SchoolBranchUncheckedUpdateManyWithoutSchoolNestedInput
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolNestedInput
     reviews?: ReviewUncheckedUpdateManyWithoutSchoolNestedInput
@@ -19813,7 +20112,10 @@ export namespace Prisma {
     email?: string | null
     phone?: string | null
     description?: string | null
+    imageUrl?: string | null
+    admissionFormUrl?: string | null
     admission_status?: $Enums.AdmissionStatus | null
+    schoolBranchCategory?: $Enums.SchoolCategory | null
     gender_policy?: $Enums.GenderPolicy | null
     facilities?: SchoolBranchCreatefacilitiesInput | string[]
   }
@@ -19881,7 +20183,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     class_base_fee?: Class_base_feeUpdateManyWithoutSchoolBranchNestedInput
@@ -19896,7 +20201,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
     class_base_fee?: Class_base_feeUncheckedUpdateManyWithoutSchoolBranchNestedInput
@@ -19911,7 +20219,10 @@ export namespace Prisma {
     email?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    admissionFormUrl?: NullableStringFieldUpdateOperationsInput | string | null
     admission_status?: NullableEnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus | null
+    schoolBranchCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
     gender_policy?: NullableEnumGenderPolicyFieldUpdateOperationsInput | $Enums.GenderPolicy | null
     facilities?: SchoolBranchUpdatefacilitiesInput | string[]
   }
