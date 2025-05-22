@@ -58,6 +58,12 @@ enum AdmissionApproval {
   REJECTED
 }
 
+enum SchoolCategory {
+  PRIMARY
+  MIDDLE
+  HIGH
+}
+
 // DATABASE MODELS
 
 model School {
@@ -79,9 +85,12 @@ model School {
 
   subscriptionType SubscriptionType @default(FREE)
   stripeCustomerId String?          @unique
+  schoolCategory   SchoolCategory?  @default(PRIMARY)
 
   school_type     SchoolType?
   curriculum_type CurriculumType?
+
+  admissionFormUrl String?
 
   schoolBranch   SchoolBranch[]
   class_base_fee Class_base_fee[]
@@ -95,14 +104,17 @@ model School {
 }
 
 model SchoolBranch {
-  id               String           @id @default(uuid())
-  name             String?
-  address          String?
-  city             String?
-  email            String?          @unique
-  phone            String?          @unique
-  description      String?
-  admission_status AdmissionStatus? @default(OPEN)
+  id                   String           @id @default(uuid())
+  name                 String?
+  address              String?
+  city                 String?
+  email                String?          @unique
+  phone                String?          @unique
+  description          String?
+  imageUrl             String?
+  admissionFormUrl     String?
+  admission_status     AdmissionStatus? @default(OPEN)
+  schoolBranchCategory SchoolCategory?  @default(PRIMARY)
 
   gender_policy GenderPolicy? @default(CO_EDUCATION)
 

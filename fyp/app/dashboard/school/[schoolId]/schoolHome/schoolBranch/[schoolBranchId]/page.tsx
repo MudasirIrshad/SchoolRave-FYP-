@@ -18,6 +18,7 @@ import SchoolBranchDescriptionForm from "./_components/school-branch-description
 import SchoolBranchAdmissionStatusForm from "./_components/school-branch-admissionStatus-form";
 import SchoolBranchGenderPolicyForm from "./_components/school-branch-genderPolicy-form";
 import SchoolBranchFacilities from "./_components/school-branch-facility-form";
+import ImageForm from "./_components/school-branch-image-form";
 
 async function SchoolBranchPage({
   params,
@@ -150,7 +151,11 @@ async function SchoolBranchPage({
               <h2 className="text-xl">Add a image</h2>
             </div>
             <div className="border rounded-md p-4 mt-4">
-              Image Form Placeholder
+              <ImageForm
+                schoolBranchId={params.schoolBranchId}
+                initialData={schoolBranch}
+                schoolId={school?.id!}
+              />
             </div>
           </div>
         </div>

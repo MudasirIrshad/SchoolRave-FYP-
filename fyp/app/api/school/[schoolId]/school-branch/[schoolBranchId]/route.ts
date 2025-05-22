@@ -24,8 +24,7 @@ export async function PATCH(
         ...values,
       },
     });
-    return NextResponse.json("OK");
-    // return NextResponse.json(school);
+    return NextResponse.json(schoolBranch);
   } catch (error) {
     console.log("[SCHOOL ID API]", error);
     return new NextResponse("Internal Error", { status: 500 });
