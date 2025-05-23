@@ -6,6 +6,7 @@ import {
   EyeIcon,
   VideoIcon,
   ImageIcon,
+  Paperclip,
 } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -19,6 +20,7 @@ import SchoolBranchAdmissionStatusForm from "./_components/school-branch-admissi
 import SchoolBranchGenderPolicyForm from "./_components/school-branch-genderPolicy-form";
 import SchoolBranchFacilities from "./_components/school-branch-facility-form";
 import ImageForm from "./_components/school-branch-image-form";
+import AttachmentForm from "./_components/school-branch-admission-form";
 
 async function SchoolBranchPage({
   params,
@@ -109,6 +111,21 @@ async function SchoolBranchPage({
                 schoolId={school?.id!}
               />
             </div>
+            <div>
+              <div className="flex items-center gap-x-2">
+                <div className="bg-sky-100 p-1 border rounded-full border-sky-500">
+                  <ImageIcon className="text-sky-600" />
+                </div>
+                <h2 className="text-xl">Add a image</h2>
+              </div>
+              <div className="border rounded-md p-4 mt-4">
+                <ImageForm
+                  schoolBranchId={params.schoolBranchId}
+                  initialData={schoolBranch}
+                  schoolId={school?.id!}
+                />
+              </div>
+            </div>
           </div>
 
           {/* ----------------------------------- */}
@@ -142,20 +159,22 @@ async function SchoolBranchPage({
                 schoolId={school?.id!}
               />
             </div>
-          </div>
-          <div>
-            <div className="flex items-center gap-x-2">
-              <div className="bg-sky-100 p-1 border rounded-full border-sky-500">
-                <ImageIcon className="text-sky-600" />
+            <div>
+              <div className="flex items-center gap-x-2 mb-4">
+                <div className="bg-sky-100 p-1 border rounded-full border-sky-500">
+                  <Paperclip className="text-sky-600" />
+                </div>
+                <h2 className="text-xl">Admission Form's Pdf</h2>
               </div>
-              <h2 className="text-xl">Add a image</h2>
-            </div>
-            <div className="border rounded-md p-4 mt-4">
-              <ImageForm
-                schoolBranchId={params.schoolBranchId}
-                initialData={schoolBranch}
-                schoolId={school?.id!}
-              />
+              <div className="border bg-slate-100 rounded-md p-4">
+                <div>
+                  <AttachmentForm
+                    schoolBranchId={params.schoolBranchId}
+                    initialData={schoolBranch}
+                    schoolId={school?.id!}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
