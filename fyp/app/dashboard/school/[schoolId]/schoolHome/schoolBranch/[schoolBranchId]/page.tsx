@@ -20,7 +20,8 @@ import SchoolBranchAdmissionStatusForm from "./_components/school-branch-admissi
 import SchoolBranchGenderPolicyForm from "./_components/school-branch-genderPolicy-form";
 import SchoolBranchFacilities from "./_components/school-branch-facility-form";
 import ImageForm from "./_components/school-branch-image-form";
-import AttachmentForm from "./_components/school-branch-admission-form";
+import AttachmentForm from "./_components/school-branch-attachment-form";
+import SchoolBranchCategoryForm from "./_components/school-branch-category-form";
 
 async function SchoolBranchPage({
   params,
@@ -156,6 +157,13 @@ async function SchoolBranchPage({
               <SchoolBranchGenderPolicyForm
                 schoolBranchId={params.schoolBranchId}
                 genderPolicy={schoolBranch.gender_policy!}
+                schoolId={school?.id!}
+              />
+            </div>
+            <div className="border bg-slate-100 rounded-md p-4">
+              <SchoolBranchCategoryForm
+                schoolBranchId={params.schoolBranchId}
+                schoolBranchCategory={schoolBranch.schoolBranchCategory!}
                 schoolId={school?.id!}
               />
             </div>

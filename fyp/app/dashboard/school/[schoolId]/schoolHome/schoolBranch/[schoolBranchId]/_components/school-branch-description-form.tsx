@@ -52,7 +52,7 @@ function SchoolBranchDescriptionForm({
 
   return (
     <div className="w-full">
-      Branch Phone Number
+      Branch Description
       {isEditing ? (
         <div className="flex flex-col gap-2 w-full">
           <div className="flex items-center gap-2 w-full">
