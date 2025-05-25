@@ -1,7 +1,8 @@
 import prisma from "@/lib/prisma";
 import React from "react";
 import SubscriptionCard from "@/components/subscription-card";
-import { redirect } from "next/navigation";
+
+import MainPage from "./_components/main";
 
 async function CreatePost({ params }: { params: { schoolId: string } }) {
   const school = await prisma.school.findUnique({
@@ -17,7 +18,9 @@ async function CreatePost({ params }: { params: { schoolId: string } }) {
             <SubscriptionCard />
           </>
         ) : (
-          <>Purchased premium subscription</>
+          <>
+            <MainPage school={school!} />
+          </>
         )}
       </div>
     </div>
