@@ -15,7 +15,6 @@ async function ShowPosts({ schoolId }: ShowPostsProps) {
   if (!posts || posts.length === 0) {
     return <p className="text-center text-gray-500">No posts yet.</p>;
   }
-
   return (
     <div className="space-y-4 mt-4 w-full max-w-2xl mx-auto">
       {posts.map((post) => (
