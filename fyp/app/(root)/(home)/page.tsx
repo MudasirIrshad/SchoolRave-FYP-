@@ -1,25 +1,15 @@
-import SearchBar from "@/app/(home)/components/search-bar";
-import SchoolCard from "@/app/(home)/components/school-card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import prisma from "@/lib/prisma";
+import { getSchoolsData } from "@/data-access/school-data";
+import SearchBar from "./components/search-bar";
+import SchoolCard from "./components/school-card";
 
 export default async function Home({
   searchParams,
 }: {
   searchParams: { query?: string };
 }) {
-  const featuredSchools = await prisma.school.findMany({
-    where: {
-      name: {
-        contains: searchParams.query?.toString(),
-        mode: "insensitive",
-      },
-    },
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const featuredSchools = await getSchoolsData(searchParams.query);
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -72,7 +62,7 @@ export default async function Home({
                   <p className="text-gray-500">
                     {searchParams.query
                       ? "No schools match your search criteria"
-                      : "No featured schools found"}
+                      : "No schools found"}
                   </p>
                 </div>
               )}

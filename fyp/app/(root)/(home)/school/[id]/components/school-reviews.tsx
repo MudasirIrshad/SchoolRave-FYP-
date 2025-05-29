@@ -4,16 +4,16 @@ import prisma from "@/lib/prisma";
 import { Review } from "@/generated/prisma";
 
 interface ReviewsProps {
-  entityId: string;
+  schoolId: string;
 }
 
-export default async function SchoolBranchReviews({ entityId }: ReviewsProps) {
+export default async function SchoolReviews({ schoolId }: ReviewsProps) {
   const reviews = await prisma.review.findMany({
     where: {
-      schoolBranchId: entityId,
+      schoolId: schoolId,
     },
     include: {
-      schoolBranch: true,
+      school: true,
       reviewer: true,
     },
     orderBy: {
@@ -21,16 +21,14 @@ export default async function SchoolBranchReviews({ entityId }: ReviewsProps) {
     },
   });
 
-  // console.log("SCHOOLBRANCHREVIEW: ",reviews);
-
   if (reviews.length === 0) {
     return (
       <div className="text-center py-8 bg-gray-50 rounded-lg">
-        <p className="text-gray-500 mb-4">No reviews yet for this Branch.</p>
+        <p className="text-gray-500 mb-4">No reviews yet for this school.</p>
         <AddReviewDialog
           btnText="Be the First to Review"
-          entityId={entityId}
-          entityType="branch"
+          entityId={schoolId}
+          entityType="school"
         />
       </div>
     );
@@ -42,8 +40,8 @@ export default async function SchoolBranchReviews({ entityId }: ReviewsProps) {
         <h3 className="text-xl font-semibold">Reviews & Ratings</h3>
         <AddReviewDialog
           btnText="Write a Review"
-          entityId={entityId}
-          entityType="branch"
+          entityId={schoolId}
+          entityType="school"
         />
       </div>
 

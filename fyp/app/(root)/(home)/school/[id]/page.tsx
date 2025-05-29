@@ -1,13 +1,13 @@
 import { notFound } from "next/navigation";
-import prisma from "@/lib/prisma";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SchoolProfile from "./components/school-profile";
 import SchoolDetailHeader from "./components/school-detail-header";
 import SchoolDetailSidebar from "./components/school-detail-sidebar";
 import SchoolReviews from "./components/school-reviews";
-import SchoolActivities from "./components/school-activities";
+// import SchoolActivities from "./components/school-activities";
 import { SchoolBranches } from "./components/school-branches";
+import { getSchoolDetailData } from "@/data-access/school-data";
 
 interface PageParams {
   params: {
@@ -19,18 +19,11 @@ export default async function SchoolDetailPage({ params }: PageParams) {
   const schoolId = params.id;
   if (!schoolId) return notFound();
 
-  const school = await prisma.school.findUnique({
-    where: { id: schoolId },
-    include: { schoolBranch: true },
-  });
+  const { school, ratingAvg } = await getSchoolDetailData(schoolId);
 
   if (!school) return notFound();
 
-  const ratingAvg = await prisma.review.aggregate({
-    _avg: { rating: true },
-    where: { schoolId },
-  });
-
+  // console.log("DANGER: ",school)
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SchoolDetailHeader school={school} ratingAvg={ratingAvg._avg.rating} />
@@ -54,10 +47,18 @@ export default async function SchoolDetailPage({ params }: PageParams) {
               </div>
 
               <Tabs defaultValue="overview" className="mb-8">
-                <TabsList className="grid w-full grid-cols-4">
+                <TabsList
+                  className={`grid w-full ${
+                    school.schoolBranch.length > 0
+                      ? "grid-cols-3"
+                      : "grid-cols-2"
+                  }`}
+                >
                   <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="activities">Activities</TabsTrigger>
-                  <TabsTrigger value="branches">Branches</TabsTrigger>
+                  {/* <TabsTrigger value="activities">Activities</TabsTrigger> */}
+                  {school.schoolBranch.length > 0 && (
+                    <TabsTrigger value="branches">Branches</TabsTrigger>
+                  )}
                   <TabsTrigger value="reviews">Reviews</TabsTrigger>
                 </TabsList>
 
@@ -65,13 +66,15 @@ export default async function SchoolDetailPage({ params }: PageParams) {
                   <SchoolProfile school={school} />
                 </TabsContent>
 
-                <TabsContent value="activities" className="pt-6">
+                {/* <TabsContent value="activities" className="pt-6">
                   <SchoolActivities school={school} />
-                </TabsContent>
+                </TabsContent> */}
 
-                <TabsContent value="branches" className="pt-6">
-                  <SchoolBranches branches={school.schoolBranch} />
-                </TabsContent>
+                {school.schoolBranch.length > 0 && (
+                  <TabsContent value="branches" className="pt-6">
+                    <SchoolBranches branches={school.schoolBranch} />
+                  </TabsContent>
+                )}
 
                 <TabsContent value="reviews" className="pt-6">
                   <SchoolReviews entityId={school.id} />

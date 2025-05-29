@@ -20,7 +20,7 @@ export async function addReview(
     // console.log("DANGER:", input);
     const { rating, comment, entityId, userId, entityType } = input;
 
-    // console.log("entityType: ", entityType);
+    console.log(rating, comment, entityId, userId, entityType);
 
     if (entityType === "school") {
       await prisma.review.create({

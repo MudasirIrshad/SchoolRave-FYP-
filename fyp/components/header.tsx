@@ -1,9 +1,11 @@
-import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { headers } from "next/headers";
+import { currentUser } from "@clerk/nextjs/server";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Menu } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -11,63 +13,76 @@ import {
   NavigationMenuList,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-import { currentUser } from "@clerk/nextjs/server";
+
+// Utility: Get dashboard/profile link based on role
+function getDashboardLink(user: any) {
+  const role = user?.publicMetadata?.role || "GENERAL";
+  switch (role) {
+    case "SCHOOL":
+      return {
+        href: `/dashboard/school/${user.id}/schoolHome`,
+        label: "Dashboard",
+      };
+    case "ADMIN":
+      return { href: "/dashboard/admin", label: "Dashboard" };
+    default:
+      return { href: "/profile", label: "Profile" };
+  }
+}
 
 export default async function Header() {
-  const user = await currentUser();
-  const headersList = headers();
-  const pathname = headersList.get("x-invoke-path") || "/";
+  let user = null;
+  let pathname = "/";
+
+  try {
+    user = await currentUser();
+  } catch (err) {
+    console.error("Error fetching user:", err);
+  }
+
+  try {
+    pathname = headers().get("x-invoke-path") || "/";
+  } catch (err) {
+    console.error("Error fetching pathname:", err);
+  }
 
   const isActive = (path: string) => pathname === path;
 
   const navLinks = [
     { href: "/", label: "Home" },
+    ...(user ? [getDashboardLink(user)] : []),
     { href: "/search", label: "Discover" },
     { href: "/search?rating=4.5", label: "Rankings" },
     { href: "#", label: "About" },
   ];
-
-  // Add Dashboard link if user is signed in
-  if (user) {
-    const userRole = user.publicMetadata?.role || "GENERAL";
-    const dashboardLink = {
-      href:
-        userRole === "SCHOOL" ? `/dashboard/school/${user.id}/schoolHome` : `/`,
-      label: "Dashboard",
-    };
-    navLinks.splice(1, 0, dashboardLink);
-  }
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <h1 className="text-primary font-bold text-2xl font-open">
-              SchoolRave
-            </h1>
+          <Link href="/" className="text-primary font-bold text-2xl font-open">
+            SchoolRave
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <nav className="hidden md:flex items-center gap-6">
             <NavigationMenu>
               <NavigationMenuList>
-                {navLinks.map((link) => (
-                  <NavigationMenuItem key={link.href}>
-                    <Link href={link.href} legacyBehavior passHref>
+                {navLinks.map(({ href, label }) => (
+                  <NavigationMenuItem key={href}>
+                    <Link href={href} passHref legacyBehavior>
                       <NavigationMenuLink
                         className={navigationMenuTriggerStyle()}
-                        active={isActive(link.href)}
                       >
                         <span
                           className={`font-open ${
-                            isActive(link.href)
+                            isActive(href)
                               ? "text-primary font-semibold"
                               : "text-gray-600 hover:text-primary"
                           }`}
                         >
-                          {link.label}
+                          {label}
                         </span>
                       </NavigationMenuLink>
                     </Link>
@@ -77,7 +92,7 @@ export default async function Header() {
             </NavigationMenu>
 
             <SignedOut>
-              <div className="flex items-center space-x-3">
+              <div className="flex space-x-3">
                 <Button asChild>
                   <Link href="/sign-in">Sign In</Link>
                 </Button>
@@ -90,7 +105,7 @@ export default async function Header() {
             <SignedIn>
               <UserButton />
             </SignedIn>
-          </div>
+          </nav>
 
           {/* Mobile Navigation */}
           <div className="md:hidden">
@@ -102,17 +117,17 @@ export default async function Header() {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[350px]">
                 <nav className="flex flex-col space-y-4 mt-8">
-                  {navLinks.map((link) => (
+                  {navLinks.map(({ href, label }) => (
                     <Link
-                      key={link.href}
-                      href={link.href}
+                      key={href}
+                      href={href}
                       className={`text-lg font-open ${
-                        isActive(link.href)
+                        isActive(href)
                           ? "text-primary font-semibold"
                           : "text-gray-600 hover:text-primary"
                       }`}
                     >
-                      {link.label}
+                      {label}
                     </Link>
                   ))}
                   <SignedOut>

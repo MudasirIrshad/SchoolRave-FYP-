@@ -53,7 +53,7 @@ export function SchoolBranches({ branches }: SchoolBranchesProps) {
                   </div>
                 </div>
               </div>
-              <SchoolBranchReviews entityId={branch.id} />
+              <SchoolBranchReviews branchId={branch.id} />
             </AccordionContent>
           </AccordionItem>
         ))}

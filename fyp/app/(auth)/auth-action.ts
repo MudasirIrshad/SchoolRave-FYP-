@@ -15,16 +15,21 @@ export async function saveUserRole(role: "SCHOOL" | "GENERAL") {
     // Get user info from Clerk
     const email = clerkUser.emailAddresses[0].emailAddress as string;
     const username = clerkUser.username as string;
+    const imageUrl = clerkUser.imageUrl;
 
     // Save or update user in database
     await prisma.user.upsert({
       where: { email },
-      update: { role },
+      update: {
+        role,
+        imageUrl,
+      },
       create: {
         id: clerkUser.id,
         email,
         name: username,
         role,
+        imageUrl,
       },
     });
 

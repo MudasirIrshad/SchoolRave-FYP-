@@ -14,9 +14,9 @@ import {
 } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { z } from "zod";
-import { addReview } from "@/app/(home)/school/[id]/action";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
+import { addReview } from "../action";
 
 interface AddReviewDialogProps {
   btnText: string;

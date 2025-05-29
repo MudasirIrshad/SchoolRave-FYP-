@@ -7,7 +7,7 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Review as PrismaReview, User } from "@/generated/prisma";
-import { StarRating } from "@/app/(home)/components/star-rating";
+import { StarRating } from "../../../components/star-rating";
 
 interface ReviewWithReviewer extends PrismaReview {
   reviewer?: User | null;

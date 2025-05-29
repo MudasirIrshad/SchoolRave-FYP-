@@ -170,10 +170,18 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
+  imageUrl: 'imageUrl',
   password: 'password',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   role: 'role'
+};
+
+exports.Prisma.FavoriteScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  schoolId: 'schoolId',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.ReviewScalarFieldEnum = {
@@ -306,6 +314,7 @@ exports.Prisma.ModelName = {
   SchoolBranch: 'SchoolBranch',
   Class_base_fee: 'Class_base_fee',
   User: 'User',
+  Favorite: 'Favorite',
   Review: 'Review',
   Subscription: 'Subscription',
   Payment: 'Payment',
