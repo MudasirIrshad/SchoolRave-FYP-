@@ -132,6 +132,7 @@ exports.Prisma.SchoolScalarFieldEnum = {
   facilities: 'facilities',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
+  admission_status: 'admission_status',
   subscriptionType: 'subscriptionType',
   stripeCustomerId: 'stripeCustomerId',
   schoolCategory: 'schoolCategory',
@@ -258,6 +259,11 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
+exports.AdmissionStatus = exports.$Enums.AdmissionStatus = {
+  OPEN: 'OPEN',
+  CLOSED: 'CLOSED'
+};
+
 exports.SubscriptionType = exports.$Enums.SubscriptionType = {
   FREE: 'FREE',
   PAID: 'PAID'
@@ -278,11 +284,6 @@ exports.SchoolType = exports.$Enums.SchoolType = {
 exports.CurriculumType = exports.$Enums.CurriculumType = {
   FEDERAL: 'FEDERAL',
   BALUCHISTAN: 'BALUCHISTAN'
-};
-
-exports.AdmissionStatus = exports.$Enums.AdmissionStatus = {
-  OPEN: 'OPEN',
-  CLOSED: 'CLOSED'
 };
 
 exports.GenderPolicy = exports.$Enums.GenderPolicy = {

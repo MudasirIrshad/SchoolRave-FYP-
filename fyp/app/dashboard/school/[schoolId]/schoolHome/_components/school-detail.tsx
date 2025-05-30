@@ -22,6 +22,7 @@ import { Button } from "@/components/ui/button";
 import SubscriptionCard from "../../../../../../components/subscription-card";
 import CreateSchoolBranch from "./(component)/school-branch";
 import AttachmentForm from "./(component)/attachment-form";
+import AdmissionStatusForm from "./(component)/admissionStatus-form";
 async function SchoolDetail() {
   const { userId } = await auth();
   if (!userId) return redirect("/dashboard");
@@ -53,6 +54,10 @@ async function SchoolDetail() {
             <DescriptionForm initialData={school} schoolId={school.id} />
             <PhoneForm initialData={school} schoolId={school.id} />
             <EmailForm initialData={school} schoolId={school.id} />
+            <AdmissionStatusForm
+              admissionStatus={school.admission_status!}
+              schoolId={school?.id!}
+            />
           </div>
         </div>
 
