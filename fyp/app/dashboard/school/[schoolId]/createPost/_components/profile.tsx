@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { School } from "@/generated/prisma";
 import { ChevronDown, ChevronUp, PencilIcon } from "lucide-react";
+import Link from "next/link";
 import React, { useState } from "react";
 
 interface ProfileComponentProps {
@@ -111,10 +112,12 @@ function ProfileComponent({ school }: ProfileComponentProps) {
             )}
 
             <div className="flex mt-4">
-              <Button variant={"outline"}>
-                <PencilIcon className="mr-2 h-4 w-4" />
-                Edit Profile
-              </Button>
+              <Link href={`/dashboard/school/${school.userId}/schoolHome`}>
+                <Button variant={"outline"}>
+                  <PencilIcon className="mr-2 h-4 w-4" />
+                  Edit Profile
+                </Button>
+              </Link>
             </div>
           </div>
         </CardContent>
