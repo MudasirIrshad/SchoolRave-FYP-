@@ -14,13 +14,18 @@ async function CreateSchoolBranch({ initialData }: SchoolBranchProps) {
     where: {
       userId: userId!,
     },
+    include: {
+      schoolBranch: true,
+    },
   });
+
+  if (!school) {
+    return <div>School not found</div>;
+  }
+
   return (
     <div>
-      <CreateBranch
-        initialData={initialData}
-        schoolId={school?.id}
-      />
+      <CreateBranch initialData={school} schoolId={school.id} />
     </div>
   );
 }
