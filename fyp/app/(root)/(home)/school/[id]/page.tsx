@@ -5,9 +5,9 @@ import SchoolProfile from "./components/tabs/school-profile";
 import SchoolDetailHeader from "./components/school-detail-header";
 import SchoolDetailSidebar from "./components/school-detail-sidebar";
 import SchoolReviews from "./components/tabs/school-reviews";
-// import SchoolActivities from "./components/school-activities";
 import { SchoolBranches } from "./components/tabs/school-branches";
 import { getSchoolDetailData } from "@/data-access/school-data";
+import { auth } from "@clerk/nextjs/server";
 
 interface PageParams {
   params: {
@@ -19,7 +19,9 @@ export default async function SchoolDetailPage({ params }: PageParams) {
   const schoolId = params.id;
   if (!schoolId) return notFound();
 
-  const { school, ratingAvg } = await getSchoolDetailData(schoolId);
+  const { userId } = await auth();
+
+  const { school, ratingAvg } = await getSchoolDetailData(schoolId, userId);
 
   if (!school) return notFound();
 
@@ -65,10 +67,6 @@ export default async function SchoolDetailPage({ params }: PageParams) {
                 <TabsContent value="overview" className="pt-6">
                   <SchoolProfile school={school} />
                 </TabsContent>
-
-                {/* <TabsContent value="activities" className="pt-6">
-                  <SchoolActivities school={school} />
-                </TabsContent> */}
 
                 {school.schoolBranch.length > 0 && (
                   <TabsContent value="branches" className="pt-6">

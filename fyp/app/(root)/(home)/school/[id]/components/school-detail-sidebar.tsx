@@ -1,8 +1,31 @@
+"use client";
+
+import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { School } from "@/generated/prisma";
-import React from "react";
+import { saveToFavorites } from "@/actions/favorite-actions";
 
-export default function SchoolDetailSidebar({ school }: { school: School }) {
+export default function SchoolDetailSidebar({
+  school,
+  isFavorited,
+}: {
+  school: School;
+  isFavorited: boolean;
+}) {
+  const [favorited, setFavorited] = useState(isFavorited);
+  const [isPending, startTransition] = useTransition();
+
+  const handleSave = () => {
+    startTransition(async () => {
+      try {
+        const res = await saveToFavorites(school.id);
+        if (res.success) setFavorited(true);
+      } catch (err) {
+        console.error("Failed to favorite school:", err);
+      }
+    });
+  };
+
   return (
     <div className="lg:w-1/3">
       {/* School Actions */}
@@ -12,8 +35,13 @@ export default function SchoolDetailSidebar({ school }: { school: School }) {
         </h3>
         <div className="space-y-3">
           <Button className="w-full">Apply Online</Button>
-          <Button variant="outline" className="w-full">
-            Save to Favorites
+          <Button
+            variant="outline"
+            className="w-full"
+            onClick={handleSave}
+            disabled={favorited || isPending}
+          >
+            {favorited ? "Saved to Favorites" : "Save to Favorites"}
           </Button>
         </div>
       </div>
@@ -46,31 +74,6 @@ export default function SchoolDetailSidebar({ school }: { school: School }) {
           </div>
         </div>
       </div>
-
-      {/* Photo Gallery */}
-      {/* <div className="bg-white rounded-lg shadow p-6">
-        <h3 className="font-semibold text-lg mb-4">School Gallery</h3>
-        <div className="grid grid-cols-2 gap-2">
-          {school.galleryImages.map((imgUrl, index) => (
-            <div
-              key={index}
-              className="aspect-video rounded-md overflow-hidden"
-            >
-              <Image
-                src={imgUrl || "https://placehold.co/600x400?text=No+Image"}
-                alt={`${school.name} gallery image ${index + 1}`}
-                className="object-cover"
-                fill
-              />
-            </div>
-          ))}
-        </div>
-        <div className="mt-4 text-center">
-          <Button variant="ghost" size="sm">
-            View All Photos
-          </Button>
-        </div>
-      </div> */}
     </div>
   );
 }
