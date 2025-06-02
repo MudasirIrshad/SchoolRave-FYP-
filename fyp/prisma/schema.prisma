@@ -99,7 +99,7 @@ model School {
   Payment        Payment[]
   Admission      Admission[]
   Post           Post[]
-  favorites       Favorite[]
+  favorites      Favorite[]
 
   @@unique([userId])
 }
@@ -159,7 +159,7 @@ model User {
   payments Payment[]
 
   admissions Admission[]
-  favorites   Favorite[]
+  favorites  Favorite[]
 }
 
 model Favorite {
@@ -232,11 +232,12 @@ model Payment {
 
 model Admission {
   id            String            @id @default(uuid())
-  student_name  String
-  student_age   Int
-  date_of_birth DateTime
-  image_url     String
+  student_name  String?
+  student_age   Int?
+  date_of_birth DateTime?
+  image_url     String?
   approval      AdmissionApproval
+  formUrl       String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -21,7 +21,10 @@ export default async function SchoolDetailPage({ params }: PageParams) {
 
   const { userId } = await auth();
 
-  const { school, ratingAvg } = await getSchoolDetailData(schoolId, userId);
+  const { school, ratingAvg, isFavorited } = await getSchoolDetailData(
+    schoolId,
+    userId
+  );
 
   if (!school) return notFound();
 
@@ -80,7 +83,7 @@ export default async function SchoolDetailPage({ params }: PageParams) {
               </Tabs>
             </div>
 
-            <SchoolDetailSidebar school={school} />
+            <SchoolDetailSidebar school={school} isFavorited={isFavorited} />
           </div>
         </div>
       </section>

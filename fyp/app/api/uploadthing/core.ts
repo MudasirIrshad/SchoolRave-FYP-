@@ -19,6 +19,9 @@ export const ourFileRouter = {
   schoolAttachment: f(["pdf"])
     .middleware(async () => await handleauth())
     .onUploadComplete(() => {}),
+  userImage: f(["image/png","image/jpeg"])
+    .middleware(async () => await handleauth())
+    .onUploadComplete(() => {}),
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;

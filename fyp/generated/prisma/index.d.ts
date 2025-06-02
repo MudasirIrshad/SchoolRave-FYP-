@@ -11769,6 +11769,7 @@ export namespace Prisma {
     date_of_birth: Date | null
     image_url: string | null
     approval: $Enums.AdmissionApproval | null
+    formUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
     schoolId: string | null
@@ -11782,6 +11783,7 @@ export namespace Prisma {
     date_of_birth: Date | null
     image_url: string | null
     approval: $Enums.AdmissionApproval | null
+    formUrl: string | null
     createdAt: Date | null
     updatedAt: Date | null
     schoolId: string | null
@@ -11795,6 +11797,7 @@ export namespace Prisma {
     date_of_birth: number
     image_url: number
     approval: number
+    formUrl: number
     createdAt: number
     updatedAt: number
     schoolId: number
@@ -11818,6 +11821,7 @@ export namespace Prisma {
     date_of_birth?: true
     image_url?: true
     approval?: true
+    formUrl?: true
     createdAt?: true
     updatedAt?: true
     schoolId?: true
@@ -11831,6 +11835,7 @@ export namespace Prisma {
     date_of_birth?: true
     image_url?: true
     approval?: true
+    formUrl?: true
     createdAt?: true
     updatedAt?: true
     schoolId?: true
@@ -11844,6 +11849,7 @@ export namespace Prisma {
     date_of_birth?: true
     image_url?: true
     approval?: true
+    formUrl?: true
     createdAt?: true
     updatedAt?: true
     schoolId?: true
@@ -11939,11 +11945,12 @@ export namespace Prisma {
 
   export type AdmissionGroupByOutputType = {
     id: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date
-    image_url: string
+    student_name: string | null
+    student_age: number | null
+    date_of_birth: Date | null
+    image_url: string | null
     approval: $Enums.AdmissionApproval
+    formUrl: string | null
     createdAt: Date
     updatedAt: Date
     schoolId: string
@@ -11976,6 +11983,7 @@ export namespace Prisma {
     date_of_birth?: boolean
     image_url?: boolean
     approval?: boolean
+    formUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     schoolId?: boolean
@@ -11993,6 +12001,7 @@ export namespace Prisma {
     date_of_birth?: boolean
     image_url?: boolean
     approval?: boolean
+    formUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     schoolId?: boolean
@@ -12008,6 +12017,7 @@ export namespace Prisma {
     date_of_birth?: boolean
     image_url?: boolean
     approval?: boolean
+    formUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     schoolId?: boolean
@@ -12023,13 +12033,14 @@ export namespace Prisma {
     date_of_birth?: boolean
     image_url?: boolean
     approval?: boolean
+    formUrl?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     schoolId?: boolean
     submitterId?: boolean
   }
 
-  export type AdmissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "student_name" | "student_age" | "date_of_birth" | "image_url" | "approval" | "createdAt" | "updatedAt" | "schoolId" | "submitterId", ExtArgs["result"]["admission"]>
+  export type AdmissionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "student_name" | "student_age" | "date_of_birth" | "image_url" | "approval" | "formUrl" | "createdAt" | "updatedAt" | "schoolId" | "submitterId", ExtArgs["result"]["admission"]>
   export type AdmissionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     school?: boolean | SchoolDefaultArgs<ExtArgs>
     submitter?: boolean | UserDefaultArgs<ExtArgs>
@@ -12054,11 +12065,12 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      student_name: string
-      student_age: number
-      date_of_birth: Date
-      image_url: string
+      student_name: string | null
+      student_age: number | null
+      date_of_birth: Date | null
+      image_url: string | null
       approval: $Enums.AdmissionApproval
+      formUrl: string | null
       createdAt: Date
       updatedAt: Date
       schoolId: string
@@ -12495,6 +12507,7 @@ export namespace Prisma {
     readonly date_of_birth: FieldRef<"Admission", 'DateTime'>
     readonly image_url: FieldRef<"Admission", 'String'>
     readonly approval: FieldRef<"Admission", 'AdmissionApproval'>
+    readonly formUrl: FieldRef<"Admission", 'String'>
     readonly createdAt: FieldRef<"Admission", 'DateTime'>
     readonly updatedAt: FieldRef<"Admission", 'DateTime'>
     readonly schoolId: FieldRef<"Admission", 'String'>
@@ -15208,6 +15221,7 @@ export namespace Prisma {
     date_of_birth: 'date_of_birth',
     image_url: 'image_url',
     approval: 'approval',
+    formUrl: 'formUrl',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     schoolId: 'schoolId',
@@ -16133,11 +16147,12 @@ export namespace Prisma {
     OR?: AdmissionWhereInput[]
     NOT?: AdmissionWhereInput | AdmissionWhereInput[]
     id?: StringFilter<"Admission"> | string
-    student_name?: StringFilter<"Admission"> | string
-    student_age?: IntFilter<"Admission"> | number
-    date_of_birth?: DateTimeFilter<"Admission"> | Date | string
-    image_url?: StringFilter<"Admission"> | string
+    student_name?: StringNullableFilter<"Admission"> | string | null
+    student_age?: IntNullableFilter<"Admission"> | number | null
+    date_of_birth?: DateTimeNullableFilter<"Admission"> | Date | string | null
+    image_url?: StringNullableFilter<"Admission"> | string | null
     approval?: EnumAdmissionApprovalFilter<"Admission"> | $Enums.AdmissionApproval
+    formUrl?: StringNullableFilter<"Admission"> | string | null
     createdAt?: DateTimeFilter<"Admission"> | Date | string
     updatedAt?: DateTimeFilter<"Admission"> | Date | string
     schoolId?: StringFilter<"Admission"> | string
@@ -16149,11 +16164,12 @@ export namespace Prisma {
 
   export type AdmissionOrderByWithRelationInput = {
     id?: SortOrder
-    student_name?: SortOrder
-    student_age?: SortOrder
-    date_of_birth?: SortOrder
-    image_url?: SortOrder
+    student_name?: SortOrderInput | SortOrder
+    student_age?: SortOrderInput | SortOrder
+    date_of_birth?: SortOrderInput | SortOrder
+    image_url?: SortOrderInput | SortOrder
     approval?: SortOrder
+    formUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     schoolId?: SortOrder
@@ -16169,11 +16185,12 @@ export namespace Prisma {
     AND?: AdmissionWhereInput | AdmissionWhereInput[]
     OR?: AdmissionWhereInput[]
     NOT?: AdmissionWhereInput | AdmissionWhereInput[]
-    student_name?: StringFilter<"Admission"> | string
-    student_age?: IntFilter<"Admission"> | number
-    date_of_birth?: DateTimeFilter<"Admission"> | Date | string
-    image_url?: StringFilter<"Admission"> | string
+    student_name?: StringNullableFilter<"Admission"> | string | null
+    student_age?: IntNullableFilter<"Admission"> | number | null
+    date_of_birth?: DateTimeNullableFilter<"Admission"> | Date | string | null
+    image_url?: StringNullableFilter<"Admission"> | string | null
     approval?: EnumAdmissionApprovalFilter<"Admission"> | $Enums.AdmissionApproval
+    formUrl?: StringNullableFilter<"Admission"> | string | null
     createdAt?: DateTimeFilter<"Admission"> | Date | string
     updatedAt?: DateTimeFilter<"Admission"> | Date | string
     schoolId?: StringFilter<"Admission"> | string
@@ -16185,11 +16202,12 @@ export namespace Prisma {
 
   export type AdmissionOrderByWithAggregationInput = {
     id?: SortOrder
-    student_name?: SortOrder
-    student_age?: SortOrder
-    date_of_birth?: SortOrder
-    image_url?: SortOrder
+    student_name?: SortOrderInput | SortOrder
+    student_age?: SortOrderInput | SortOrder
+    date_of_birth?: SortOrderInput | SortOrder
+    image_url?: SortOrderInput | SortOrder
     approval?: SortOrder
+    formUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     schoolId?: SortOrder
@@ -16206,11 +16224,12 @@ export namespace Prisma {
     OR?: AdmissionScalarWhereWithAggregatesInput[]
     NOT?: AdmissionScalarWhereWithAggregatesInput | AdmissionScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Admission"> | string
-    student_name?: StringWithAggregatesFilter<"Admission"> | string
-    student_age?: IntWithAggregatesFilter<"Admission"> | number
-    date_of_birth?: DateTimeWithAggregatesFilter<"Admission"> | Date | string
-    image_url?: StringWithAggregatesFilter<"Admission"> | string
+    student_name?: StringNullableWithAggregatesFilter<"Admission"> | string | null
+    student_age?: IntNullableWithAggregatesFilter<"Admission"> | number | null
+    date_of_birth?: DateTimeNullableWithAggregatesFilter<"Admission"> | Date | string | null
+    image_url?: StringNullableWithAggregatesFilter<"Admission"> | string | null
     approval?: EnumAdmissionApprovalWithAggregatesFilter<"Admission"> | $Enums.AdmissionApproval
+    formUrl?: StringNullableWithAggregatesFilter<"Admission"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Admission"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Admission"> | Date | string
     schoolId?: StringWithAggregatesFilter<"Admission"> | string
@@ -17061,11 +17080,12 @@ export namespace Prisma {
 
   export type AdmissionCreateInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     school: SchoolCreateNestedOneWithoutAdmissionInput
@@ -17075,11 +17095,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedCreateInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     schoolId: string
@@ -17089,11 +17110,12 @@ export namespace Prisma {
 
   export type AdmissionUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     school?: SchoolUpdateOneRequiredWithoutAdmissionNestedInput
@@ -17103,11 +17125,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schoolId?: StringFieldUpdateOperationsInput | string
@@ -17117,11 +17140,12 @@ export namespace Prisma {
 
   export type AdmissionCreateManyInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     schoolId: string
@@ -17130,22 +17154,24 @@ export namespace Prisma {
 
   export type AdmissionUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type AdmissionUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schoolId?: StringFieldUpdateOperationsInput | string
@@ -18015,6 +18041,17 @@ export namespace Prisma {
     amount?: SortOrder
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type EnumAdmissionApprovalFilter<$PrismaModel = never> = {
     equals?: $Enums.AdmissionApproval | EnumAdmissionApprovalFieldRefInput<$PrismaModel>
     in?: $Enums.AdmissionApproval[] | ListEnumAdmissionApprovalFieldRefInput<$PrismaModel>
@@ -18044,6 +18081,7 @@ export namespace Prisma {
     date_of_birth?: SortOrder
     image_url?: SortOrder
     approval?: SortOrder
+    formUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     schoolId?: SortOrder
@@ -18061,6 +18099,7 @@ export namespace Prisma {
     date_of_birth?: SortOrder
     image_url?: SortOrder
     approval?: SortOrder
+    formUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     schoolId?: SortOrder
@@ -18074,6 +18113,7 @@ export namespace Prisma {
     date_of_birth?: SortOrder
     image_url?: SortOrder
     approval?: SortOrder
+    formUrl?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     schoolId?: SortOrder
@@ -18082,6 +18122,20 @@ export namespace Prisma {
 
   export type AdmissionSumOrderByAggregateInput = {
     student_age?: SortOrder
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type EnumAdmissionApprovalWithAggregatesFilter<$PrismaModel = never> = {
@@ -19064,6 +19118,10 @@ export namespace Prisma {
     connect?: DocumentWhereUniqueInput | DocumentWhereUniqueInput[]
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type EnumAdmissionApprovalFieldUpdateOperationsInput = {
     set?: $Enums.AdmissionApproval
   }
@@ -19439,11 +19497,36 @@ export namespace Prisma {
     _max?: NestedEnumSubscriptionStatusFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type NestedEnumAdmissionApprovalFilter<$PrismaModel = never> = {
     equals?: $Enums.AdmissionApproval | EnumAdmissionApprovalFieldRefInput<$PrismaModel>
     in?: $Enums.AdmissionApproval[] | ListEnumAdmissionApprovalFieldRefInput<$PrismaModel>
     notIn?: $Enums.AdmissionApproval[] | ListEnumAdmissionApprovalFieldRefInput<$PrismaModel>
     not?: NestedEnumAdmissionApprovalFilter<$PrismaModel> | $Enums.AdmissionApproval
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumAdmissionApprovalWithAggregatesFilter<$PrismaModel = never> = {
@@ -19616,11 +19699,12 @@ export namespace Prisma {
 
   export type AdmissionCreateWithoutSchoolInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     submitter: UserCreateNestedOneWithoutAdmissionsInput
@@ -19629,11 +19713,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedCreateWithoutSchoolInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     submitterId: string
@@ -19870,11 +19955,12 @@ export namespace Prisma {
     OR?: AdmissionScalarWhereInput[]
     NOT?: AdmissionScalarWhereInput | AdmissionScalarWhereInput[]
     id?: StringFilter<"Admission"> | string
-    student_name?: StringFilter<"Admission"> | string
-    student_age?: IntFilter<"Admission"> | number
-    date_of_birth?: DateTimeFilter<"Admission"> | Date | string
-    image_url?: StringFilter<"Admission"> | string
+    student_name?: StringNullableFilter<"Admission"> | string | null
+    student_age?: IntNullableFilter<"Admission"> | number | null
+    date_of_birth?: DateTimeNullableFilter<"Admission"> | Date | string | null
+    image_url?: StringNullableFilter<"Admission"> | string | null
     approval?: EnumAdmissionApprovalFilter<"Admission"> | $Enums.AdmissionApproval
+    formUrl?: StringNullableFilter<"Admission"> | string | null
     createdAt?: DateTimeFilter<"Admission"> | Date | string
     updatedAt?: DateTimeFilter<"Admission"> | Date | string
     schoolId?: StringFilter<"Admission"> | string
@@ -20439,11 +20525,12 @@ export namespace Prisma {
 
   export type AdmissionCreateWithoutSubmitterInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     school: SchoolCreateNestedOneWithoutAdmissionInput
@@ -20452,11 +20539,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedCreateWithoutSubmitterInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     schoolId: string
@@ -21768,11 +21856,12 @@ export namespace Prisma {
 
   export type AdmissionCreateWithoutDocumentsInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     school: SchoolCreateNestedOneWithoutAdmissionInput
@@ -21781,11 +21870,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedCreateWithoutDocumentsInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     schoolId: string
@@ -21810,11 +21900,12 @@ export namespace Prisma {
 
   export type AdmissionUpdateWithoutDocumentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     school?: SchoolUpdateOneRequiredWithoutAdmissionNestedInput
@@ -21823,11 +21914,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedUpdateWithoutDocumentsInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schoolId?: StringFieldUpdateOperationsInput | string
@@ -22023,11 +22115,12 @@ export namespace Prisma {
 
   export type AdmissionCreateManySchoolInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     submitterId: string
@@ -22208,11 +22301,12 @@ export namespace Prisma {
 
   export type AdmissionUpdateWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submitter?: UserUpdateOneRequiredWithoutAdmissionsNestedInput
@@ -22221,11 +22315,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedUpdateWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submitterId?: StringFieldUpdateOperationsInput | string
@@ -22234,11 +22329,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedUpdateManyWithoutSchoolInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     submitterId?: StringFieldUpdateOperationsInput | string
@@ -22374,11 +22470,12 @@ export namespace Prisma {
 
   export type AdmissionCreateManySubmitterInput = {
     id?: string
-    student_name: string
-    student_age: number
-    date_of_birth: Date | string
-    image_url: string
+    student_name?: string | null
+    student_age?: number | null
+    date_of_birth?: Date | string | null
+    image_url?: string | null
     approval: $Enums.AdmissionApproval
+    formUrl?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
     schoolId: string
@@ -22446,11 +22543,12 @@ export namespace Prisma {
 
   export type AdmissionUpdateWithoutSubmitterInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     school?: SchoolUpdateOneRequiredWithoutAdmissionNestedInput
@@ -22459,11 +22557,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedUpdateWithoutSubmitterInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schoolId?: StringFieldUpdateOperationsInput | string
@@ -22472,11 +22571,12 @@ export namespace Prisma {
 
   export type AdmissionUncheckedUpdateManyWithoutSubmitterInput = {
     id?: StringFieldUpdateOperationsInput | string
-    student_name?: StringFieldUpdateOperationsInput | string
-    student_age?: IntFieldUpdateOperationsInput | number
-    date_of_birth?: DateTimeFieldUpdateOperationsInput | Date | string
-    image_url?: StringFieldUpdateOperationsInput | string
+    student_name?: NullableStringFieldUpdateOperationsInput | string | null
+    student_age?: NullableIntFieldUpdateOperationsInput | number | null
+    date_of_birth?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image_url?: NullableStringFieldUpdateOperationsInput | string | null
     approval?: EnumAdmissionApprovalFieldUpdateOperationsInput | $Enums.AdmissionApproval
+    formUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     schoolId?: StringFieldUpdateOperationsInput | string

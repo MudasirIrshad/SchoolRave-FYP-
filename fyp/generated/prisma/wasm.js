@@ -221,6 +221,7 @@ exports.Prisma.AdmissionScalarFieldEnum = {
   date_of_birth: 'date_of_birth',
   image_url: 'image_url',
   approval: 'approval',
+  formUrl: 'formUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   schoolId: 'schoolId',

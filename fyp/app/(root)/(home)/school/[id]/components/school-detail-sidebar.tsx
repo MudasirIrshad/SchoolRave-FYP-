@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { Button } from "@/components/ui/button";
 import { School } from "@/generated/prisma";
 import { saveToFavorites } from "@/actions/favorite-actions";
+import Link from "next/link";
 
 export default function SchoolDetailSidebar({
   school,
@@ -34,7 +35,9 @@ export default function SchoolDetailSidebar({
           Interested in this school?
         </h3>
         <div className="space-y-3">
-          <Button className="w-full">Apply Online</Button>
+          <Link href={`/school/${school.id}/apply`}>
+            <Button className="w-full">Apply Online</Button>
+          </Link>
           <Button
             variant="outline"
             className="w-full"
