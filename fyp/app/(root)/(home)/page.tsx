@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { getSchoolsData } from "@/data-access/school-data";
-import SearchBar from "./components/search-bar";
+import { getTopSchools } from "@/data-access/school-data";
 import SchoolCard from "./components/school-card";
 
 export default async function Home({
@@ -9,7 +8,7 @@ export default async function Home({
 }: {
   searchParams: { query?: string };
 }) {
-  const featuredSchools = await getSchoolsData(searchParams.query);
+  const featuredSchools = await getTopSchools();
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -24,10 +23,6 @@ export default async function Home({
               Discover and compare schools across the nation with detailed
               information, reviews, and insights.
             </p>
-
-            <div className="bg-white rounded-lg shadow-lg p-6 max-w-2xl">
-              <SearchBar />
-            </div>
           </div>
         </div>
         <div
@@ -41,11 +36,11 @@ export default async function Home({
         <div className="container mx-auto px-6 md:px-8 lg:px-12">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl md:text-3xl font-bold text-textColor font-open">
-              Top Schools in Quetta City
+              Top Schools
             </h2>
             <Link
-              href="/search?city=quetta"
-              className="text-primary hover:text-accent font-semibold flex items-center"
+              href="/discover"
+              className="text-primary hover:text-primary-dark/90 font-semibold flex items-center transition-colors duration-200"
             >
               View All <span className="ml-1">→</span>
             </Link>

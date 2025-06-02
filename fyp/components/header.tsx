@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/navigation-menu";
 
 // Utility: Get dashboard/profile link based on role
-function getDashboardLink(user: any) {
+function getDashboardLink(user: unknown) {
   const role = user?.publicMetadata?.role || "GENERAL";
   switch (role) {
     case "SCHOOL":
@@ -51,9 +51,7 @@ export default async function Header() {
   const navLinks = [
     { href: "/", label: "Home" },
     ...(user ? [getDashboardLink(user)] : []),
-    { href: "/search", label: "Discover" },
-    { href: "/search?rating=4.5", label: "Rankings" },
-    { href: "#", label: "About" },
+    { href: "/discover", label: "Discover" },
   ];
 
   return (

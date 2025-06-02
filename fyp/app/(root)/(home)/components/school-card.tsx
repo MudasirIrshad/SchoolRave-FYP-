@@ -33,11 +33,6 @@ export default function SchoolCard({ school }: { school: School }) {
               {school.school_type === "PRIVATE" ? "Private" : "Public"}
             </Badge>
           </div>
-          {school.subscriptionType === "PAID" && (
-            <div className="absolute top-3 right-3">
-              <Badge className="bg-primary hover:bg-primary/80">Premium</Badge>
-            </div>
-          )}
         </div>
 
         <CardHeader>

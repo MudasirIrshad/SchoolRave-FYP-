@@ -1,23 +1,117 @@
 import prisma from "@/lib/prisma";
+// =================================================================================================
 
-export async function getSchoolsData(searchQuery: string | undefined) {
+export async function getTopSchools() {
   try {
-    return await prisma.school.findMany({
-      where: {
-        name: {
-          contains: searchQuery,
-          mode: "insensitive",
-        },
+    // Step 1: Get schools with reviews, ordered by average rating
+    const reviewedSchools = await prisma.review.groupBy({
+      by: ["schoolId"],
+      _avg: {
+        rating: true,
       },
       orderBy: {
-        createdAt: "desc",
+        _avg: {
+          rating: "desc",
+        },
+      },
+      take: 3,
+    });
+
+    const reviewedSchoolIds = reviewedSchools
+      .map((r) => r.schoolId)
+      .filter((id): id is string => id !== null);
+
+    // Step 2: Fetch full School data for reviewed schools
+    const reviewedSchoolData = await prisma.school.findMany({
+      where: {
+        id: { in: reviewedSchoolIds },
       },
     });
+
+    // Step 3: If less than 3, fill in with unrated schools
+    const needed = 3 - reviewedSchoolData.length;
+    let unratedSchools: typeof reviewedSchoolData = [];
+
+    if (needed > 0) {
+      unratedSchools = await prisma.school.findMany({
+        where: {
+          id: { notIn: reviewedSchoolIds },
+        },
+        include: {
+          reviews: true,
+        },
+        take: needed,
+        orderBy: {
+          createdAt: "desc",
+        },
+      });
+    }
+
+    return [...reviewedSchoolData, ...unratedSchools];
   } catch (error) {
-    console.error("Failed to fetch schools:", error);
+    console.error("Failed to fetch top schools:", error);
     return [];
   }
 }
+
+// =================================================================================================
+
+export async function getSchoolsData({ query }: { query?: string }) {
+  try {
+    const [schools, totalCount] = await Promise.all([
+      prisma.school.findMany({
+        where: query
+          ? {
+              OR: [
+                {
+                  name: {
+                    contains: query,
+                    mode: "insensitive",
+                  },
+                },
+                {
+                  address: {
+                    contains: query,
+                    mode: "insensitive",
+                  },
+                },
+              ],
+            }
+          : undefined, // No filter applied if query is empty
+        orderBy: {
+          createdAt: "desc",
+        },
+      }),
+      prisma.school.count({
+        where: query
+          ? {
+              OR: [
+                {
+                  name: {
+                    contains: query,
+                    mode: "insensitive",
+                  },
+                },
+                {
+                  address: {
+                    contains: query,
+                    mode: "insensitive",
+                  },
+                },
+              ],
+            }
+          : undefined, // No filter applied if query is empty
+      }),
+    ]);
+
+    return { schools, totalCount };
+  } catch (error) {
+    console.error("Failed to fetch schools:", error);
+    return { schools: [], totalCount: 0 };
+  }
+}
+
+// =================================================================================================
 
 export async function getSchoolDetailData(schoolId?: string) {
   if (!schoolId) return { school: null, ratingAvg: null };
@@ -40,6 +134,8 @@ export async function getSchoolDetailData(schoolId?: string) {
     return { school: null, ratingAvg: null };
   }
 }
+
+// =================================================================================================
 
 export async function getSchoolBranchReviews(branchId: string | undefined) {
   if (!branchId) return [];

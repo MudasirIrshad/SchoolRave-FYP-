@@ -16,7 +16,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { useUser } from "@clerk/nextjs";
-import { addReview } from "../action";
+import { addReview } from "@/actions/add-review";
 
 interface AddReviewDialogProps {
   btnText: string;
@@ -53,7 +53,7 @@ export default function AddReviewDialog({
       rating: 0,
       comment: "",
       entityId,
-      userId: user?.id || "",
+      userId: isLoaded && isSignedIn ? user.id : "",
       entityType,
     },
   });

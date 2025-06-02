@@ -1,5 +1,5 @@
-import ReviewCard from "./review-card";
-import AddReviewDialog from "./add-review-dialog";
+import ReviewCard from "../review-card";
+import AddReviewDialog from "../add-review-dialog";
 import prisma from "@/lib/prisma";
 import { Review } from "@/generated/prisma";
 
@@ -8,6 +8,7 @@ interface ReviewsProps {
 }
 
 export default async function SchoolReviews({ schoolId }: ReviewsProps) {
+  console.log("schoolId: ", schoolId);
   const reviews = await prisma.review.findMany({
     where: {
       schoolId: schoolId,

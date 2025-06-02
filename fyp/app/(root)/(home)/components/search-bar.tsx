@@ -33,7 +33,7 @@ export default function SearchBar() {
           />
           <Input
             type="text"
-            placeholder="Enter city, district, or school name"
+            placeholder="Enter school name or address"
             className="w-full px-4 py-3 border border-gray-300 rounded-lg pl-10 text-black"
             defaultValue={selectedQuery}
             onChange={(e) => {

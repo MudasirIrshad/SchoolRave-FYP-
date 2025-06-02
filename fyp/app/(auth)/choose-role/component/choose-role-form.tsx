@@ -12,7 +12,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import LoadingSpinner from "@/components/loading-spinner";
-import { saveUserRole } from "@/app/(auth)/auth-action";
+import { saveUserRole } from "@/actions/auth-action";
 
 export default function ChooseRoleForm() {
   const router = useRouter();

@@ -1,5 +1,5 @@
-import ReviewCard from "./review-card";
-import AddReviewDialog from "./add-review-dialog";
+import ReviewCard from "../review-card";
+import AddReviewDialog from "../add-review-dialog";
 import { Review } from "@/generated/prisma";
 import { getSchoolBranchReviews } from "@/data-access/school-data";
 

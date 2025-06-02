@@ -1,12 +1,12 @@
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SchoolProfile from "./components/school-profile";
+import SchoolProfile from "./components/tabs/school-profile";
 import SchoolDetailHeader from "./components/school-detail-header";
 import SchoolDetailSidebar from "./components/school-detail-sidebar";
-import SchoolReviews from "./components/school-reviews";
+import SchoolReviews from "./components/tabs/school-reviews";
 // import SchoolActivities from "./components/school-activities";
-import { SchoolBranches } from "./components/school-branches";
+import { SchoolBranches } from "./components/tabs/school-branches";
 import { getSchoolDetailData } from "@/data-access/school-data";
 
 interface PageParams {
@@ -77,7 +77,7 @@ export default async function SchoolDetailPage({ params }: PageParams) {
                 )}
 
                 <TabsContent value="reviews" className="pt-6">
-                  <SchoolReviews entityId={school.id} />
+                  <SchoolReviews schoolId={school.id} />
                 </TabsContent>
               </Tabs>
             </div>
