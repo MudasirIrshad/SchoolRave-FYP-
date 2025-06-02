@@ -2197,6 +2197,7 @@ export namespace Prisma {
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    admission_status: $Enums.AdmissionStatus | null
     subscriptionType: $Enums.SubscriptionType | null
     stripeCustomerId: string | null
     schoolCategory: $Enums.SchoolCategory | null
@@ -2219,6 +2220,7 @@ export namespace Prisma {
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    admission_status: $Enums.AdmissionStatus | null
     subscriptionType: $Enums.SubscriptionType | null
     stripeCustomerId: string | null
     schoolCategory: $Enums.SchoolCategory | null
@@ -2242,6 +2244,7 @@ export namespace Prisma {
     facilities: number
     createdAt: number
     updatedAt: number
+    admission_status: number
     subscriptionType: number
     stripeCustomerId: number
     schoolCategory: number
@@ -2274,6 +2277,7 @@ export namespace Prisma {
     userId?: true
     createdAt?: true
     updatedAt?: true
+    admission_status?: true
     subscriptionType?: true
     stripeCustomerId?: true
     schoolCategory?: true
@@ -2296,6 +2300,7 @@ export namespace Prisma {
     userId?: true
     createdAt?: true
     updatedAt?: true
+    admission_status?: true
     subscriptionType?: true
     stripeCustomerId?: true
     schoolCategory?: true
@@ -2319,6 +2324,7 @@ export namespace Prisma {
     facilities?: true
     createdAt?: true
     updatedAt?: true
+    admission_status?: true
     subscriptionType?: true
     stripeCustomerId?: true
     schoolCategory?: true
@@ -2429,6 +2435,7 @@ export namespace Prisma {
     facilities: string[]
     createdAt: Date
     updatedAt: Date
+    admission_status: $Enums.AdmissionStatus
     subscriptionType: $Enums.SubscriptionType
     stripeCustomerId: string | null
     schoolCategory: $Enums.SchoolCategory | null
@@ -2471,6 +2478,7 @@ export namespace Prisma {
     facilities?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    admission_status?: boolean
     subscriptionType?: boolean
     stripeCustomerId?: boolean
     schoolCategory?: boolean
@@ -2503,6 +2511,7 @@ export namespace Prisma {
     facilities?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    admission_status?: boolean
     subscriptionType?: boolean
     stripeCustomerId?: boolean
     schoolCategory?: boolean
@@ -2526,6 +2535,7 @@ export namespace Prisma {
     facilities?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    admission_status?: boolean
     subscriptionType?: boolean
     stripeCustomerId?: boolean
     schoolCategory?: boolean
@@ -2549,6 +2559,7 @@ export namespace Prisma {
     facilities?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    admission_status?: boolean
     subscriptionType?: boolean
     stripeCustomerId?: boolean
     schoolCategory?: boolean
@@ -2557,7 +2568,7 @@ export namespace Prisma {
     admissionFormUrl?: boolean
   }
 
-  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "imageUrl" | "description" | "gradeRange" | "studentCount" | "userId" | "facilities" | "createdAt" | "updatedAt" | "subscriptionType" | "stripeCustomerId" | "schoolCategory" | "school_type" | "curriculum_type" | "admissionFormUrl", ExtArgs["result"]["school"]>
+  export type SchoolOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "phone" | "address" | "medium_of_instruction" | "imageUrl" | "description" | "gradeRange" | "studentCount" | "userId" | "facilities" | "createdAt" | "updatedAt" | "admission_status" | "subscriptionType" | "stripeCustomerId" | "schoolCategory" | "school_type" | "curriculum_type" | "admissionFormUrl", ExtArgs["result"]["school"]>
   export type SchoolInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     schoolBranch?: boolean | School$schoolBranchArgs<ExtArgs>
     class_base_fee?: boolean | School$class_base_feeArgs<ExtArgs>
@@ -2599,6 +2610,7 @@ export namespace Prisma {
       facilities: string[]
       createdAt: Date
       updatedAt: Date
+      admission_status: $Enums.AdmissionStatus
       subscriptionType: $Enums.SubscriptionType
       stripeCustomerId: string | null
       schoolCategory: $Enums.SchoolCategory | null
@@ -3050,6 +3062,7 @@ export namespace Prisma {
     readonly facilities: FieldRef<"School", 'String[]'>
     readonly createdAt: FieldRef<"School", 'DateTime'>
     readonly updatedAt: FieldRef<"School", 'DateTime'>
+    readonly admission_status: FieldRef<"School", 'AdmissionStatus'>
     readonly subscriptionType: FieldRef<"School", 'SubscriptionType'>
     readonly stripeCustomerId: FieldRef<"School", 'String'>
     readonly schoolCategory: FieldRef<"School", 'SchoolCategory'>
@@ -15108,6 +15121,7 @@ export namespace Prisma {
     facilities: 'facilities',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
+    admission_status: 'admission_status',
     subscriptionType: 'subscriptionType',
     stripeCustomerId: 'stripeCustomerId',
     schoolCategory: 'schoolCategory',
@@ -15326,6 +15340,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'AdmissionStatus'
+   */
+  export type EnumAdmissionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdmissionStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'AdmissionStatus[]'
+   */
+  export type ListEnumAdmissionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdmissionStatus[]'>
+    
+
+
+  /**
    * Reference to a field of type 'SubscriptionType'
    */
   export type EnumSubscriptionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SubscriptionType'>
@@ -15378,20 +15406,6 @@ export namespace Prisma {
    * Reference to a field of type 'CurriculumType[]'
    */
   export type ListEnumCurriculumTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'CurriculumType[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'AdmissionStatus'
-   */
-  export type EnumAdmissionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdmissionStatus'>
-    
-
-
-  /**
-   * Reference to a field of type 'AdmissionStatus[]'
-   */
-  export type ListEnumAdmissionStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AdmissionStatus[]'>
     
 
 
@@ -15486,6 +15500,7 @@ export namespace Prisma {
     facilities?: StringNullableListFilter<"School">
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
+    admission_status?: EnumAdmissionStatusFilter<"School"> | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFilter<"School"> | $Enums.SubscriptionType
     stripeCustomerId?: StringNullableFilter<"School"> | string | null
     schoolCategory?: EnumSchoolCategoryNullableFilter<"School"> | $Enums.SchoolCategory | null
@@ -15517,6 +15532,7 @@ export namespace Prisma {
     facilities?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    admission_status?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrderInput | SortOrder
     schoolCategory?: SortOrderInput | SortOrder
@@ -15552,6 +15568,7 @@ export namespace Prisma {
     facilities?: StringNullableListFilter<"School">
     createdAt?: DateTimeFilter<"School"> | Date | string
     updatedAt?: DateTimeFilter<"School"> | Date | string
+    admission_status?: EnumAdmissionStatusFilter<"School"> | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFilter<"School"> | $Enums.SubscriptionType
     schoolCategory?: EnumSchoolCategoryNullableFilter<"School"> | $Enums.SchoolCategory | null
     school_type?: EnumSchoolTypeNullableFilter<"School"> | $Enums.SchoolType | null
@@ -15582,6 +15599,7 @@ export namespace Prisma {
     facilities?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    admission_status?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrderInput | SortOrder
     schoolCategory?: SortOrderInput | SortOrder
@@ -15613,6 +15631,7 @@ export namespace Prisma {
     facilities?: StringNullableListFilter<"School">
     createdAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"School"> | Date | string
+    admission_status?: EnumAdmissionStatusWithAggregatesFilter<"School"> | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeWithAggregatesFilter<"School"> | $Enums.SubscriptionType
     stripeCustomerId?: StringNullableWithAggregatesFilter<"School"> | string | null
     schoolCategory?: EnumSchoolCategoryNullableWithAggregatesFilter<"School"> | $Enums.SchoolCategory | null
@@ -16366,6 +16385,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -16397,6 +16417,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -16428,6 +16449,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -16459,6 +16481,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -16490,6 +16513,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -16513,6 +16537,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -16536,6 +16561,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -17355,6 +17381,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type EnumAdmissionStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionStatusFilter<$PrismaModel> | $Enums.AdmissionStatus
+  }
+
   export type EnumSubscriptionTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
     in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
@@ -17483,6 +17516,7 @@ export namespace Prisma {
     facilities?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    admission_status?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrder
     schoolCategory?: SortOrder
@@ -17509,6 +17543,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    admission_status?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrder
     schoolCategory?: SortOrder
@@ -17531,6 +17566,7 @@ export namespace Prisma {
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    admission_status?: SortOrder
     subscriptionType?: SortOrder
     stripeCustomerId?: SortOrder
     schoolCategory?: SortOrder
@@ -17607,6 +17643,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type EnumAdmissionStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionStatusWithAggregatesFilter<$PrismaModel> | $Enums.AdmissionStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAdmissionStatusFilter<$PrismaModel>
+    _max?: NestedEnumAdmissionStatusFilter<$PrismaModel>
   }
 
   export type EnumSubscriptionTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -18343,6 +18389,10 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type EnumAdmissionStatusFieldUpdateOperationsInput = {
+    set?: $Enums.AdmissionStatus
   }
 
   export type EnumSubscriptionTypeFieldUpdateOperationsInput = {
@@ -19248,6 +19298,13 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedEnumAdmissionStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionStatusFilter<$PrismaModel> | $Enums.AdmissionStatus
+  }
+
   export type NestedEnumSubscriptionTypeFilter<$PrismaModel = never> = {
     equals?: $Enums.SubscriptionType | EnumSubscriptionTypeFieldRefInput<$PrismaModel>
     in?: $Enums.SubscriptionType[] | ListEnumSubscriptionTypeFieldRefInput<$PrismaModel>
@@ -19360,6 +19417,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumAdmissionStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.AdmissionStatus | EnumAdmissionStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.AdmissionStatus[] | ListEnumAdmissionStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumAdmissionStatusWithAggregatesFilter<$PrismaModel> | $Enums.AdmissionStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumAdmissionStatusFilter<$PrismaModel>
+    _max?: NestedEnumAdmissionStatusFilter<$PrismaModel>
   }
 
   export type NestedEnumSubscriptionTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -20036,6 +20103,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -20066,6 +20134,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -20166,6 +20235,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -20196,6 +20266,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -20299,6 +20370,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -20329,6 +20401,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -20422,6 +20495,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -20452,6 +20526,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -20695,6 +20770,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -20725,6 +20801,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -20810,6 +20887,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -20840,6 +20918,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -20870,6 +20949,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -20900,6 +20980,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -21020,6 +21101,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -21050,6 +21132,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -21166,6 +21249,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -21196,6 +21280,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -21270,6 +21355,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -21300,6 +21386,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -21371,6 +21458,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -21401,6 +21489,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -21511,6 +21600,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -21541,6 +21631,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -21610,6 +21701,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -21640,6 +21732,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -21743,6 +21836,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -21773,6 +21867,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -21941,6 +22036,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -21971,6 +22067,7 @@ export namespace Prisma {
     facilities?: SchoolCreatefacilitiesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    admission_status?: $Enums.AdmissionStatus
     subscriptionType?: $Enums.SubscriptionType
     stripeCustomerId?: string | null
     schoolCategory?: $Enums.SchoolCategory | null
@@ -22017,6 +22114,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null
@@ -22047,6 +22145,7 @@ export namespace Prisma {
     facilities?: SchoolUpdatefacilitiesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    admission_status?: EnumAdmissionStatusFieldUpdateOperationsInput | $Enums.AdmissionStatus
     subscriptionType?: EnumSubscriptionTypeFieldUpdateOperationsInput | $Enums.SubscriptionType
     stripeCustomerId?: NullableStringFieldUpdateOperationsInput | string | null
     schoolCategory?: NullableEnumSchoolCategoryFieldUpdateOperationsInput | $Enums.SchoolCategory | null

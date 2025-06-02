@@ -83,6 +83,8 @@ model School {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  admission_status AdmissionStatus @default(OPEN)
+
   subscriptionType SubscriptionType @default(FREE)
   stripeCustomerId String?          @unique
   schoolCategory   SchoolCategory?  @default(PRIMARY)
