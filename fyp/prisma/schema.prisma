@@ -56,12 +56,24 @@ enum AdmissionApproval {
   PENDING
   APPROVED
   REJECTED
+  WAITING_LIST
 }
 
 enum SchoolCategory {
   PRIMARY
   MIDDLE
   HIGH
+}
+
+enum DocumentType {
+  BIRTH_CERTIFICATE
+  SCHOOL_LEAVING_CERTIFICATE
+  CNIC_IMAGE
+  DOMICILE
+  GUARDIAN_CNIC
+  B_FORM
+  MEDICAL_CERTIFICATE
+  OTHER
 }
 
 // DATABASE MODELS
@@ -233,31 +245,57 @@ model Payment {
 }
 
 model Admission {
-  id            String            @id @default(uuid())
-  student_name  String?
-  student_age   Int?
-  date_of_birth DateTime?
-  image_url     String?
-  approval      AdmissionApproval
-  formUrl       String?
+  id              String   @id @default(uuid())
+  studentName     String
+  studentAge      Int
+  dateOfBirth     DateTime
+  studentImageUrl String
+  requestedClass  String
 
+  // Guardian information
+  guardianName          String
+  nicNumber             String
+  guardianQualification String
+  guardianOccupation    String
+  monthlyIncome         String
+
+  // Personal details
+  religion        String
+  nationality     String
+  postalAddress   String
+  presentAddress  String
+  telephoneNumber String
+  mobileNumber    String
+
+  // Disability information
+  disabilityNature    String?
+  disabilityOnsetDate DateTime?
+  disabilityCause     String?
+
+  // Approval process
+  approval        AdmissionApproval
+  rejectionReason String? // Added for tracking rejections
+
+  // Timestamps
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  schoolId String
-  school   School @relation(fields: [schoolId], references: [id], onDelete: Cascade)
-
+  // Relations
+  schoolId    String
+  school      School     @relation(fields: [schoolId], references: [id], onDelete: Cascade)
   submitterId String
-  submitter   User   @relation(fields: [submitterId], references: [id], onDelete: Cascade)
-
-  documents Document[]
+  submitter   User       @relation(fields: [submitterId], references: [id], onDelete: Cascade)
+  documents   Document[]
 
   @@unique([submitterId, schoolId])
 }
 
 model Document {
-  id        String   @id @default(uuid())
-  url       String   @unique
+  id          String       @id @default(uuid())
+  url         String       @unique
+  type        DocumentType
+  description String?
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

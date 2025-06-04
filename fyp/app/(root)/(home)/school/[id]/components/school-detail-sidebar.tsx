@@ -27,6 +27,8 @@ export default function SchoolDetailSidebar({
     });
   };
 
+  const isAdmissionOpen = school.admission_status === "OPEN";
+
   return (
     <div className="lg:w-1/3">
       {/* School Actions */}
@@ -36,7 +38,9 @@ export default function SchoolDetailSidebar({
         </h3>
         <div className="space-y-3">
           <Link href={`/school/${school.id}/apply`}>
-            <Button className="w-full">Apply Online</Button>
+            <Button className="w-full" disabled={!isAdmissionOpen}>
+              {isAdmissionOpen ? "Apply Online" : "Admissions Closed"}
+            </Button>
           </Link>
           <Button
             variant="outline"

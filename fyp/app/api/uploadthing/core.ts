@@ -19,7 +19,10 @@ export const ourFileRouter = {
   schoolAttachment: f(["pdf"])
     .middleware(async () => await handleauth())
     .onUploadComplete(() => {}),
-  userImage: f(["image/png","image/jpeg"])
+  userImage: f(["image/png", "image/jpeg"])
+    .middleware(async () => await handleauth())
+    .onUploadComplete(() => {}),
+  admissionDocuments: f(["image/png", "image/jpeg", "pdf"])
     .middleware(async () => await handleauth())
     .onUploadComplete(() => {}),
 } satisfies FileRouter;

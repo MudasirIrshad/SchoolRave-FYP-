@@ -78,17 +78,13 @@ export default async function Home({
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button variant="secondary" asChild>
-              <Link href="/search">Search Schools</Link>
+              <Link href="/sign-in">Login</Link>
             </Button>
-            <Button
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-primary"
-              asChild
-            >
-              <Link href="/signup">Create an Account</Link>
+            <Button variant="outline" asChild>
+              <Link href="/sign-up">Create an Account</Link>
             </Button>
           </div>
-        </div>
+      </div>
       </section>
     </div>
   );
