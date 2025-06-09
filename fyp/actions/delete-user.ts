@@ -6,6 +6,29 @@ import { clerkClient } from "@clerk/nextjs/server";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+export async function updateProfileImage(userId: string, imageUrl: string) {
+  try {
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        imageUrl: imageUrl,
+      },
+    });
+
+    // Revalidate the profile page to show the updated image
+    revalidatePath("/profile");
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to update profile image:", error);
+    throw new Error("Failed to update profile image");
+  }
+}
+
+// =================================================================================
+
 export async function deleteUserAccount() {
   const { userId } = await auth();
 
