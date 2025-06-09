@@ -6,7 +6,6 @@ import TitleForm from "./(component)/title-form";
 import {
   ImageIcon,
   LayoutDashboard,
-  Paperclip,
   PaperclipIcon,
   School2Icon,
 } from "lucide-react";
@@ -18,7 +17,6 @@ import MediumofInstructionForm from "./(component)/medium-of-instruction-form co
 import SchoolTypeForm from "./(component)/school-type-form";
 import CurriculumTypeForm from "./(component)/curriculum-type-form copy";
 import ImageForm from "./(component)/image-form";
-import { Button } from "@/components/ui/button";
 import SubscriptionCard from "../../../../../../components/subscription-card";
 import CreateSchoolBranch from "./(component)/school-branch";
 import AttachmentForm from "./(component)/attachment-form";

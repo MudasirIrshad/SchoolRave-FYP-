@@ -36,6 +36,10 @@ export interface UserProfile {
 }
 
 export interface Application {
+  approval: any;
+  createdAt: string | number | Date;
+  updatedAt: string | number | Date;
+  dateOfBirth: string | number | Date;
   id: string;
   schoolId: string;
   branchId: string;

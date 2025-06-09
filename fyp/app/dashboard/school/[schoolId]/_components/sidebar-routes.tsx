@@ -1,22 +1,14 @@
 "use client";
 
-import {
-  BarChart,
-  Compass,
-  FileText,
-  Layout,
-  List,
-  Newspaper,
-} from "lucide-react";
+import { FileText, InboxIcon, List } from "lucide-react";
 import SidebarItem from "./sidebar-items";
-import { useParams, usePathname } from "next/navigation";
+import { useParams } from "next/navigation";
+
 export default function SidebarRoutes() {
   const params = useParams();
+
   const schoolId = params.schoolId;
-  const guestRoutes = [
-    { icon: Layout, label: "Dashboard", href: "/" },
-    { icon: Compass, label: "Browse", href: "/search" },
-  ];
+
   const schoolRoutes = [
     {
       icon: List,
@@ -28,10 +20,13 @@ export default function SidebarRoutes() {
       label: "Create Post",
       href: `/dashboard/school/${schoolId}/createPost`,
     },
+    {
+      icon: InboxIcon,
+      label: "Admission Applications",
+      href: `/dashboard/school/${schoolId}/admissionApplications`,
+    },
   ];
-  const pathname = usePathname();
-  const isSchoolPage = pathname?.includes("/school");
-  const routes = isSchoolPage ? schoolRoutes : guestRoutes;
+  const routes = schoolRoutes;
   return (
     <div className="flex flex-col w-full">
       {routes.map((route) => (
