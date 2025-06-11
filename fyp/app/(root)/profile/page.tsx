@@ -1,13 +1,13 @@
 import { auth } from "@clerk/nextjs/server";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Heart, Settings, GraduationCap, Bell } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ApplicationsTab from "./components/tabs/applications-tab";
 import { getProfileData } from "@/data-access/profile-data";
 import { redirect } from "next/navigation";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import FavoritesTab from "./components/tabs/favorites-tab";
 import SettingsTab from "./components/tabs/settings-tab";
+import ProfileImageUpload from "./components/ProfileImageUpload";
 // import NotificationsTab from "./components/tabs/notifications-tab";
 
 export default async function ProfilePage() {
@@ -38,10 +38,12 @@ export default async function ProfilePage() {
     <div className="min-h-screen bg-gray-100">
       <div className="bg-primary pt-12 pb-24 px-6">
         <div className="max-w-7xl mx-auto flex items-center gap-6">
-          <Avatar className="w-24 h-24 border-4 border-white">
-            <AvatarImage src={user.imageUrl ?? ""} />
-            <AvatarFallback>{user.name?.charAt(0)}</AvatarFallback>
-          </Avatar>
+          <ProfileImageUpload
+            userId={userId}
+            currentImageUrl={user.imageUrl}
+            userName={user.name}
+            className="w-24 h-24 border-4 border-white"
+          />
           <div>
             <h1 className="text-3xl font-bold text-white">{user.name}</h1>
             <p className="text-gray-300">{user.email}</p>
