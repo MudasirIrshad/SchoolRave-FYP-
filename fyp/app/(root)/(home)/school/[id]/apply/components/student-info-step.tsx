@@ -8,15 +8,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -25,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { FormData } from "@/lib/zod-types/admission";
+import Calendar22 from "@/components/calendar-22";
 
 interface StudentInfoStepProps {
   form: UseFormReturn<FormData>;
@@ -61,8 +53,14 @@ export default function StudentInfoStep({
               <Input
                 type="number"
                 placeholder="Enter student age"
-                {...field}
-                onChange={(e) => field.onChange(parseInt(e.target.value))}
+                value={field.value || ""} // Provide fallback empty string for undefined
+                onChange={(e) => {
+                  const value = e.target.value;
+                  // Only update if it's a number or empty string
+                  if (value === "" || !isNaN(Number(value))) {
+                    field.onChange(value === "" ? undefined : parseInt(value));
+                  }
+                }}
               />
             </FormControl>
             <FormMessage />
@@ -73,39 +71,14 @@ export default function StudentInfoStep({
         control={form.control}
         name="dateOfBirth"
         render={({ field }) => (
-          <FormItem className="flex flex-col">
+          <FormItem>
             <FormLabel>Date of Birth</FormLabel>
-            <Popover>
-              <PopoverTrigger asChild>
-                <FormControl>
-                  <Button
-                    variant={"outline"}
-                    className={cn(
-                      "w-[240px] pl-3 text-left font-normal",
-                      !field.value && "text-muted-foreground"
-                    )}
-                  >
-                    {field.value ? (
-                      format(field.value, "PPP")
-                    ) : (
-                      <span>Pick a date</span>
-                    )}
-                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                  </Button>
-                </FormControl>
-              </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
-                <Calendar
-                  mode="single"
-                  selected={field.value}
-                  onSelect={field.onChange}
-                  disabled={(date) =>
-                    date > new Date() || date < new Date("1900-01-01")
-                  }
-                  initialFocus
-                />
-              </PopoverContent>
-            </Popover>
+            <FormControl>
+              <Calendar22
+                date={field.value}
+                onSelect={(date) => field.onChange(date)}
+              />
+            </FormControl>
             <FormMessage />
           </FormItem>
         )}
