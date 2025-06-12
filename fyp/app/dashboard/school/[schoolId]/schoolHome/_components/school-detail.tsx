@@ -54,7 +54,7 @@ async function SchoolDetail() {
             <EmailForm initialData={school} schoolId={school.id} />
             <AdmissionStatusForm
               admissionStatus={school.admission_status!}
-              schoolId={school?.id!}
+              schoolId={school.id}
             />
           </div>
         </div>
@@ -74,7 +74,7 @@ async function SchoolDetail() {
         <div>
           <div className="flex items-center gap-x-2">
             <ImageIcon className="w-5 h-5" />
-            <h2 className="text-xl">School's Image</h2>
+            <h2 className="text-xl">School&apos;s Image</h2>
           </div>
           <div>
             <ImageForm initialData={school} schoolId={school.id} />
@@ -86,24 +86,25 @@ async function SchoolDetail() {
               <div>
                 <PaperclipIcon className="w-5 h-5" />
               </div>
-              <h2 className="text-xl">Admission Form's Pdf</h2>
+              <h2 className="text-xl">Admission Form&apos;s Pdf</h2>
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <div>
-                <AttachmentForm initialData={school} schoolId={school?.id!} />
+                <AttachmentForm initialData={school} schoolId={school.id} />
               </div>
             </div>
           </div>
           <div className="flex items-center gap-x-2">
             <School2Icon className="w-5 h-5" />
-            <h2 className="text-xl">School's Branches</h2>
+            <h2 className="text-xl">School&apos;s Branches</h2>
           </div>
           <div className="mt-6">
             {school.subscriptionType === "FREE" ? (
               <SubscriptionCard />
             ) : (
               <div className="font-medium">
-                <CreateSchoolBranch initialData={school} />
+                {/* <CreateSchoolBranch initialData={school} /> */}
+                <CreateSchoolBranch />
               </div>
             )}
           </div>

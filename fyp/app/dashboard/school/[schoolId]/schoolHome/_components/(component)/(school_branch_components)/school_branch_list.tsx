@@ -1,5 +1,5 @@
 "use client";
-import { School, SchoolBranch as SchoolBranchType } from "@/generated/prisma";
+import { SchoolBranch as SchoolBranchType } from "@/generated/prisma";
 import { PencilIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";

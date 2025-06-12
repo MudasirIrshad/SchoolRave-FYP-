@@ -6,7 +6,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
 import { School, SchoolType } from "@/generated/prisma";
@@ -39,7 +38,7 @@ const formSchema = z.object({
   ]),
 });
 
-function SchoolTypeForm({ initialData, schoolId }: SchoolTypeFormProps) {
+function SchoolTypeForm({ initialData }: SchoolTypeFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -65,6 +64,7 @@ function SchoolTypeForm({ initialData, schoolId }: SchoolTypeFormProps) {
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

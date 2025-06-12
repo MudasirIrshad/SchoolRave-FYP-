@@ -5,6 +5,9 @@ import React from "react";
 
 async function VerifyPayment() {
   const { userId } = await auth();
+
+  if (!userId) redirect("/dashboard");
+
   const schoolUpdate = await prisma.school.update({
     where: {
       userId: userId,

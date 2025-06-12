@@ -27,7 +27,7 @@ const formSchema = z.object({
   phone: z.string(),
 });
 
-function PhoneForm({ initialData, schoolId }: PhoneFormProps) {
+function PhoneForm({ initialData }: PhoneFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,6 +48,7 @@ function PhoneForm({ initialData, schoolId }: PhoneFormProps) {
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

@@ -117,31 +117,44 @@ export async function getSchoolDetailData(schoolId?: string, userId?: string) {
   if (!schoolId) return { school: null, ratingAvg: null, isFavorited: false };
 
   try {
-    const [school, ratingAvg, favorite] = await prisma.$transaction([
-      prisma.school.findUnique({
-        where: { id: schoolId },
-        include: { schoolBranch: true },
-      }),
-      prisma.review.aggregate({
-        _avg: { rating: true },
-        where: { schoolId },
-      }),
-      userId
-        ? prisma.favorite.findUnique({
-            where: { userId_schoolId: { userId, schoolId } },
-          })
-        : prisma.favorite
-            .findUnique({
-              where: { userId_schoolId: { userId: "", schoolId: "" } },
-            })
-            .catch(() => null), // This will always return a PrismaPromise
-    ]);
+    if (userId) {
+      const [school, ratingAvg, favorite] = await prisma.$transaction([
+        prisma.school.findUnique({
+          where: { id: schoolId },
+          include: { schoolBranch: true },
+        }),
+        prisma.review.aggregate({
+          _avg: { rating: true },
+          where: { schoolId },
+        }),
+        prisma.favorite.findUnique({
+          where: { userId_schoolId: { userId, schoolId } },
+        }),
+      ]);
 
-    return {
-      school,
-      ratingAvg,
-      isFavorited: userId ? !!favorite : false,
-    };
+      return {
+        school,
+        ratingAvg,
+        isFavorited: !!favorite,
+      };
+    } else {
+      const [school, ratingAvg] = await prisma.$transaction([
+        prisma.school.findUnique({
+          where: { id: schoolId },
+          include: { schoolBranch: true },
+        }),
+        prisma.review.aggregate({
+          _avg: { rating: true },
+          where: { schoolId },
+        }),
+      ]);
+
+      return {
+        school,
+        ratingAvg,
+        isFavorited: false,
+      };
+    }
   } catch (error) {
     console.error("Failed to fetch school details:", error);
     return { school: null, ratingAvg: null, isFavorited: false };

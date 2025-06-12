@@ -34,10 +34,7 @@ const formSchema = z.object({
   admission_status: z.enum([AdmissionStatus.OPEN, AdmissionStatus.CLOSED]),
 });
 
-function AdmissionStatusForm({
-  schoolId,
-  admissionStatus,
-}: AdmissionStatusFormProps) {
+function AdmissionStatusForm({ admissionStatus }: AdmissionStatusFormProps) {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({

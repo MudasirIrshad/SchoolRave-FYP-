@@ -37,7 +37,6 @@ const formSchema = z.object({
 
 function MediumofInstructionForm({
   initialData,
-  schoolId,
 }: MediumofInstructionFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
@@ -63,6 +62,7 @@ function MediumofInstructionForm({
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

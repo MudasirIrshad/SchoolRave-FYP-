@@ -32,12 +32,11 @@ export default function ApplicationsTab({
             <div className="flex justify-between items-start">
               <div>
                 <h3 className="text-lg font-semibold">
-                  {application.student_name} ({application.student_age} years
-                  old)
+                  {application.studentName} ({application.studentAge} years old)
                 </h3>
                 <p className="text-gray-600">
                   Date of Birth:{" "}
-                  {new Date(application.date_of_birth).toLocaleDateString()}
+                  {new Date(application.dateOfBirth).toLocaleDateString()}
                 </p>
                 <p className="text-gray-600">
                   Submitted on{" "}
@@ -49,11 +48,11 @@ export default function ApplicationsTab({
               </span>
             </div>
             <div className="mt-4 flex items-center gap-2">
-              {application.image_url && (
+              {application.studentImageUrl && (
                 <div className="w-16 h-16 rounded overflow-hidden relative">
                   <Image
-                    src={application.image_url}
-                    alt={`${application.student_name}'s photo`}
+                    src={application.studentImageUrl}
+                    alt={`${application.studentName}'s photo`}
                     fill
                     className="object-cover"
                     sizes="64px"

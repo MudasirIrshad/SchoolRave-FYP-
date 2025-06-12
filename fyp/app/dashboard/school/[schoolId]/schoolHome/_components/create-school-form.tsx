@@ -33,11 +33,12 @@ const formSchema = z.object({
   curriculum_type: z.enum(["FEDERAL", "BALUCHISTAN"]),
 });
 
-interface CreateSchoolProps {
-  schoolId: string;
-}
+// interface CreateSchoolProps {
+//   schoolId: string;
+// }
 
-function CreateSchool({ schoolId }: CreateSchoolProps) {
+// function CreateSchool({ schoolId }: CreateSchoolProps) {
+function CreateSchool() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,10 +57,11 @@ function CreateSchool({ schoolId }: CreateSchoolProps) {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post("/api/school", values);
+      await axios.post("/api/school", values);
       router.refresh();
       toast.success("School created successfully");
-    } catch (error: any) {
+    } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

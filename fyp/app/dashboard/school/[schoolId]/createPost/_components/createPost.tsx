@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { z } from "zod";
-import ShowPosts from "./showPosts";
 
 interface CreatePostProps {
   school: School;
@@ -49,6 +48,7 @@ function CreatePost({ school }: CreatePostProps) {
       setShowPhotoUpload(false);
       router.refresh();
     } catch (error) {
+      console.log(error)
       toast.error("Something went wrong");
     }
   };
@@ -95,7 +95,6 @@ function CreatePost({ school }: CreatePostProps) {
           </Button>
         </div>
       </div>
-
     </div>
   );
 }

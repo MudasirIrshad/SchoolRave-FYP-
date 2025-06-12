@@ -35,8 +35,11 @@ export async function POST(req: NextRequest) {
     });
 
     return NextResponse.json({ url: session.url });
-  } catch (error: any) {
-    console.error("Checkout error:", error.message);
+  } catch (error) {
+    console.error(
+      "Checkout error:",
+      error instanceof Error ? error.message : "Unknown error"
+    );
     return NextResponse.json(
       { error: "Unable to create Stripe session" },
       { status: 500 }

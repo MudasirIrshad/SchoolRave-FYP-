@@ -14,45 +14,30 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 
-// Utility: Get dashboard/profile link based on role
-function getDashboardLink(user: unknown) {
-  const role = user?.publicMetadata?.role || "GENERAL";
-  switch (role) {
-    case "SCHOOL":
-      return {
-        href: `/dashboard/school/${user.id}/schoolHome`,
-        label: "Dashboard",
-      };
-    case "ADMIN":
-      return { href: "/dashboard/admin", label: "Dashboard" };
-    default:
-      return { href: "/profile", label: "Profile" };
-  }
-}
-
 export default async function Header() {
-  let user = null;
-  let pathname = "/";
-
-  try {
-    user = await currentUser();
-  } catch (err) {
-    console.error("Error fetching user:", err);
-  }
-
-  try {
-    pathname = headers().get("x-invoke-path") || "/";
-  } catch (err) {
-    console.error("Error fetching pathname:", err);
-  }
+  const user = await currentUser();
+  const pathname = headers().get("x-invoke-path") || "/";
 
   const isActive = (path: string) => pathname === path;
 
   const navLinks = [
     { href: "/", label: "Home" },
-    ...(user ? [getDashboardLink(user)] : []),
     { href: "/discover", label: "Discover" },
   ];
+
+  // Only define dashboardHref if user exists
+  const userRole = user?.publicMetadata?.role || "GENERAL";
+  let userDashboardHref: string | null = null;
+
+  if (user) {
+    if (userRole === "SCHOOL") {
+      userDashboardHref = `/dashboard/school/${user.id}/schoolHome`;
+    } else if (userRole === "ADMIN") {
+      userDashboardHref = "/dashboard/admin";
+    } else {
+      userDashboardHref = "/profile";
+    }
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
@@ -86,6 +71,26 @@ export default async function Header() {
                     </Link>
                   </NavigationMenuItem>
                 ))}
+
+                {userDashboardHref && (
+                  <NavigationMenuItem>
+                    <Link href={userDashboardHref} passHref legacyBehavior>
+                      <NavigationMenuLink
+                        className={navigationMenuTriggerStyle()}
+                      >
+                        <span
+                          className={`font-open ${
+                            isActive(userDashboardHref)
+                              ? "text-primary font-semibold"
+                              : "text-gray-600 hover:text-primary"
+                          }`}
+                        >
+                          {userRole === "GENERAL" ? "Profile" : "Dashboard"}
+                        </span>
+                      </NavigationMenuLink>
+                    </Link>
+                  </NavigationMenuItem>
+                )}
               </NavigationMenuList>
             </NavigationMenu>
 
@@ -128,6 +133,20 @@ export default async function Header() {
                       {label}
                     </Link>
                   ))}
+
+                  {userDashboardHref && (
+                    <Link
+                      href={userDashboardHref}
+                      className={`text-lg font-open ${
+                        isActive(userDashboardHref)
+                          ? "text-primary font-semibold"
+                          : "text-gray-600 hover:text-primary"
+                      }`}
+                    >
+                      {userRole === "GENERAL" ? "Profile" : "Dashboard"}
+                    </Link>
+                  )}
+
                   <SignedOut>
                     <div className="flex flex-col space-y-3 pt-4">
                       <Button asChild className="w-full">
@@ -138,8 +157,11 @@ export default async function Header() {
                       </Button>
                     </div>
                   </SignedOut>
+
                   <SignedIn>
-                    <UserButton />
+                    <div className="pt-4">
+                      <UserButton />
+                    </div>
                   </SignedIn>
                 </nav>
               </SheetContent>

@@ -21,7 +21,7 @@ const formSchema = z.object({
   }),
 });
 
-function AttachmentForm({ schoolId, initialData }: AttachmentFormProps) {
+function AttachmentForm({ initialData }: AttachmentFormProps) {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
 
@@ -31,11 +31,15 @@ function AttachmentForm({ schoolId, initialData }: AttachmentFormProps) {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/school/update-school`, values);
+      // This validates input using Zod
+      const validatedData = formSchema.parse(values);
+
+      await axios.patch(`/api/school/update-school`, validatedData);
       toast.success("Attachment updated successfully");
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

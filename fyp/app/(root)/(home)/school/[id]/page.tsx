@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Image from "next/image";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SchoolProfile from "./components/tabs/school-profile";
@@ -20,6 +20,8 @@ export default async function SchoolDetailPage({ params }: PageParams) {
   if (!schoolId) return notFound();
 
   const { userId } = await auth();
+
+  if (!userId) redirect("/");
 
   const { school, ratingAvg, isFavorited } = await getSchoolDetailData(
     schoolId,

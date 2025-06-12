@@ -29,7 +29,7 @@ const formSchema = z.object({
   }),
 });
 
-function TitleForm({ initialData, schoolId }: TitleFormProps) {
+function TitleForm({ initialData }: TitleFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -50,6 +50,7 @@ function TitleForm({ initialData, schoolId }: TitleFormProps) {
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

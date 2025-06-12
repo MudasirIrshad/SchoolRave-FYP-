@@ -18,7 +18,8 @@ export default async function SchoolDashboard({
       {school ? (
         <SchoolDetail />
       ) : (
-        <CreateSchoolForm schoolId={params.schoolId} />
+        // <CreateSchoolForm schoolId={params.schoolId} />
+        <CreateSchoolForm />
       )}
     </div>
   );

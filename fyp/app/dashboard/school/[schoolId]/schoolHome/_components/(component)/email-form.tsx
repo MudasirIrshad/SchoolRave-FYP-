@@ -27,7 +27,7 @@ const formSchema = z.object({
   email: z.string().email(),
 });
 
-function EmailForm({ initialData, schoolId }: EmailFormProps) {
+function EmailForm({ initialData }: EmailFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -48,6 +48,7 @@ function EmailForm({ initialData, schoolId }: EmailFormProps) {
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

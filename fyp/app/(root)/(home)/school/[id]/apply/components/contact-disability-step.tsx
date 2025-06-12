@@ -15,7 +15,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { format } from "date-fns";
-import { CalendarIcon, X, FileText, Image } from "lucide-react";
+import { CalendarIcon, X, FileText, Image as ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FormData } from "@/lib/zod-types/admission";
 import { FileUpload } from "@/components/file-upload";
@@ -56,7 +56,7 @@ export default function ContactDisabilityStep({
   const getFileIcon = (index: number) => {
     // First file is assumed to be student photo
     return index === 0 ? (
-      <Image className="w-4 h-4 text-blue-500" />
+      <ImageIcon className="w-4 h-4 text-blue-500" />
     ) : (
       <FileText className="w-4 h-4 text-gray-500" />
     );

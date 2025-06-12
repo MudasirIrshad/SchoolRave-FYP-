@@ -1,13 +1,6 @@
 import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
-import {
-  ArrowLeft,
-  LayoutDashboard,
-  EyeIcon,
-  VideoIcon,
-  ImageIcon,
-  Paperclip,
-} from "lucide-react";
+import { ArrowLeft, LayoutDashboard, ImageIcon, Paperclip } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import SchoolBranchTitleForm from "./_components/school-branch-title-form";
@@ -32,12 +25,16 @@ async function SchoolBranchPage({
   };
 }) {
   const { userId } = await auth();
+
   if (!userId) return redirect("/");
+
   const school = await prisma.school.findUnique({
     where: {
       userId: params.schoolId,
     },
   });
+
+  if (!school) return redirect("/dashboard");
 
   const schoolBranch = await prisma.schoolBranch.findUnique({
     where: {
@@ -81,35 +78,35 @@ async function SchoolBranchPage({
               <SchoolBranchTitleForm
                 schoolBranchId={params.schoolBranchId}
                 schoolBranchName={schoolBranch.name!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <SchoolBranchEmailForm
                 schoolBranchId={params.schoolBranchId}
                 schoolBranchEmail={schoolBranch.email!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <SchoolBranchCityForm
                 schoolBranchId={params.schoolBranchId}
                 schoolBranchCity={schoolBranch.city!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <SchoolBranchAdmissionStatusForm
                 schoolBranchId={params.schoolBranchId}
                 admissionStatus={schoolBranch.admission_status!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <SchoolBranchFacilities
                 schoolBranchId={params.schoolBranchId}
                 schoolfacilities={schoolBranch.facilities!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div>
@@ -123,7 +120,7 @@ async function SchoolBranchPage({
                 <ImageForm
                   schoolBranchId={params.schoolBranchId}
                   initialData={schoolBranch}
-                  schoolId={school?.id!}
+                  schoolId={school.id}
                 />
               </div>
             </div>
@@ -136,35 +133,35 @@ async function SchoolBranchPage({
               <SchoolBranchAddressForm
                 schoolBranchId={params.schoolBranchId}
                 schoolBranchAddress={schoolBranch.address!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <SchoolBranchPhoneForm
                 schoolBranchId={params.schoolBranchId}
                 schoolBranchPhone={schoolBranch.phone!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <SchoolBranchDescriptionForm
                 schoolBranchId={params.schoolBranchId}
                 schoolBranchDescription={schoolBranch.description!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <SchoolBranchGenderPolicyForm
                 schoolBranchId={params.schoolBranchId}
                 genderPolicy={schoolBranch.gender_policy!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div className="border bg-slate-100 rounded-md p-4">
               <SchoolBranchCategoryForm
                 schoolBranchId={params.schoolBranchId}
                 schoolBranchCategory={schoolBranch.schoolBranchCategory!}
-                schoolId={school?.id!}
+                schoolId={school.id}
               />
             </div>
             <div>
@@ -172,14 +169,14 @@ async function SchoolBranchPage({
                 <div className="bg-sky-100 p-1 border rounded-full border-sky-500">
                   <Paperclip className="text-sky-600" />
                 </div>
-                <h2 className="text-xl">Admission Form's Pdf</h2>
+                <h2 className="text-xl">Admission Form&apos;s Pdf</h2>
               </div>
               <div className="border bg-slate-100 rounded-md p-4">
                 <div>
                   <AttachmentForm
                     schoolBranchId={params.schoolBranchId}
                     initialData={schoolBranch}
-                    schoolId={school?.id!}
+                    schoolId={school.id}
                   />
                 </div>
               </div>

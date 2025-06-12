@@ -19,7 +19,7 @@ const formSchema = z.object({
     message: "Image Url is required",
   }),
 });
-function ImageForm({ initialData, schoolId }: ImageFormProps) {
+function ImageForm({ initialData }: ImageFormProps) {
   const router = useRouter();
   const [isEditing, setIsEditing] = useState(false);
   const toggleEdit = () => {
@@ -27,13 +27,16 @@ function ImageForm({ initialData, schoolId }: ImageFormProps) {
   };
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
+      const validatedData = formSchema.parse(values);
+
       await axios.patch(`/api/school/update-school`, {
-        imageUrl: values.imageUrl,
+        imageUrl: validatedData.imageUrl,
       });
       toast.success("School image updated successfully");
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

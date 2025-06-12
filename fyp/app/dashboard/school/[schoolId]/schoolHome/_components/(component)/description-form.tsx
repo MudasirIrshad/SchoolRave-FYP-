@@ -7,7 +7,6 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { School } from "@/generated/prisma";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,7 +29,7 @@ const formSchema = z.object({
   }),
 });
 
-function DescriptionForm({ initialData, schoolId }: DescriptionFormProps) {
+function DescriptionForm({ initialData }: DescriptionFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -51,6 +50,7 @@ function DescriptionForm({ initialData, schoolId }: DescriptionFormProps) {
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };

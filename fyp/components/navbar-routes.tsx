@@ -1,9 +1,6 @@
 "use client";
-import { useAuth, UserButton } from "@clerk/nextjs";
-import { LogOut } from "lucide-react";
-import { usePathname, useRouter } from "next/navigation";
+import { UserButton } from "@clerk/nextjs";
 import React from "react";
-import Link from "next/link";
 
 export default function NavbarRoutes() {
   return (

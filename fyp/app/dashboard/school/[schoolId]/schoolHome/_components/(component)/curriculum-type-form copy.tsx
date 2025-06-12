@@ -6,10 +6,9 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { CurriculumType, School, SchoolType } from "@/generated/prisma";
+import { CurriculumType, School } from "@/generated/prisma";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 import { PencilIcon } from "lucide-react";
@@ -35,10 +34,7 @@ const formSchema = z.object({
   curriculum_type: z.enum([CurriculumType.BALUCHISTAN, CurriculumType.FEDERAL]),
 });
 
-function CurriculumTypeForm({
-  initialData,
-  schoolId,
-}: CurriculumTypeFormProps) {
+function CurriculumTypeForm({ initialData }: CurriculumTypeFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -63,6 +59,7 @@ function CurriculumTypeForm({
       toggleEdit();
       router.refresh();
     } catch (error) {
+      console.log(error);
       toast.error("Something went wrong");
     }
   };
