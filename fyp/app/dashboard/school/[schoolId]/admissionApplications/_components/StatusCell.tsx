@@ -43,11 +43,20 @@ export const StatusCell: React.FC<StatusCellProps> = ({
       }
 
       router.refresh();
-    } catch (error: any) {
-      console.error(
-        "Failed to update status:",
-        error?.response?.data || error.message
-      );
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        // TypeScript now knows this is an AxiosError
+        console.error(
+          "Failed to update status:",
+          error.response?.data || error.message
+        );
+      } else if (error instanceof Error) {
+        // Fallback for generic errors
+        console.error("Failed to update status:", error.message);
+      } else {
+        // Handle cases where error isn't an Error object
+        console.error("Failed to update status:", String(error));
+      }
     } finally {
       setLoading(false);
     }

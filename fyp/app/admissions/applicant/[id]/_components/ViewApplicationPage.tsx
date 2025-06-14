@@ -6,6 +6,7 @@ import { ArrowLeft } from "lucide-react";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface AdmissionPageProps {
   applicantId: string;
@@ -50,10 +51,13 @@ const ViewApplicationPage = async ({ applicantId }: AdmissionPageProps) => {
           <div className="flex flex-col md:flex-row gap-14">
             {/* Left Image */}
             <div className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg border-2 border-blue-300 w-64 h-64 transition-transform hover:scale-105">
-              <img
+              <Image
                 src={admission.studentImageUrl || "/placeholder.jpg"}
                 alt="Student"
+                width={256} // matches your w-64 (64 * 4 = 256)
+                height={256} // matches your h-64
                 className="w-full h-full object-cover"
+                unoptimized={true} // only if you don't want Next.js to optimize the image
               />
             </div>
 
