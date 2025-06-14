@@ -1,9 +1,12 @@
+"use client";
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { AdmissionApproval } from "@/generated/prisma";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import axios from "axios";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -29,12 +32,9 @@ export const StatusCell: React.FC<StatusCellProps> = ({
   const handleStatusChange = async (newStatus: AdmissionApproval) => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/admissions/${id}/status`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: newStatus }),
+      const { data } = await axios.patch(`/api/admissions/${id}/status`, {
+        status: newStatus,
       });
-      const data = await res.json();
 
       if (data.success) {
         setStatus(newStatus.toLowerCase());
@@ -43,8 +43,11 @@ export const StatusCell: React.FC<StatusCellProps> = ({
       }
 
       router.refresh();
-    } catch (error) {
-      console.error("Failed to update status:", error);
+    } catch (error: any) {
+      console.error(
+        "Failed to update status:",
+        error?.response?.data || error.message
+      );
     } finally {
       setLoading(false);
     }
