@@ -2,14 +2,14 @@ import { NextRequest, NextResponse } from "next/server";
 import { AdmissionApproval } from "@/generated/prisma";
 import prisma from "@/lib/prisma";
 
+export const revalidate = 0;
+
 export async function PATCH(
   request: NextRequest,
   { params }: { params: { id: string } }
 ) {
   try {
     const { status } = await request.json();
-
-    // Validate status as AdmissionApproval enum type
 
     const updatedApplication = await prisma.admission.update({
       where: { id: params.id },
