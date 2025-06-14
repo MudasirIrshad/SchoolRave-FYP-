@@ -6,7 +6,6 @@ import { ArrowLeft } from "lucide-react";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
 
 interface AdmissionPageProps {
   applicantId: string;
@@ -51,15 +50,13 @@ const ViewApplicationPage = async ({ applicantId }: AdmissionPageProps) => {
           <div className="flex flex-col md:flex-row gap-14">
             {/* Left Image */}
             <div className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg border-2 border-blue-300 w-64 h-64 transition-transform hover:scale-105">
-              <Image
+              <img
                 src={admission.studentImageUrl || "/placeholder.jpg"}
                 alt="Student"
-                width={256}
-                height={256}
                 className="w-full h-full object-cover"
-                priority // Optional: if this is above the fold content
               />
             </div>
+
             {/* Right Details */}
             <ScrollArea className="flex-1 h-[520px] pr-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 text-base font-semibold">
