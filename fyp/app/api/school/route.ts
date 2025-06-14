@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import prisma from "@/lib/prisma";
 
+export const revalidate = 0;
+
 export async function POST(req: Request) {
   try {
     const { userId } = await auth();
