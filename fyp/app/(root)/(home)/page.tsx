@@ -2,13 +2,14 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { getTopSchools } from "@/data-access/school-data";
 import SchoolCard from "./components/school-card";
+import { School } from "@/generated/prisma";
 
 export default async function Home({
   searchParams,
 }: {
   searchParams: { query?: string };
 }) {
-  let featuredSchools: any[] = [];
+  let featuredSchools: School[] = [];
 
   try {
     featuredSchools = await getTopSchools();
