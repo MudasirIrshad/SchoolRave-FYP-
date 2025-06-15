@@ -8,6 +8,7 @@ import SchoolReviews from "./components/tabs/school-reviews";
 import { SchoolBranches } from "./components/tabs/school-branches";
 import { getSchoolDetailData } from "@/data-access/school-data";
 import { auth } from "@clerk/nextjs/server";
+export const dynamic = "force-dynamic";
 
 interface PageParams {
   params: {

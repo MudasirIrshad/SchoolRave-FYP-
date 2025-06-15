@@ -2,6 +2,8 @@ import LoadingSpinner from "@/components/loading-spinner";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 export default async function CheckPage() {
   const user = await currentUser();
   const role = user?.publicMetadata.role;

@@ -1,6 +1,7 @@
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import ChooseRoleForm from "./component/choose-role-form";
+export const dynamic = "force-dynamic";
 
 export default async function ChooseRolePage() {
   const user = await currentUser();

@@ -2,6 +2,7 @@ import SchoolCard from "@/app/(root)/(home)/components/school-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getSchoolsData } from "@/data-access/school-data";
 import SearchBar from "../(home)/components/search-bar";
+export const dynamic = "force-dynamic";
 
 interface DiscoverPageProps {
   searchParams: {

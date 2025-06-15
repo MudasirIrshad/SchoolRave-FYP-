@@ -15,6 +15,7 @@ import PersonalDetailsStep from "./components/personal-details-step";
 import ContactDisabilityStep from "./components/contact-disability-step";
 import ReviewStep from "./components/review-step";
 import { submitAdmission } from "@/actions/submitAdmission";
+export const dynamic = "force-dynamic";
 
 const TOTAL_STEPS = 5;
 

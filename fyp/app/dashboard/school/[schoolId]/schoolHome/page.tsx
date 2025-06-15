@@ -1,6 +1,7 @@
 import prisma from "@/lib/prisma";
 import CreateSchoolForm from "./_components/create-school-form";
 import SchoolDetail from "./_components/school-detail";
+export const dynamic = "force-dynamic";
 
 export default async function SchoolDashboard({
   params,

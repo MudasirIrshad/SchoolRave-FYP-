@@ -2,6 +2,7 @@ import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import React from "react";
+export const dynamic = "force-dynamic";
 
 async function VerifyPayment() {
   const { userId } = await auth();

@@ -15,6 +15,7 @@ import SchoolBranchFacilities from "./_components/school-branch-facility-form";
 import ImageForm from "./_components/school-branch-image-form";
 import AttachmentForm from "./_components/school-branch-attachment-form";
 import SchoolBranchCategoryForm from "./_components/school-branch-category-form";
+export const dynamic = "force-dynamic";
 
 async function SchoolBranchPage({
   params,

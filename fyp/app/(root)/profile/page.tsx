@@ -9,6 +9,7 @@ import FavoritesTab from "./components/tabs/favorites-tab";
 import SettingsTab from "./components/tabs/settings-tab";
 import ProfileImageUpload from "./components/ProfileImageUpload";
 // import NotificationsTab from "./components/tabs/notifications-tab";
+export const dynamic = "force-dynamic";
 
 export default async function ProfilePage() {
   const { userId } = await auth();
