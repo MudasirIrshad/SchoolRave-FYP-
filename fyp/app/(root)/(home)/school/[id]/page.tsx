@@ -8,6 +8,7 @@ import SchoolReviews from "./components/tabs/school-reviews";
 import { SchoolBranches } from "./components/tabs/school-branches";
 import { getSchoolDetailData } from "@/data-access/school-data";
 import { auth } from "@clerk/nextjs/server";
+import SchoolPosts from "./components/tabs/school-posts";
 export const dynamic = "force-dynamic";
 
 interface PageParams {
@@ -58,15 +59,15 @@ export default async function SchoolDetailPage({ params }: PageParams) {
                 <TabsList
                   className={`grid w-full ${
                     school.schoolBranch.length > 0
-                      ? "grid-cols-3"
-                      : "grid-cols-2"
+                      ? "grid-cols-4"
+                      : "grid-cols-3"
                   }`}
                 >
                   <TabsTrigger value="overview">Overview</TabsTrigger>
-                  {/* <TabsTrigger value="activities">Activities</TabsTrigger> */}
                   {school.schoolBranch.length > 0 && (
                     <TabsTrigger value="branches">Branches</TabsTrigger>
                   )}
+                  <TabsTrigger value="posts">Posts</TabsTrigger>
                   <TabsTrigger value="reviews">Reviews</TabsTrigger>
                 </TabsList>
 
@@ -80,6 +81,9 @@ export default async function SchoolDetailPage({ params }: PageParams) {
                   </TabsContent>
                 )}
 
+                <TabsContent value="posts" className="pt-6">
+                  <SchoolPosts schoolId={school.id} />
+                </TabsContent>
                 <TabsContent value="reviews" className="pt-6">
                   <SchoolReviews schoolId={school.id} />
                 </TabsContent>
