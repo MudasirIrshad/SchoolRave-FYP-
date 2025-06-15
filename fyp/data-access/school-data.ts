@@ -3,7 +3,6 @@ import prisma from "@/lib/prisma";
 
 export async function getTopSchools() {
   try {
-    // Step 1: Get schools with reviews, ordered by average rating
     const reviewedSchools = await prisma.review.groupBy({
       by: ["schoolId"],
       _avg: {
@@ -21,14 +20,12 @@ export async function getTopSchools() {
       .map((r) => r.schoolId)
       .filter((id): id is string => id !== null);
 
-    // Step 2: Fetch full School data for reviewed schools
     const reviewedSchoolData = await prisma.school.findMany({
       where: {
         id: { in: reviewedSchoolIds },
       },
     });
 
-    // Step 3: If less than 3, fill in with unrated schools
     const needed = 3 - reviewedSchoolData.length;
     let unratedSchools: typeof reviewedSchoolData = [];
 
@@ -48,8 +45,9 @@ export async function getTopSchools() {
     }
 
     return [...reviewedSchoolData, ...unratedSchools];
-  } catch (error) {
-    console.error("Failed to fetch top schools:", error);
+  } catch (error: any) {
+    console.error("❌ getTopSchools failed:", error?.message || error);
+    console.error(error?.stack || error);
     return [];
   }
 }

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getTopSchools } from "@/data-access/school-data";
 import SchoolCard from "./components/school-card";
 import { School } from "@/generated/prisma";
+export const dynamic = "force-dynamic";
 
 export default async function Home({
   searchParams,
@@ -12,7 +13,7 @@ export default async function Home({
   let featuredSchools: School[] = [];
 
   try {
-    featuredSchools = await getTopSchools();
+    featuredSchools = (await getTopSchools()) ?? [];
   } catch (err) {
     console.error("❌ Failed to load schools", err);
   }
