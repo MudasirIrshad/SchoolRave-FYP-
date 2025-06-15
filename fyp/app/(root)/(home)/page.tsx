@@ -8,8 +8,13 @@ export default async function Home({
 }: {
   searchParams: { query?: string };
 }) {
-  const featuredSchools = await getTopSchools();
+  let featuredSchools: any[] = [];
 
+  try {
+    featuredSchools = await getTopSchools();
+  } catch (err) {
+    console.error("❌ Failed to load schools", err);
+  }
   return (
     <div className="min-h-screen flex flex-col bg-background">
       {/* Hero Section */}
@@ -84,7 +89,7 @@ export default async function Home({
               <Link href="/sign-up">Create an Account</Link>
             </Button>
           </div>
-      </div>
+        </div>
       </section>
     </div>
   );
