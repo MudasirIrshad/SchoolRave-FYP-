@@ -12,6 +12,7 @@ async function VerifyPayment() {
   const schoolUpdate = await prisma.school.update({
     where: {
       userId: userId,
+      
     },
     data: {
       subscriptionType: "PAID",
