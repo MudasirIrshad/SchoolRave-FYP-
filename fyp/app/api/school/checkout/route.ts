@@ -8,7 +8,6 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2025-03-31.basil",
 });
 
-
 export async function POST(req: NextRequest) {
   try {
     const { userId } = await auth();
@@ -29,7 +28,11 @@ export async function POST(req: NextRequest) {
           quantity: 1,
         },
       ],
-      success_url: `${process.env.BASE_URL}/verify-payment`,
+      success_url: `${
+        // process.env.BASE_URL
+        // ||
+        "https://school-rave-fyp.vercel.app/dashboard/school/"
+      }/verify-payment`,
       cancel_url: `${process.env.BASE_URL}/dashboard/school/${userId}/schoolHome`,
       metadata: {
         userId,
