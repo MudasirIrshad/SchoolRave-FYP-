@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getTopSchools } from "@/data-access/school-data";
 import SchoolCard from "./components/school-card";
 import { School } from "@/generated/prisma";
+import { SignedIn, SignedOut } from "@clerk/nextjs";
 export const dynamic = "force-dynamic";
 
 export default async function Home({
@@ -84,12 +85,20 @@ export default async function Home({
             educational match using SchoolRave.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button variant="secondary" asChild>
-              <Link href="/sign-in">Login</Link>
-            </Button>
-            <Button variant="outline" asChild>
-              <Link href="/sign-up">Create an Account</Link>
-            </Button>
+            <SignedOut>
+              <Button variant="secondary" asChild>
+                <Link href="/sign-in">Login</Link>
+              </Button>
+              <Button variant="outline" asChild>
+                <Link href="/sign-up">Create an Account</Link>
+              </Button>
+            </SignedOut>
+
+            <SignedIn>
+              <Button variant="outline" asChild>
+                <Link href="/discover">Discover Schools</Link>
+              </Button>
+            </SignedIn>
           </div>
         </div>
       </section>
