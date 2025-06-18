@@ -6,7 +6,7 @@ interface ShowPostsProps {
   schoolId: string;
 }
 
-async function ShowPosts({ schoolId }: ShowPostsProps) {
+export default async function ShowPosts({ schoolId }: ShowPostsProps) {
   const posts = await prisma.post.findMany({
     where: { schoolId },
     orderBy: { createdAt: "desc" },
@@ -47,55 +47,57 @@ async function ShowPosts({ schoolId }: ShowPostsProps) {
   }
 
   return (
-    <div className="space-y-6 py-4 w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      {posts.map((post) => (
-        <div
-          key={post.id}
-          className="border border-gray-200 rounded-lg p-4 shadow-sm bg-white hover:shadow-md transition-shadow duration-200"
-        >
-          <div className="flex items-center mb-3">
-            <div className="flex-shrink-0">
-              <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-500">
-                {post.school.name.charAt(0).toUpperCase()}
+    <div className="py-4 w-full">
+      <div className="max-h-[600px] overflow-y-auto pr-2">
+        <div className="space-y-6">
+          {posts.map((post) => (
+            <div
+              key={post.id}
+              className="border border-gray-200 rounded-lg p-4 shadow-sm bg-white hover:shadow-md transition-shadow duration-200"
+            >
+              <div className="flex items-center mb-3">
+                <div className="flex-shrink-0">
+                  <div className="h-10 w-10 rounded-full bg-gray-300 flex items-center justify-center text-gray-500">
+                    {post.school.name.charAt(0).toUpperCase()}
+                  </div>
+                </div>
+                <div className="ml-3">
+                  <p className="text-sm font-medium text-gray-900">
+                    {post.school.name}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    {new Date(post.createdAt).toLocaleString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      year: "numeric",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                    })}
+                  </p>
+                </div>
               </div>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-gray-900">
-                {post.school.name}
-              </p>
-              <p className="text-xs text-gray-500">
-                {new Date(post.createdAt).toLocaleString("en-US", {
-                  month: "short",
-                  day: "numeric",
-                  year: "numeric",
-                  hour: "2-digit",
-                  minute: "2-digit",
-                })}
-              </p>
-            </div>
-          </div>
 
-          {post.content && (
-            <p className="mb-3 text-sm text-gray-800 whitespace-pre-line">
-              {post.content}
-            </p>
-          )}
+              {post.content && (
+                <p className="mb-3 text-sm text-gray-800 whitespace-pre-line">
+                  {post.content}
+                </p>
+              )}
 
-          {post.image && (
-            <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-3 border border-gray-200">
-              <Image
-                src={post.image}
-                alt="Post image"
-                layout="fill"
-                objectFit="cover"
-                className="hover:opacity-90 transition-opacity"
-              />
+              {post.image && (
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-3 border border-gray-200">
+                  <Image
+                    src={post.image}
+                    alt="Post image"
+                    layout="fill"
+                    objectFit="cover"
+                    className="hover:opacity-90 transition-opacity"
+                  />
+                </div>
+              )}
             </div>
-          )}
+          ))}
         </div>
-      ))}
+      </div>
     </div>
   );
 }
-
-export default ShowPosts;

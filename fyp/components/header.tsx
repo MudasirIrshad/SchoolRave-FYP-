@@ -15,7 +15,13 @@ import {
 } from "@/components/ui/navigation-menu";
 
 export default async function Header() {
-  const user = await currentUser();
+  let user = null;
+  try {
+    user = await currentUser();
+  } catch (error) {
+    console.error("Error fetching user:", error);
+  }
+
   const pathname = headers().get("x-invoke-path") || "/";
 
   const isActive = (path: string) => pathname === path;

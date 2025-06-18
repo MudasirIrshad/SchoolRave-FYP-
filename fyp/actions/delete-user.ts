@@ -55,7 +55,7 @@ export async function deleteUserAccount() {
     revalidatePath("/profile");
 
     // Redirect to goodbye or home page
-    redirect("/goodbye");
+    redirect("/");
   } catch (error) {
     console.error("[DeleteUserAccount ERROR]", error);
     throw new Error("Something went wrong while deleting your account.");
