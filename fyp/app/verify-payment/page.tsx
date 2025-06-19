@@ -12,13 +12,17 @@ async function VerifyPayment() {
   const schoolUpdate = await prisma.school.update({
     where: {
       userId: userId,
+      
     },
     data: {
       subscriptionType: "PAID",
     },
   });
   if (schoolUpdate)
-    redirect(`${process.env.BASE_URL}/dashboard/school/${userId}/schoolHome`);
+    // redirect(`${process.env.BASE_URL}/dashboard/school/${userId}/schoolHome`);
+    redirect(
+      `https://school-rave-fyp.vercel.app/dashboard/school/${userId}/schoolHome`
+    );
   return <div>VerifyPayment</div>;
 }
 

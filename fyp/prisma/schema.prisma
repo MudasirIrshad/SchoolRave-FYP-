@@ -98,7 +98,7 @@ model School {
 
   admission_status AdmissionStatus @default(OPEN)
 
-  subscriptionType SubscriptionType @default(FREE)
+  subscriptionType SubscriptionType @default(PAID)
   stripeCustomerId String?          @unique
   schoolCategory   SchoolCategory?  @default(PRIMARY)
 
