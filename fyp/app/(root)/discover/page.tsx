@@ -2,20 +2,26 @@ import SchoolCard from "@/app/(root)/(home)/components/school-card";
 import { Card, CardContent } from "@/components/ui/card";
 import { getSchoolsData } from "@/data-access/school-data";
 import SearchBar from "../(home)/components/search-bar";
+import { SchoolType, CurriculumType } from "@/generated/prisma";
 export const dynamic = "force-dynamic";
 
 interface DiscoverPageProps {
   searchParams: {
     query?: string;
+    city?: string;
+    schoolType?: SchoolType;
+    curriculumType?: CurriculumType;
   };
 }
 
 export default async function DiscoverPage({
   searchParams,
 }: DiscoverPageProps) {
-  // console.log(searchParams.query);
   const { schools, totalCount } = await getSchoolsData({
     query: searchParams.query,
+    city: searchParams.city,
+    schoolType: searchParams.schoolType,
+    curriculumType: searchParams.curriculumType,
   });
 
   return (
@@ -30,12 +36,22 @@ export default async function DiscoverPage({
       </div>
 
       {/* Filter/Search Card */}
-      <SearchBar />
+      <div className="mb-8">
+        <SearchBar />
+      </div>
 
       <div className="mb-6 flex justify-between items-center">
-        <p className="text-sm text-muted-foreground">
-          Showing {schools.length} of {totalCount} schools
-        </p>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2">
+          <p className="text-sm text-muted-foreground">
+            Showing {schools.length} of {totalCount} schools
+          </p>
+          {(searchParams.query ||
+            searchParams.city ||
+            searchParams.schoolType ||
+            searchParams.curriculumType) && (
+            <p className="text-xs text-blue-600">• Filtered results</p>
+          )}
+        </div>
       </div>
       {/* School Grid */}
       {schools.length > 0 ? (

@@ -10,9 +10,34 @@ import {
   CardFooter,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { School } from "@/generated/prisma";
+import { School, SchoolBranch, Review } from "@/generated/prisma";
 
-export default function SchoolCard({ school }: { school: School }) {
+interface SchoolWithRelations extends School {
+  schoolBranch?: SchoolBranch[];
+  reviews?: Review[];
+}
+
+export default function SchoolCard({
+  school,
+}: {
+  school: SchoolWithRelations;
+}) {
+  // Calculate average rating
+  const averageRating =
+    school.reviews && school.reviews.length > 0
+      ? school.reviews.reduce((sum, review) => sum + review.rating, 0) /
+        school.reviews.length
+      : 0;
+
+  // Get unique cities from branches
+  const cities = school.schoolBranch
+    ? [
+        ...new Set(
+          school.schoolBranch.map((branch) => branch.city).filter(Boolean)
+        ),
+      ]
+    : [];
+
   return (
     <Link
       href={`/school/${school.id}`}
@@ -39,18 +64,56 @@ export default function SchoolCard({ school }: { school: School }) {
           <CardTitle className="text-xl">{school.name}</CardTitle>
           <CardDescription className="flex items-center">
             <MapPin className="w-4 h-4 mr-2" />
-            {school.address}
+            {school.address ||
+              (cities.length > 0
+                ? cities.join(", ")
+                : "Location not specified")}
           </CardDescription>
         </CardHeader>
 
         <CardContent className="space-y-4">
+          {/* Rating Display */}
+          {averageRating > 0 && (
+            <div className="flex items-center gap-2">
+              <div className="flex">
+                {Array(5)
+                  .fill(0)
+                  .map((_, i) => (
+                    <span
+                      key={i}
+                      className={`text-sm ${
+                        i < Math.round(averageRating)
+                          ? "text-yellow-400"
+                          : "text-gray-300"
+                      }`}
+                    >
+                      ★
+                    </span>
+                  ))}
+              </div>
+              <span className="text-sm text-gray-600">
+                {averageRating.toFixed(1)} ({school.reviews?.length || 0}{" "}
+                reviews)
+              </span>
+            </div>
+          )}
+
           <div className="flex flex-wrap gap-2">
-            <Badge variant="outline" className="text-primary">
-              {school.medium_of_instruction}
-            </Badge>
-            <Badge variant="outline" className="text-primary">
-              {school.curriculum_type}
-            </Badge>
+            {school.medium_of_instruction && (
+              <Badge variant="outline" className="text-primary">
+                {school.medium_of_instruction}
+              </Badge>
+            )}
+            {school.curriculum_type && (
+              <Badge variant="outline" className="text-primary">
+                {school.curriculum_type}
+              </Badge>
+            )}
+            {cities.length > 0 && (
+              <Badge variant="outline" className="text-green-600">
+                {cities.length === 1 ? cities[0] : `${cities.length} locations`}
+              </Badge>
+            )}
           </div>
 
           <p className="text-sm text-muted-foreground line-clamp-3">

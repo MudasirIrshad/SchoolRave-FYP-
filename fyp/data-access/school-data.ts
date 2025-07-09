@@ -1,3 +1,4 @@
+import { CurriculumType, Prisma, SchoolType } from "@/generated/prisma";
 import prisma from "@/lib/prisma";
 // =================================================================================================
 
@@ -45,60 +46,84 @@ export async function getTopSchools() {
     }
 
     return [...reviewedSchoolData, ...unratedSchools];
-  } catch (error: any) {
-    console.error("❌ getTopSchools failed:", error?.message || error);
-    console.error(error?.stack || error);
+  } catch (error) {
+    const err = error as Error;
+    console.error("❌ getTopSchools failed:", err.message);
+    console.error(err.stack);
     return [];
   }
 }
 
 // =================================================================================================
 
-export async function getSchoolsData({ query }: { query?: string }) {
+export async function getSchoolsData({
+  query,
+  city,
+  schoolType,
+  curriculumType,
+}: {
+  query?: string;
+  city?: string;
+  schoolType?: SchoolType;
+  curriculumType?: CurriculumType;
+}) {
   try {
+    // Build the where clause dynamically
+    const whereClause: Prisma.SchoolWhereInput = {};
+
+    // Text search in name and address
+    if (query) {
+      whereClause.OR = [
+        {
+          name: {
+            contains: query,
+            mode: "insensitive",
+          },
+        },
+        {
+          address: {
+            contains: query,
+            mode: "insensitive",
+          },
+        },
+      ];
+    }
+
+    // Filter by school type
+    if (schoolType) {
+      whereClause.school_type = schoolType;
+    }
+
+    // Filter by curriculum type
+    if (curriculumType) {
+      whereClause.curriculum_type = curriculumType;
+    }
+
+    // Filter by city (through school branches)
+    if (city) {
+      whereClause.schoolBranch = {
+        some: {
+          city: {
+            contains: city,
+            mode: "insensitive",
+          },
+        },
+      };
+    }
+
     const [schools, totalCount] = await Promise.all([
       prisma.school.findMany({
-        where: query
-          ? {
-              OR: [
-                {
-                  name: {
-                    contains: query,
-                    mode: "insensitive",
-                  },
-                },
-                {
-                  address: {
-                    contains: query,
-                    mode: "insensitive",
-                  },
-                },
-              ],
-            }
-          : undefined, // No filter applied if query is empty
+        where: Object.keys(whereClause).length > 0 ? whereClause : undefined,
+        include: {
+          schoolBranch: true,
+          reviews: true,
+        },
         orderBy: {
           createdAt: "desc",
         },
       }),
       prisma.school.count({
-        where: query
-          ? {
-              OR: [
-                {
-                  name: {
-                    contains: query,
-                    mode: "insensitive",
-                  },
-                },
-                {
-                  address: {
-                    contains: query,
-                    mode: "insensitive",
-                  },
-                },
-              ],
-            }
-          : undefined, // No filter applied if query is empty
+        where: Object.keys(whereClause).length > 0 ? whereClause : undefined,
       }),
     ]);
 
